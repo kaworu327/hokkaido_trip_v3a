@@ -64,7 +64,7 @@
             background: var(--bg-color);
             min-height: calc(100vh - 80px);
             display: flex;
-            flex-direction: column;
+            flex-direction: column; /* 已修正原本拼錯的 flex-flex-direction */
             box-shadow: 18px 18px 36px #d5cdbf, -18px -18px 36px #ffffff;
             border-radius: 36px;
             overflow: hidden;
@@ -309,6 +309,16 @@
             justify-content: space-between;
             align-items: flex-start;
             gap: 12px;
+            flex-wrap: wrap; /* 已修復：允許按鈕在小螢幕上安全換行，防止擠壓變形 */
+        }
+
+        .card-main-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            flex-shrink: 0;
+            max-width: 100%;
         }
 
         /* 時程氣泡 */
@@ -329,6 +339,9 @@
             font-weight: 800;
             color: var(--text-main);
             line-height: 1.4;
+            flex: 1;
+            min-width: 140px; /* 已修復：確保文字有最低寬度保障，不會把按鈕擠開 */
+            word-break: break-word;
         }
 
         /* 擬物凸起按鈕 */
@@ -366,7 +379,8 @@
         .theme-day1  { --accent-theme: var(--day1);  --tag-alert: #A83636; --tag-port: #1E668A; }
         .theme-day2  { --accent-theme: var(--day2);  --tag-alert: #A83636; --tag-port: #1E668A; }
         .theme-day3  { --accent-theme: var(--day3);  --tag-alert: #A83636; --tag-port: #1E668A; }
-        .theme-day4  { --accent-theme: var(--day4);  --tag-alert: #AC3727; --tag-port: #21633B; }
+        .theme-day4-bp  { --accent-theme: var(--day4);  --tag-alert: #AC3727; --tag-port: #21633B; }
+        .theme-day4-lhs { --accent-theme: var(--day4);  --tag-alert: #AC3727; --tag-port: #21633B; }
         .theme-day5  { --accent-theme: var(--day5);  --tag-alert: #AC3727; --tag-port: #21633B; }
         .theme-day6  { --accent-theme: var(--day6);  --tag-alert: #AC3727; --tag-port: #21633B; }
         .theme-day7  { --accent-theme: var(--day7);  --tag-alert: #A83636; --tag-port: #1E668A; }
@@ -386,6 +400,8 @@
             display: flex;
             justify-content: flex-end;
             margin-top: 14px;
+            gap: 8px;
+            flex-wrap: wrap; /* 已修復：防止已付與完成按鈕在小螢幕下橫向溢出 */
         }
 
         /* 標記完成擬物按鈕 */
@@ -446,6 +462,8 @@
             font-size: 0.85rem;
             color: var(--text-muted);
             font-weight: 600;
+            flex: 1;
+            min-width: 0;
         }
 
         .drive-target {
@@ -453,6 +471,7 @@
             color: var(--text-main);
             margin-top: 4px;
             display: inline-block;
+            word-break: break-word;
         }
 
         /* 重點提示標籤 */
@@ -476,7 +495,7 @@
             box-shadow: 1px 2px 4px rgba(7, 89, 133, 0.15);
         }
 
-        /* 住宿預算總覽資訊塊 (新增未付款加總) */
+        /* 住宿預算總覽資訊塊 */
         .hotel-total-banner {
             display: flex;
             flex-direction: column;
@@ -551,6 +570,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap; /* 已修復：允許選項與價格在超窄手機上自適應換行 */
+            gap: 8px;
         }
         .option-card-btn.selected {
             box-shadow: var(--shadow-pressed-sm);
@@ -565,14 +586,14 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            flex: 1;
+            min-width: 180px; /* 已修復：保護文字不被截斷 */
         }
         .opt-title {
             font-size: 0.92rem;
             font-weight: 800;
-            display: flex;
-            align-items: center;
-            gap: 8px;
             color: var(--text-main);
+            word-break: break-word;
         }
         .opt-dot {
             width: 14px;
@@ -588,6 +609,8 @@
             color: var(--accent-theme);
             font-weight: 800;
             text-align: right;
+            white-space: nowrap;
+            margin-left: auto;
         }
 
         /* 記事備忘錄區 */
@@ -667,16 +690,19 @@
         <!-- 住宿總覽分頁 -->
         <button class="tab-btn active theme-hotels" id="tabHotels" onclick="switchDay('hotels')">🏨<span>Hotels</span></button>
         <!-- 每日行程分頁 -->
-        <button class="tab-btn theme-day1" onclick="switchDay(1)">D1<span>Sep 25</span></button>
-        <button class="tab-btn theme-day2" onclick="switchDay(2)">D2<span>Sep 26</span></button>
-        <button class="tab-btn theme-day3" onclick="switchDay(3)">D3<span>Sep 27</span></button>
-        <button class="tab-btn theme-day4" onclick="switchDay(4)">D4<span>Sep 28</span></button>
-        <button class="tab-btn theme-day5" onclick="switchDay(5)">D5<span>Sep 29</span></button>
-        <button class="tab-btn theme-day6" onclick="switchDay(6)">D6<span>Sep 30</span></button>
-        <button class="tab-btn theme-day7" onclick="switchDay(7)">D7<span>Oct 01</span></button>
-        <button class="tab-btn theme-day8" onclick="switchDay(8)">D8<span>Oct 02</span></button>
-        <button class="tab-btn theme-day9" onclick="switchDay(9)">D9<span>Oct 03</span></button>
-        <button class="tab-btn theme-day10" onclick="switchDay(10)">D10<span>Oct 04</span></button>
+        <button class="tab-btn theme-day1" id="tabDay1" onclick="switchDay(1)">D1<span>Sep 25</span></button>
+        <button class="tab-btn theme-day2" id="tabDay2" onclick="switchDay(2)">D2<span>Sep 26</span></button>
+        <button class="tab-btn theme-day3" id="tabDay3" onclick="switchDay(3)">D3<span>Sep 27</span></button>
+        <!-- 拆分後的雙 Day 4 頁籤 -->
+        <button class="tab-btn theme-day4-bp" id="tabDay4Bp" onclick="switchDay('4-bp')">D4 (美幌峠)<span>Sep 28</span></button>
+        <button class="tab-btn theme-day4-lhs" id="tabDay4Lhs" onclick="switchDay('4-lhs')">D4 (硫磺山)<span>Sep 28</span></button>
+        
+        <button class="tab-btn theme-day5" id="tabDay5" onclick="switchDay(5)">D5<span>Sep 29</span></button>
+        <button class="tab-btn theme-day6" id="tabDay6" onclick="switchDay(6)">D6<span>Sep 30</span></button>
+        <button class="tab-btn theme-day7" id="tabDay7" onclick="switchDay(7)">D7<span>Oct 01</span></button>
+        <button class="tab-btn theme-day8" id="tabDay8" onclick="switchDay(8)">D8<span>Oct 02</span></button>
+        <button class="tab-btn theme-day9" id="tabDay9" onclick="switchDay(9)">D9<span>Oct 03</span></button>
+        <button class="tab-btn theme-day10" id="tabDay10" onclick="switchDay(10)">D10<span>Oct 04</span></button>
     </div>
 
     <!-- 行程面板容器 -->
@@ -689,7 +715,7 @@
                 <div class="weather-box">旅宿與泡湯<br>規格清單</div>
             </div>
 
-            <!-- 住宿總預算 Banner (新增未付總額加總，位於總預算正下方) -->
+            <!-- 住宿總預算 Banner -->
             <div class="hotel-total-banner">
                 <div class="hotel-total-row">
                     <span class="hotel-total-label">總住宿預算 (Total Cost)</span>
@@ -714,7 +740,7 @@
                     • <strong>預約費用 Cost:</strong> ¥31,047 JPY<br>
                     • <strong>付款狀態 Status:</strong> <span class="pay-status-badge badge badge-alert">未付款 Unpaid</span>
                 </div>
-                <div class="card-actions" style="gap: 10px;">
+                <div class="card-actions">
                     <button class="btn-paid" onclick="togglePaid(this, 'hotel-remm')">💳 標記已付 Paid</button>
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
@@ -733,7 +759,7 @@
                     • <strong>預約費用 Cost:</strong> ¥24,300 JPY<br>
                     • <strong>付款狀態 Status:</strong> <span class="pay-status-badge badge badge-alert">未付款 Unpaid</span>
                 </div>
-                <div class="card-actions" style="gap: 10px;">
+                <div class="card-actions">
                     <button class="btn-paid" onclick="togglePaid(this, 'hotel-dormy')">💳 標記已付 Paid</button>
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
@@ -752,7 +778,7 @@
                     • <strong>預約費用 Cost:</strong> ¥74,120 JPY<br>
                     • <strong>付款狀態 Status:</strong> <span class="pay-status-badge badge badge-alert">未付款 Unpaid</span>
                 </div>
-                <div class="card-actions" style="gap: 10px;">
+                <div class="card-actions">
                     <button class="btn-paid" onclick="togglePaid(this, 'hotel-kiki')">💳 標記已付 Paid</button>
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
@@ -771,7 +797,7 @@
                     • <strong>預約費用 Cost:</strong> ¥40,000 JPY<br>
                     • <strong>付款狀態 Status:</strong> <span class="pay-status-badge badge badge-alert">未付款 Unpaid</span>
                 </div>
-                <div class="card-actions" style="gap: 10px;">
+                <div class="card-actions">
                     <button class="btn-paid" onclick="togglePaid(this, 'hotel-pon')">💳 標記已付 Paid</button>
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
@@ -790,7 +816,7 @@
                     • <strong>預約費用 Cost:</strong> ¥97,186 JPY<br>
                     • <strong>付款狀態 Status:</strong> <span class="pay-status-badge badge badge-alert">未付款 Unpaid</span>
                 </div>
-                <div class="card-actions" style="gap: 10px;">
+                <div class="card-actions">
                     <button class="btn-paid" onclick="togglePaid(this, 'hotel-hino')">💳 標記已付 Paid</button>
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
@@ -809,7 +835,7 @@
                     • <strong>預約費用 Cost:</strong> ¥77,616 JPY<br>
                     • <strong>付款狀態 Status:</strong> <span class="pay-status-badge badge badge-alert">未付款 Unpaid</span>
                 </div>
-                <div class="card-actions" style="gap: 10px;">
+                <div class="card-actions">
                     <button class="btn-paid" onclick="togglePaid(this, 'hotel-seijaku')">💳 標記已付 Paid</button>
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
@@ -828,13 +854,13 @@
                     • <strong>預約費用 Cost:</strong> ¥29,900 JPY<br>
                     • <strong>付款狀態 Status:</strong> <span class="pay-status-badge badge badge-alert">未付款 Unpaid</span>
                 </div>
-                <div class="card-actions" style="gap: 10px;">
+                <div class="card-actions">
                     <button class="btn-paid" onclick="togglePaid(this, 'hotel-hana')">💳 標記已付 Paid</button>
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
             </div>
 
-            <!-- Hotel 8 & 9: Sapporo Choice (With upgraded three hotel options) -->
+            <!-- Hotel 8 & 9: Sapporo Choice -->
             <div class="card" data-id="hotel-sapporo-choice">
                 <div class="time-badge">Oct 02 - Oct 04 (2晚) - 待確認 TBC</div>
                 <div class="card-main">
@@ -843,9 +869,8 @@
                 <div class="card-desc">
                     <p style="margin-bottom:10px; font-weight:700; color:var(--text-main);">👉 請選擇預計入住方案 (點擊即時重新計算預算)：</p>
                     
-                    <!-- 三選一方案按鈕 -->
                     <div class="option-selector">
-                        <!-- Option A: Dormy Inn Premium 札幌 (石狩の湯) -->
+                        <!-- Option A -->
                         <button class="option-card-btn selected" id="optBtnA" onclick="selectSapporoOption('A')">
                             <div class="opt-content">
                                 <span class="opt-dot"></span>
@@ -857,7 +882,7 @@
                             <span class="opt-price">¥58,000 JPY</span>
                         </button>
 
-                        <!-- Option B: Hotel JAL City Sapporo Nakajima Park -->
+                        <!-- Option B -->
                         <button class="option-card-btn" id="optBtnB" onclick="selectSapporoOption('B')">
                             <div class="opt-content">
                                 <span class="opt-dot"></span>
@@ -869,12 +894,12 @@
                             <span class="opt-price">¥48,000 JPY</span>
                         </button>
 
-                        <!-- Option C: 暖雪 札幌 -->
+                        <!-- Option C -->
                         <button class="option-card-btn" id="optBtnC" onclick="selectSapporoOption('C')">
                             <div class="opt-content">
                                 <span class="opt-dot"></span>
                                 <div>
-                                    <span class="opt-title">方案 C：暖雪 札幌</span>
+                                    <span class="opt-title">方案 C：暖雪 札幌 (Onyado Nono)</span>
                                     <span style="font-size:0.75rem; color:var(--text-muted); display:block; margin-top:2px;">🥣 含早餐 | ♨️ 大浴場</span>
                                 </div>
                             </div>
@@ -888,7 +913,7 @@
                         • <strong>付款狀態 Status:</strong> <span class="pay-status-badge badge badge-alert">未付款 Unpaid</span>
                     </div>
                 </div>
-                <div class="card-actions" style="gap: 10px;">
+                <div class="card-actions">
                     <button class="btn-paid" onclick="togglePaid(this, 'hotel-sapporo-choice')">💳 標記已付 Paid</button>
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
@@ -931,7 +956,7 @@
             <div class="card" data-id="trans-f2">
                 <div class="time-badge">Sep 25 | 16:45</div>
                 <div class="card-main">
-                    <div class="spot-name">✈️ 2) Air DO HD79 / NH4779</div>
+                    <div class="spot-name">✈️ 2) Air DO ND79 (HD79 / NH4779)</div>
                     <span class="badge badge-port">日本國內線 Domestic</span>
                 </div>
                 <div class="card-desc">
@@ -1048,7 +1073,10 @@
                 <div class="time-badge">19:30 - 21:30</div>
                 <div class="card-main">
                     <div class="spot-name">🍱 酒菜亭 喜八</div>
-                    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=酒菜亭+喜八" target="_blank">🗺️ 地圖</a>
+                    <div class="card-main-buttons">
+                        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=酒菜亭+喜八" target="_blank">🗺️ 地圖</a>
+                        <a class="map-link" href="https://tabelog.com/hokkaido/A0110/A011001/1006311/" target="_blank" style="background-color: #E2E8F0; color: #1E3A8A; box-shadow: var(--shadow-flat-sm);">🍽️ Tabelog 網頁</a>
+                    </div>
                 </div>
                 <div class="card-desc">網走米其林必比登推薦名店，第一晚享用最道地的鄂霍次克海鮮珍味。</div>
                 <div class="card-actions">
@@ -1104,7 +1132,11 @@
                 <div class="time-badge">08:45 - 09:30</div>
                 <div class="card-main">
                     <div class="spot-name">📍 能取湖珊瑚草群落地</div>
-                    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=能取湖珊瑚草群落地" target="_blank">🗺️ 地圖</a>
+                    <div class="card-main-buttons">
+                        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=能取湖珊瑚草群落地" target="_blank">🗺️ 地圖</a>
+                        <a class="map-link" href="https://visit-abashiri.jp/assets_c/2022/12/pixta_69728099_L-thumb-2012xauto-643.jpeg" target="_blank" style="background-color: #F6E2BC; color: #8F4C1B; box-shadow: var(--shadow-flat-sm);">📸 珊瑚草實景</a>
+                        <a class="map-link" href="https://visit-abashiri.jp/zh-CHT/scenery/ab85b317b07f8abd9ba4c196ebddea9a9ddd65c2.html" target="_blank" style="background-color: #E2E8F0; color: #1E3A8A; box-shadow: var(--shadow-flat-sm);">🌐 觀光指南</a>
+                    </div>
                 </div>
                 <div class="card-desc">秋季限定珊瑚紅草地毯，戶外無定休。</div>
                 <div class="card-actions">
@@ -1240,12 +1272,13 @@
                 <div class="time-badge">10:00 - 12:30</div>
                 <div class="card-main">
                     <div class="spot-name">📍 知床五湖（地面步道大圈）</div>
-                    <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end;">
+                    <div class="card-main-buttons">
                         <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=知床五湖" target="_blank">🗺️ 地圖</a>
                         <a class="map-link" href="https://www.visit-hokkaido.jp/lsc/upfile/spot/0001/0404/10404_1_l.jpg" target="_blank" style="background-color: #F6E2BC; color: #8F4C1B; box-shadow: var(--shadow-flat-sm);">📸 實景照</a>
+                        <a class="map-link" href="https://lantoko.com/shiretoko/" target="_blank" style="background-color: #E2E8F0; color: #1E3A8A; box-shadow: var(--shadow-flat-sm);">🌐 觀光攻略</a>
                     </div>
                 </div>
-                <div class="card-desc">深入森林捕捉紅葉與連山倒影，秋季無休。</div>
+                <div class="card-desc">深入森林捕捉紅葉與連山倒影，秋季無休.</div>
                 <div class="card-actions">
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
@@ -1309,7 +1342,11 @@
                 <div class="time-badge">16:45 - 17:15</div>
                 <div class="card-main">
                     <div class="spot-name">📍 知床峠展望台</div>
-                    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=知床峠" target="_blank">🗺️ 地圖</a>
+                    <div class="card-main-buttons">
+                        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=知床峠" target="_blank">🗺️ 地圖</a>
+                        <a class="map-link" href="https://i0.wp.com/lantoko.com/wp-content/uploads/2022/04/banner.jpg?w=1440&ssl=1" target="_blank" style="background-color: #F6E2BC; color: #8F4C1B; box-shadow: var(--shadow-flat-sm);">📸 知床峠實景</a>
+                        <a class="map-link" href="https://lantoko.com/shiretoko/" target="_blank" style="background-color: #E2E8F0; color: #1E3A8A; box-shadow: var(--shadow-flat-sm);">🌐 知床攻略</a>
+                    </div>
                 </div>
                 <div class="card-desc">大雪山羅臼岳黃昏日落絕景，公路無定休。</div>
                 <div class="card-actions">
@@ -1341,16 +1378,17 @@
             </div>
         </div>
 
-        <!-- ==================== DAY 4 ==================== -->
-        <div id="day4" class="day-panel theme-day4" data-day="4">
+        <!-- ==================== DAY 4 (美幌峠) ==================== -->
+        <div id="day4-bp" class="day-panel theme-day4-bp" data-day="4-bp">
             <div class="day-header">
-                <div class="day-title">🚙 Day 4 (Sep 28): 天堂路 ➔ 摩周藍 ➔ 濕原設計宿</div>
+                <div class="day-title">🚙 Day 4 (美幌峠) (Sep 28): 屈斜路湖美幌峠巔峰絕景</div>
                 <div class="weather-box">弟子屈 ☀️<br>16°C / 8°C</div>
             </div>
 
-            <div class="card" data-id="d4-1">
-                <div class="time-badge">09:00</div>
-                <div class="spot-name">🚗 KIKI知床 出發</div>
+            <div class="card" data-id="d4bp-1">
+                <div class="time-badge">08:45</div>
+                <div class="spot-name">🚗 【出發】從 KIKI知床 悠閒退房出發</div>
+                <div class="card-desc">九點前輕鬆辦理完退房並開車出發，今天是不趕路的高奢鬆弛一日。</div>
                 <div class="card-actions">
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
@@ -1364,16 +1402,178 @@
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=KIKI知床&destination=天に続く道" target="_blank">🗺️ 導航</a>
             </div>
 
-            <div class="card" data-id="d4-2">
-                <div class="time-badge">09:40 - 10:10</div>
+            <div class="card" data-id="d4bp-2">
+                <div class="time-badge">09:25 - 09:55</div>
                 <div class="card-main">
                     <div class="spot-name">📍 通往天堂的道路 (天に続く道)</div>
-                    <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end;">
+                    <div class="card-main-buttons">
                         <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=天に続く道" target="_blank">🗺️ 地圖</a>
                         <a class="map-link" href="https://www.visit-hokkaido.jp/lsc/upfile/spot/0001/0527/10527_1_l.jpg" target="_blank" style="background-color: #F6E2BC; color: #8F4C1B; box-shadow: var(--shadow-flat-sm);">📸 實景照</a>
                     </div>
                 </div>
-                <div class="card-desc">早晨拍照順光、線條最美，戶外無休。</div>
+                <div class="card-desc">早晨拍照的最佳光線！順光角度讓 28 公里筆直天路呈現無比壯闊的張力。</div>
+                <div class="card-actions">
+                    <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
+                </div>
+            </div>
+
+            <div class="drive-card">
+                <div class="drive-info">
+                    <div>⏱️ 1 hr | 🛣️ 62.5 km</div>
+                    <div><span class="drive-target">前往 摩周湖第一展望台</span></div>
+                </div>
+                <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=天に続く道&destination=摩周湖第一展望台" target="_blank">🗺️ 導航</a>
+            </div>
+
+            <div class="card" data-id="d4bp-3">
+                <div class="time-badge">11:00 - 11:40</div>
+                <div class="card-main">
+                    <div class="spot-name">📍 摩周湖第一展望台</div>
+                    <div class="card-main-buttons">
+                        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=摩周湖第一展望台" target="_blank">🗺️ 地圖</a>
+                        <a class="map-link" href="https://uu-beihaidao.tw/image/autumn/teshikaga/teshikaga_masyu3.jpg" target="_blank" style="background-color: #F6E2BC; color: #8F4C1B; box-shadow: var(--shadow-flat-sm);">📸 實景照</a>
+                        <a class="map-link" href="https://www.jeepe.jp/zh_TW/articles/mashu-lake-view-guide-1521" target="_blank" style="background-color: #E2E8F0; color: #1E3A8A; box-shadow: var(--shadow-flat-sm);">🌐 觀光指南</a>
+                    </div>
+                </div>
+                <div class="card-desc">體驗： 初見高透明度的「摩周藍」湖水，在「摩周テラス」的木質露台上悠閒散步拍照。</div>
+                <div class="card-actions">
+                    <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
+                </div>
+            </div>
+
+            <div class="drive-card">
+                <div class="drive-info">
+                    <div>⏱️ 5 min | 🛣️ 3.8 km</div>
+                    <div><span class="drive-target">前往 摩周湖第三展望台</span></div>
+                </div>
+                <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=摩周湖第一展望台&destination=摩周湖第三展望台" target="_blank">🗺️ 導航</a>
+            </div>
+
+            <div class="card" data-id="d4bp-4">
+                <div class="time-badge">11:45 - 12:15</div>
+                <div class="card-main">
+                    <div class="spot-name">📍 摩周湖第三展望台</div>
+                    <div class="card-main-buttons">
+                        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=摩周湖第三展望台" target="_blank">🗺️ 地圖</a>
+                        <a class="map-link" href="https://www.visit-hokkaido.jp/lsc/upfile/spot/0001/0483/10483_5_l.jpg" target="_blank" style="background-color: #F6E2BC; color: #8F4C1B; box-shadow: var(--shadow-flat-sm);">📸 展望台實景</a>
+                    </div>
+                </div>
+                <div class="card-desc">往山頂開 5 分鐘，以更凌厲、無遮蔽的陡峭夾角，向下俯瞰神秘湖心孤島的絕美身姿。</div>
+                <div class="card-actions">
+                    <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
+                </div>
+            </div>
+
+            <div class="drive-card">
+                <div class="drive-info">
+                    <div>⏱️ 45 min | 🛣️ 42 km</div>
+                    <div><span class="drive-target">前往 美幌峠展望台</span></div>
+                </div>
+                <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=摩周湖第三展望台&destination=美幌峠展望台" target="_blank">🗺️ 導航</a>
+            </div>
+
+            <div class="card" data-id="d4bp-5">
+                <div class="time-badge">13:00 - 14:15</div>
+                <div class="card-main">
+                    <div class="spot-name">📍 美幌峠展望台 & 道之驛</div>
+                    <div class="card-main-buttons">
+                        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=美幌峠展望台" target="_blank">🗺️ 地圖</a>
+                        <a class="map-link" href="https://www.visit-hokkaido.jp/lsc/upfile/spot/0001/0398/10398_4_l.jpg" target="_blank" style="background-color: #F6E2BC; color: #8F4C1B; box-shadow: var(--shadow-flat-sm);">📸 美幌峠實景 A</a>
+                        <a class="map-link" href="https://nicklee.tw/1335/bihiro-touge/" target="_blank" style="background-color: #E2E8F0; color: #1E3A8A; box-shadow: var(--shadow-flat-sm);">🌐 美幌峠攻略</a>
+                    </div>
+                </div>
+                <div class="card-desc">
+                    【✨ 巔峰絕景注入！全日本屈斜路湖第一景】<br>
+                    • <strong>視覺享受:</strong> 登上山頂，迎接您的是 360 度俯瞰全日本最大火山口湖的史詩畫面！秋天的金黃矮竹與橘紅楓葉在腳下蔓延，湛藍湖水在眼前鋪開，極具視覺震撼。<br>
+                    • <strong>🍱 絕景午餐:</strong> 在極具設計感、乾淨漂亮的道之驛裡，坐在正對整片湖景的落地玻璃窗前，點一碗熱騰騰的本地拉麵或道產蕎麥麵。這種在空間美學與大自然包圍下的用餐體驗，才是真正的高奢鬆弛。
+                </div>
+                <div class="card-actions">
+                    <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
+                </div>
+            </div>
+
+            <div class="drive-card">
+                <div class="drive-info">
+                    <div>⏱️ 1 hr 10 min | 🛣️ 71 km</div>
+                    <div><span class="drive-target">前往 コッタロ濕原展望台</span></div>
+                </div>
+                <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=美幌峠&destination=コッタロ湿原展望台" target="_blank">🗺️ 導航</a>
+            </div>
+
+            <div class="card" data-id="d4bp-6">
+                <div class="time-badge">15:25 - 16:05</div>
+                <div class="card-main">
+                    <div class="spot-name">📍 コッタロ (Kottaro) 濕原展望台</div>
+                    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=コッタロ湿原展望台" target="_blank">🗺️ 地圖</a>
+                </div>
+                <div class="card-desc">下山南下朝釧路濕原北部流暢切入，漫步於未開發、最原始的秘境，捕捉秋裝金黃蘆葦的優美曲線。</div>
+                <div class="card-actions">
+                    <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
+                </div>
+            </div>
+
+            <div class="drive-card">
+                <div class="drive-info">
+                    <div>⏱️ 15 min | 🛣️ 12 km</div>
+                    <div><span class="drive-target">前往 ぽん・ぽんゆ</span></div>
+                </div>
+                <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=コッタロ湿原展望台&destination=かя沼温泉+ぽん・ぽんゆ" target="_blank">🗺️ 導航</a>
+            </div>
+
+            <div class="card" data-id="d4bp-7">
+                <div class="time-badge">16:20</div>
+                <div class="card-main">
+                    <div class="spot-name">🏨 ぽん・ぽんゆ (釧路濕原かや沼温泉)</div>
+                    <a class="map-link" href="https://kkaa.co.jp/img/2024/12/6540c7608e72b5615038c96520690604.jpg" target="_blank" style="background-color: #F6E2BC; color: #8F4C1B; box-shadow: var(--shadow-flat-sm);">📸 建築設計照</a>
+                </div>
+                <div><span class="badge badge-alert">🚨 從容入住提示</span></div>
+                <div class="card-desc">【抵達酒店 / 從容 Check-in】下午四點二十分早早入住，走入隈研吾大師團隊設計的清水模美學空間，享受露天極致溫泉。</div>
+                <div class="card-actions">
+                    <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
+                </div>
+            </div>
+
+            <!-- Back to Top Button -->
+            <div class="back-to-top-container">
+                <button class="back-to-top-btn" onclick="scrollToTop()">
+                    ▲ 回到頂部 Back to Top
+                </button>
+            </div>
+        </div>
+
+        <!-- ==================== DAY 4 (硫磺山) ==================== -->
+        <div id="day4-lhs" class="day-panel theme-day4-lhs" data-day="4-lhs">
+            <div class="day-header">
+                <div class="day-title">🚙 Day 4 (硫磺山) (Sep 28): 觸天之路 ➔ 硫磺山活火山</div>
+                <div class="weather-box">弟子屈 ☀️<br>16°C / 8°C</div>
+            </div>
+
+            <div class="card" data-id="d4lhs-1">
+                <div class="time-badge">09:00</div>
+                <div class="spot-name">🚗 【知床出發】從 KIKI知床 悠閒退房出發</div>
+                <div class="card-actions">
+                    <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
+                </div>
+            </div>
+
+            <div class="drive-card">
+                <div class="drive-info">
+                    <div>⏱️ 40 min | 🛣️ 35 km</div>
+                    <div><span class="drive-target">前往 通往天堂的道路</span></div>
+                </div>
+                <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=KIKI知床&destination=天に続く道" target="_blank">🗺️ 導航</a>
+            </div>
+
+            <div class="card" data-id="d4lhs-2">
+                <div class="time-badge">09:40 - 10:10</div>
+                <div class="card-main">
+                    <div class="spot-name">📍 通往天堂的道路 (天に続く道)</div>
+                    <div class="card-main-buttons">
+                        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=天に続く道" target="_blank">🗺️ 地圖</a>
+                        <a class="map-link" href="https://www.visit-hokkaido.jp/lsc/upfile/spot/0001/0527/10527_1_l.jpg" target="_blank" style="background-color: #F6E2BC; color: #8F4C1B; box-shadow: var(--shadow-flat-sm);">📸 實景照</a>
+                    </div>
+                </div>
+                <div class="card-desc">體驗： 拍攝 28 公里筆直衝上雲霄的奇蹟公路，早晨斜射光最為順光，車流量低。</div>
                 <div class="card-actions">
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
@@ -1387,13 +1587,17 @@
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=天に続く道&destination=硫黄山" target="_blank">🗺️ 導航</a>
             </div>
 
-            <div class="card" data-id="d4-3">
+            <div class="card" data-id="d4lhs-3">
                 <div class="time-badge">11:00 - 11:45</div>
                 <div class="card-main">
                     <div class="spot-name">📍 硫磺山 (アトサヌプリ)</div>
-                    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=硫黄山+(アトサヌプリ)" target="_blank">🗺️ 地圖</a>
+                    <div class="card-main-buttons">
+                        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=硫黄山+(アトサヌプリ)" target="_blank">🗺️ 地圖</a>
+                        <a class="map-link" href="https://p1-634a4370.imageflux.jp/w=768,f=webp:auto,q=78/https%3A%2F%2Fdomingo.ne.jp%2Fwp%2Fwp-content%2Fuploads%2F2021%2F07%2Fdee2b4d8d3712269ccffe3aa916aec42.jpg" target="_blank" style="background-color: #F6E2BC; color: #8F4C1B; box-shadow: var(--shadow-flat-sm);">📸 硫磺山實景</a>
+                        <a class="map-link" href="https://domingo.ne.jp/zh-TW/article/6252" target="_blank" style="background-color: #E2E8F0; color: #1E3A8A; box-shadow: var(--shadow-flat-sm);">🌐 硫磺山攻略</a>
+                    </div>
                 </div>
-                <div class="card-desc">震撼的地熱與金黃色灌木叢，無休。</div>
+                <div class="card-desc">體驗： 道東活火山奇觀。近距離觀看白色地熱噴氣孔，欣賞四週被火山地熱染成金黃與焦橘色的深秋低矮灌木叢。</div>
                 <div class="card-actions">
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
@@ -1407,29 +1611,16 @@
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=硫黄山&destination=摩周湖第一展望台" target="_blank">🗺️ 導航</a>
             </div>
 
-            <div class="card" data-id="d4-4">
+            <div class="card" data-id="d4lhs-4">
                 <div class="time-badge">12:05 - 12:45</div>
                 <div class="card-main">
                     <div class="spot-name">📍 摩周湖第一展望台</div>
-                    <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end;">
+                    <div class="card-main-buttons">
                         <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=摩周湖第一展望台" target="_blank">🗺️ 地圖</a>
                         <a class="map-link" href="https://uu-beihaidao.tw/image/autumn/teshikaga/teshikaga_masyu3.jpg" target="_blank" style="background-color: #F6E2BC; color: #8F4C1B; box-shadow: var(--shadow-flat-sm);">📸 實景照</a>
-                        <a class="map-link" href="https://www.jeepe.jp/zh_TW/articles/mashu-lake-view-guide-1521" target="_blank" style="background-color: #E2E8F0; color: #1E3A8A; box-shadow: var(--shadow-flat-sm);">🌐 觀光指南</a>
                     </div>
                 </div>
-                <div class="card-desc">神祕摩周藍與深秋紅葉，無休。</div>
-                <div class="card-actions">
-                    <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
-                </div>
-            </div>
-
-            <div class="card" data-id="d4-5">
-                <div class="time-badge">12:45 - 13:15</div>
-                <div class="card-main">
-                    <div class="spot-name">🍱 摩周湖摩周テラス</div>
-                    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=摩周湖摩周テラス" target="_blank">🗺️ 地圖</a>
-                </div>
-                <div class="card-desc">輕食補給：於展望台輕快享用午餐。</div>
+                <div class="card-desc">體驗： 初見神秘、深邃的「摩周藍」湖水，在全新的「摩周テラス」高質感木造露台上漫步。</div>
                 <div class="card-actions">
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
@@ -1437,19 +1628,62 @@
 
             <div class="drive-card">
                 <div class="drive-info">
-                    <div>⏱️ 45 min | 🛣️ 38 km</div>
-                    <div><span class="drive-target">前往 コッタロ濕原展望台</span></div>
+                    <div>⏱️ 5 min | 🛣️ 3.8 km</div>
+                    <div><span class="drive-target">前往 摩周湖 third 展望台</span></div>
                 </div>
-                <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=摩周湖第一展望台&destination=コッタロ湿原展望台" target="_blank">🗺️ 導航</a>
+                <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=摩周湖第一展望台&destination=摩周湖第三展望台" target="_blank">🗺️ 導航</a>
             </div>
 
-            <div class="card" data-id="d4-6">
-                <div class="time-badge">14:00 - 15:00</div>
+            <div class="card" data-id="d4lhs-5">
+                <div class="time-badge">12:50 - 13:15</div>
                 <div class="card-main">
-                    <div class="spot-name">📍 コッタロ濕原展望台</div>
+                    <div class="spot-name">📍 摩周湖 third 展望台</div>
+                    <div class="card-main-buttons">
+                        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=摩周湖第三展望台" target="_blank">🗺️ 地圖</a>
+                        <a class="map-link" href="https://www.visit-hokkaido.jp/lsc/upfile/spot/0001/0483/10483_5_l.jpg" target="_blank" style="background-color: #F6E2BC; color: #8F4C1B; box-shadow: var(--shadow-flat-sm);">📸 展望台實景</a>
+                    </div>
+                </div>
+                <div class="card-desc">體驗： 就在第一展望台隔邊 5 分鐘車程。以更凌厲、無大建築遮蔽的陡峭角度俯瞰湖心孤島。</div>
+                <div class="card-actions">
+                    <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
+                </div>
+            </div>
+
+            <div class="drive-card">
+                <div class="drive-info">
+                    <div>⏱️ 30 min | 🛣️ 25 km</div>
+                    <div><span class="drive-target">前往 弟子屈市區</span></div>
+                </div>
+                <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=摩周湖第三展望台&destination=弟子屈ラーメン+弟子屈本店" target="_blank">🗺️ 導航</a>
+            </div>
+
+            <div class="card" data-id="d4lhs-6">
+                <div class="time-badge">13:45 - 14:45</div>
+                <div class="card-main">
+                    <div class="spot-name">🍱 弟子屈拉麵 本店 或 鄉間蕎麥麵</div>
+                    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=弟子屈ラーメン+弟子屈本店" target="_blank">🗺️ 地圖</a>
+                </div>
+                <div class="card-desc">體驗： 下山來到弟子屈市區，品嚐著名的濃厚摩周湖鹽味拉麵，享受鄉間的鬆弛感與暖胃美味。</div>
+                <div class="card-actions">
+                    <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
+                </div>
+            </div>
+
+            <div class="drive-card">
+                <div class="drive-info">
+                    <div>⏱️ 45 min</div>
+                    <div><span class="drive-target">前往 コッタロ濕原展望台</span></div>
+                </div>
+                <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=弟子屈ラーメン&destination=コッタロ湿原展望台" target="_blank">🗺️ 導航</a>
+            </div>
+
+            <div class="card" data-id="d4lhs-7">
+                <div class="time-badge">15:30 - 16:10</div>
+                <div class="card-main">
+                    <div class="spot-name">📍 コッタロ (Kottaro) 濕原展望台</div>
                     <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=コッタロ湿原展望台" target="_blank">🗺️ 地圖</a>
                 </div>
-                <div class="card-desc">最原始的秘境濕原秋裝，戶外無休。</div>
+                <div class="card-desc">體驗： 傍晚的魔幻時刻，夕陽橫向灑在未開發的蜿蜒河流上，整片濕原蘆葦泛著刺眼的黃金浪潮。</div>
                 <div class="card-actions">
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
@@ -1460,20 +1694,16 @@
                     <div>⏱️ 15 min | 🛣️ 12 km</div>
                     <div><span class="drive-target">前往 ぽん・ぽんゆ</span></div>
                 </div>
-                <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=コッタロ濕原展望台&destination=かや沼温泉+ぽん・ぽんゆ" target="_blank">🗺️ 導航</a>
+                <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=コッタロ湿原展望台&destination=かyа沼温泉+ぽん・ぽんゆ" target="_blank">🗺️ 導航</a>
             </div>
 
-            <div class="card" data-id="d4-7">
-                <div class="time-badge">15:15</div>
+            <div class="card" data-id="d4lhs-8">
+                <div class="time-badge">16:25</div>
                 <div class="card-main">
-                    <div class="spot-name">🏨 ぽん・ぽんゆ (釧路湿原かや沼温泉)</div>
-                    <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end;">
-                        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=かや沼温泉+ぽん・ぽんゆ" target="_blank">🗺️ 地圖</a>
-                        <a class="map-link" href="https://kkaa.co.jp/img/2024/12/6540c7608e72b5615038c96520690604.jpg" target="_blank" style="background-color: #F6E2BC; color: #8F4C1B; box-shadow: var(--shadow-flat-sm);">📸 建築設計照</a>
-                    </div>
+                    <div class="spot-name">🏨 ぽん・ぽんゆ (釧路濕原かyа沼温泉)</div>
+                    <a class="map-link" href="https://kkaa.co.jp/img/2024/12/6540c7608e72b5615038c96520690604.jpg" target="_blank" style="background-color: #F6E2BC; color: #8F4C1B; box-shadow: var(--shadow-flat-sm);">📸 建築設計照</a>
                 </div>
-                <div><span class="badge badge-alert">🚨 入住時間重點提示</span></div>
-                <div class="card-desc">入住極具現代感設計風的設計宿。</div>
+                <div class="card-desc">【抵達酒店 / 入住】下午四點半前早早入住秘境設計宿。在冷冽秋夜與滿天繁星下，享受極致滑膩的私人源泉溫泉。</div>
                 <div class="card-actions">
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
@@ -1507,7 +1737,7 @@
                     <div>⏱️ 45 min | 🛣️ 39 km</div>
                     <div><span class="drive-target">前往 溫根內高架木棧道</span></div>
                 </div>
-                <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=かや沼温泉&destination=温根内高架木棧道" target="_blank">🗺️ 導航</a>
+                <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=かyа沼温泉&destination=温根内高架木棧道" target="_blank">🗺️ 導航</a>
             </div>
 
             <div class="card" data-id="d5-2">
@@ -1654,7 +1884,7 @@
                     <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=十勝川モール温泉+清寂房" target="_blank">🗺️ 地圖</a>
                 </div>
                 <div><span class="badge badge-alert">🚨 精準 Check-in 重點提示</span></div>
-                <div class="card-desc">享受私人摩爾植物溫泉與清水模極簡空間。</div>
+                <div class="card-desc">享受私人摩爾植物溫泉與清水模極極簡空間。</div>
                 <div class="card-actions">
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
@@ -1795,7 +2025,7 @@
                 <div class="time-badge">09:30 - 11:00</div>
                 <div class="card-main">
                     <div class="spot-name">📍 美瑛白金青池 & 白鬍子瀑布</div>
-                    <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end;">
+                    <div class="card-main-buttons">
                         <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=白金青い池" target="_blank">🗺️ 地圖</a>
                         <a class="map-link" href="https://www.visit-hokkaido.jp/lsc/upfile/articleDetail/0000/2211/2211_1_m.jpg" target="_blank" style="background-color: #F6E2BC; color: #8F4C1B; box-shadow: var(--shadow-flat-sm);">📸 實景照</a>
                     </div>
@@ -1914,7 +2144,7 @@
                 <div class="time-badge">10:00 - 11:00</div>
                 <div class="card-main">
                     <div class="spot-name">📍 八剣山ワイナリー (八劍山酒莊)</div>
-                    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=八剣山ワイナリー" target="_blank">🗺️ 地圖</a>
+                    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=八剣山ワイナリー" target="_blank">🗺️ 導航</a>
                 </div>
                 <div class="card-desc">【🚨 週六 Oct 03 正常營業】挑選北海道自釀葡萄酒。</div>
                 <div class="card-actions">
@@ -2149,20 +2379,19 @@
     // 保存進度與記事本內容
     const state = {
         currentDay: 'hotels',    // 預設打開最左側的住宿預算總覽
-        completedItems: {},      // 儲存各個 card 的完成狀態 { "d1-1": true }
-        dayNotes: {},            // 儲存每天的備忘錄 { 1: "今日筆記..." }
-        sapporoOption: 'A',      // 預設選擇方案 A (Dormy Inn Premium)
+        completedItems: {},      // 儲存各個 card 的完成狀態
+        dayNotes: {},            // 儲存每天的備忘錄
+        sapporoOption: 'A',      // 預設選擇方案 A (Dormy Inn Premium 札幌)
         paidItems: {}            // 儲存已付款項目 (預設全部為未付款)
     };
 
-    // 初始化讀取（如果之前有儲存過）
+    // 初始化讀取
     window.onload = function() {
-        const savedState = localStorage.getItem('hokkaido_trip_state_neumorphic_v5');
+        const savedState = localStorage.getItem('hokkaido_trip_state_neumorphic_v6');
         if (savedState) {
             Object.assign(state, JSON.parse(savedState));
         }
         
-        // 渲染已儲存狀態
         applySavedState();
         selectSapporoOption(state.sapporoOption); // 初始化加總與方案按鈕狀態
         switchDay(state.currentDay);
@@ -2207,13 +2436,11 @@
     function selectSapporoOption(opt) {
         state.sapporoOption = opt;
         
-        // 按鈕視覺效果凹陷切換
         const btnA = document.getElementById('optBtnA');
         const btnB = document.getElementById('optBtnB');
         const btnC = document.getElementById('optBtnC');
         const priceDetail = document.getElementById('sapporoPriceDetail');
         
-        // 移除所有按鈕的 selected 樣式
         btnA.classList.remove('selected');
         btnB.classList.remove('selected');
         btnC.classList.remove('selected');
@@ -2239,12 +2466,9 @@
         if (state.sapporoOption === 'B') sapporoCost = 48000;
         else if (state.sapporoOption === 'C') sapporoCost = 58380;
 
-        // 基礎住宿費用 (Remm + Abashiri + KIKI + PonPonYu + Hinonoza + Seijakubow + Hanakagura)
-        // 31047 + 24300 + 74120 + 40000 + 97186 + 77616 + 29900 = 374,169 JPY
         const baseCost = 374169;
         const totalCost = baseCost + sapporoCost;
 
-        // 計算未付款加總
         const hotels = [
             { id: 'hotel-remm', cost: 31047 },
             { id: 'hotel-dormy', cost: 24300 },
@@ -2263,7 +2487,6 @@
             }
         });
 
-        // 格式化輸出日圓
         document.getElementById('hotelTotalDisplay').innerText = '¥' + totalCost.toLocaleString() + ' JPY';
         document.getElementById('hotelUnpaidDisplay').innerText = '¥' + unpaidSum.toLocaleString() + ' JPY';
     }
@@ -2274,7 +2497,6 @@
         const statusBadge = card.querySelector('.pay-status-badge');
         
         if (state.paidItems[hotelId]) {
-            // 從已付切換到未付
             delete state.paidItems[hotelId];
             button.classList.remove('paid');
             button.innerHTML = '💳 標記已付 Paid';
@@ -2283,7 +2505,6 @@
                 statusBadge.innerText = '未付款 Unpaid';
             }
         } else {
-            // 從未付切換到已付
             state.paidItems[hotelId] = true;
             button.classList.add('paid');
             button.innerHTML = '✓ 已付款 Paid';
@@ -2297,10 +2518,9 @@
         saveState();
     }
 
-    // 回到頂部功能
+    // 回到頂部功能 (相容整個視窗滾動)
     function scrollToTop() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
-        
         const container = document.querySelector('.phone-container');
         if (container) {
             container.scrollTo({ top: 0, behavior: 'smooth' });
@@ -2311,31 +2531,35 @@
     function switchDay(dayId) {
         state.currentDay = dayId;
         
-        // 隱藏所有的面板
         const panels = document.querySelectorAll('.day-panel');
         panels.forEach(panel => panel.classList.remove('active'));
 
-        // 取消所有按鈕的 active
         const buttons = document.querySelectorAll('.tab-btn');
         buttons.forEach(btn => btn.classList.remove('active'));
 
-        // 顯示當天面板與激活按鈕
+        // 判定當前顯示面板
         let panelId;
         if (dayId === 'transport') panelId = 'daytransport';
         else if (dayId === 'hotels') panelId = 'dayhotels';
+        else if (dayId === '4-bp') panelId = 'day4-bp';
+        else if (dayId === '4-lhs') panelId = 'day4-lhs';
         else panelId = 'day' + dayId;
 
         const currentPanel = document.getElementById(panelId);
         if (currentPanel) currentPanel.classList.add('active');
 
+        // 判定當前啟動按鈕
         let currentBtn;
         if (dayId === 'transport') {
             currentBtn = document.getElementById('tabTransport');
         } else if (dayId === 'hotels') {
             currentBtn = document.getElementById('tabHotels');
+        } else if (dayId === '4-bp') {
+            currentBtn = document.getElementById('tabDay4Bp');
+        } else if (dayId === '4-lhs') {
+            currentBtn = document.getElementById('tabDay4Lhs');
         } else {
-            // 索引修正：0 為 Transport，1 為 Hotels，Day N 就是 N + 1
-            currentBtn = buttons[dayId + 1];
+            currentBtn = document.getElementById('tabDay' + dayId);
         }
         if (currentBtn) currentBtn.classList.add('active');
 
@@ -2350,11 +2574,12 @@
         let noteLabel = 'Day ' + dayId;
         if (dayId === 'transport') noteLabel = 'Transport';
         else if (dayId === 'hotels') noteLabel = 'Hotels';
+        else if (dayId === '4-bp') noteLabel = 'Day 4 (美幌峠)';
+        else if (dayId === '4-lhs') noteLabel = 'Day 4 (硫磺山)';
         
         document.getElementById('notesTitleDay').innerText = noteLabel;
         document.getElementById('dayNotes').value = state.dayNotes[dayId] || '';
 
-        // 更新進度條
         updateProgress();
         saveState();
     }
@@ -2405,9 +2630,8 @@
         saveState();
     }
 
-    // 保存全局狀態至 LocalStorage (變更版本號確保快取刷新)
     function saveState() {
-        localStorage.setItem('hokkaido_trip_state_neumorphic_v5', JSON.stringify(state));
+        localStorage.setItem('hokkaido_trip_state_neumorphic_v6', JSON.stringify(state));
     }
 
     // 搜尋功能
@@ -2417,26 +2641,23 @@
         const tabBar = document.getElementById('tabBar');
         const progressBox = document.getElementById('progressBox');
         
-        // 清理先前可能殘留的 "無結果" 提示
         const oldNoResults = document.getElementById('noResultsMsg');
         if (oldNoResults) oldNoResults.remove();
 
         if (query === '') {
-            // 還原原本的 tab 模式
             tabBar.style.display = 'flex';
             progressBox.style.display = 'flex';
             switchDay(state.currentDay);
             return;
         }
 
-        // 搜尋模式下：隱藏 Tab、進度條，並顯示符合的所有卡片
         tabBar.style.display = 'none';
         progressBox.style.display = 'none';
         
         let hasMatches = false;
 
         panels.forEach(panel => {
-            panel.classList.add('active'); // 全部打開
+            panel.classList.add('active'); // 全部開啟
             const cards = panel.querySelectorAll('.card, .drive-card');
             let panelHasMatch = false;
 
@@ -2451,14 +2672,12 @@
                 }
             });
 
-            // 如果這一整天都沒有吻合的，就把整天的 Header 藏起來
             const dayHeader = panel.querySelector('.day-header');
             if (dayHeader) {
                 dayHeader.style.display = panelHasMatch ? 'flex' : 'none';
             }
         });
 
-        // 若完全沒有搜尋結果，提示使用者
         if (!hasMatches) {
             const noResultsDiv = document.createElement('div');
             noResultsDiv.id = 'noResultsMsg';
