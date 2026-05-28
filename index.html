@@ -409,6 +409,27 @@
             color: var(--accent-theme);
         }
 
+        /* 標記已付擬物按鈕 */
+        .btn-paid {
+            background: var(--bg-color);
+            border: none;
+            color: var(--text-muted);
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            font-weight: 700;
+            box-shadow: var(--shadow-flat-sm);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn-paid:active {
+            box-shadow: var(--shadow-pressed-sm);
+        }
+        .btn-paid.paid {
+            box-shadow: var(--shadow-pressed-sm);
+            color: #16A34A; /* 質感森林綠代表已付款 */
+        }
+
         /* 凹陷式交通卡片 (Inset Drive Track) */
         .drive-card {
             background: var(--bg-color);
@@ -455,16 +476,21 @@
             box-shadow: 1px 2px 4px rgba(7, 89, 133, 0.15);
         }
 
-        /* 住宿預算總覽資訊塊 */
+        /* 住宿預算總覽資訊塊 (新增未付款加總) */
         .hotel-total-banner {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 20px;
-            border-radius: 18px;
+            flex-direction: column;
+            gap: 12px;
+            padding: 20px;
+            border-radius: 20px;
             background: var(--bg-color);
             box-shadow: var(--shadow-pressed);
             margin-bottom: 24px;
+        }
+        .hotel-total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         .hotel-total-label {
             font-size: 0.9rem;
@@ -475,6 +501,34 @@
             font-size: 1.25rem;
             font-weight: 900;
             color: var(--accent-theme);
+        }
+
+        /* 回到頂部按鈕樣式 */
+        .back-to-top-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 32px;
+            margin-bottom: 8px;
+            width: 100%;
+        }
+        .back-to-top-btn {
+            background: var(--bg-color);
+            border: none;
+            color: var(--text-muted);
+            padding: 10px 20px;
+            border-radius: 14px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: var(--shadow-flat-sm);
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .back-to-top-btn:active {
+            box-shadow: var(--shadow-pressed-sm);
+            transform: scale(0.97);
         }
 
         /* 互動式單選按鈕容器 (Sapporo Option Select) */
@@ -635,10 +689,16 @@
                 <div class="weather-box">旅宿與泡湯<br>規格清單</div>
             </div>
 
-            <!-- 住宿總預算 Banner (右上角加總) -->
+            <!-- 住宿總預算 Banner (新增未付總額加總，位於總預算正下方) -->
             <div class="hotel-total-banner">
-                <span class="hotel-total-label">總住宿預算 (Total Cost)</span>
-                <span class="hotel-total-value" id="hotelTotalDisplay">¥0 JPY</span>
+                <div class="hotel-total-row">
+                    <span class="hotel-total-label">總住宿預算 (Total Cost)</span>
+                    <span class="hotel-total-value" id="hotelTotalDisplay">¥0 JPY</span>
+                </div>
+                <div class="hotel-total-row" style="border-top: 1px dashed rgba(42,34,26,0.12); padding-top: 10px; margin-top: 4px;">
+                    <span class="hotel-total-label" style="color: #9A3412;">未付總額 (Unpaid Sum)</span>
+                    <span class="hotel-total-value" id="hotelUnpaidDisplay" style="color: #9A3412;">¥0 JPY</span>
+                </div>
             </div>
 
             <!-- Hotel 1: Tokyo -->
@@ -652,9 +712,10 @@
                     • <strong>餐食計畫 Meals:</strong> ❌ 不含早餐 / ❌ 不含晚餐<br>
                     • <strong>溫泉設施 Onsen:</strong> ❌ 無溫泉設施<br>
                     • <strong>預約費用 Cost:</strong> ¥31,047 JPY<br>
-                    • <strong>付款狀態 Status:</strong> <span class="badge badge-port">已付款 Paid</span>
+                    • <strong>付款狀態 Status:</strong> <span class="pay-status-badge badge badge-alert">未付款 Unpaid</span>
                 </div>
-                <div class="card-actions">
+                <div class="card-actions" style="gap: 10px;">
+                    <button class="btn-paid" onclick="togglePaid(this, 'hotel-remm')">💳 標記已付 Paid</button>
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
             </div>
@@ -670,9 +731,10 @@
                     • <strong>餐食計畫 Meals:</strong> 🥣 含早餐 / ❌ 不含晚餐<br>
                     • <strong>溫泉設施 Onsen:</strong> ♨️ 有溫泉 (<span class="badge badge-port" style="margin-top:0;">大浴場</span>)<br>
                     • <strong>預約費用 Cost:</strong> ¥24,300 JPY<br>
-                    • <strong>付款狀態 Status:</strong> <span class="badge badge-port">已付款 Paid</span>
+                    • <strong>付款狀態 Status:</strong> <span class="pay-status-badge badge badge-alert">未付款 Unpaid</span>
                 </div>
-                <div class="card-actions">
+                <div class="card-actions" style="gap: 10px;">
+                    <button class="btn-paid" onclick="togglePaid(this, 'hotel-dormy')">💳 標記已付 Paid</button>
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
             </div>
@@ -688,9 +750,10 @@
                     • <strong>餐食計畫 Meals:</strong> 🥣 含早餐 / 🍱 含晚餐<br>
                     • <strong>溫泉設施 Onsen:</strong> ♨️ 有溫泉 (<span class="badge badge-port" style="margin-top:0;">大浴場</span>)<br>
                     • <strong>預約費用 Cost:</strong> ¥74,120 JPY<br>
-                    • <strong>付款狀態 Status:</strong> <span class="badge badge-port">已付款 Paid</span>
+                    • <strong>付款狀態 Status:</strong> <span class="pay-status-badge badge badge-alert">未付款 Unpaid</span>
                 </div>
-                <div class="card-actions">
+                <div class="card-actions" style="gap: 10px;">
+                    <button class="btn-paid" onclick="togglePaid(this, 'hotel-kiki')">💳 標記已付 Paid</button>
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
             </div>
@@ -706,9 +769,10 @@
                     • <strong>餐食計畫 Meals:</strong> 🥣 含早餐 / 🍱 含晚餐<br>
                     • <strong>溫泉設施 Onsen:</strong> ♨️ 有溫泉 (<span class="badge badge-alert" style="margin-top:0; background-color:#B45309;">個室風呂付</span>)<br>
                     • <strong>預約費用 Cost:</strong> ¥40,000 JPY<br>
-                    • <strong>付款狀態 Status:</strong> <span class="badge badge-port">已付款 Paid</span>
+                    • <strong>付款狀態 Status:</strong> <span class="pay-status-badge badge badge-alert">未付款 Unpaid</span>
                 </div>
-                <div class="card-actions">
+                <div class="card-actions" style="gap: 10px;">
+                    <button class="btn-paid" onclick="togglePaid(this, 'hotel-pon')">💳 標記已付 Paid</button>
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
             </div>
@@ -724,9 +788,10 @@
                     • <strong>餐食計畫 Meals:</strong> 🥣 含早餐 / 🍱 含晚餐<br>
                     • <strong>溫泉設施 Onsen:</strong> ♨️ 有溫泉 (<span class="badge badge-alert" style="margin-top:0; background-color:#B45309;">個室風呂付</span>)<br>
                     • <strong>預約費用 Cost:</strong> ¥97,186 JPY<br>
-                    • <strong>付款狀態 Status:</strong> <span class="badge badge-port">已付款 Paid</span>
+                    • <strong>付款狀態 Status:</strong> <span class="pay-status-badge badge badge-alert">未付款 Unpaid</span>
                 </div>
-                <div class="card-actions">
+                <div class="card-actions" style="gap: 10px;">
+                    <button class="btn-paid" onclick="togglePaid(this, 'hotel-hino')">💳 標記已付 Paid</button>
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
             </div>
@@ -742,9 +807,10 @@
                     • <strong>餐食計畫 Meals:</strong> 🥣 含早餐 / 🍱 含晚餐<br>
                     • <strong>溫泉設施 Onsen:</strong> ♨️ 有溫泉 (<span class="badge badge-alert" style="margin-top:0; background-color:#B45309;">個室風呂付</span>)<br>
                     • <strong>預約費用 Cost:</strong> ¥77,616 JPY<br>
-                    • <strong>付款狀態 Status:</strong> <span class="badge badge-port">已付款 Paid</span>
+                    • <strong>付款狀態 Status:</strong> <span class="pay-status-badge badge badge-alert">未付款 Unpaid</span>
                 </div>
-                <div class="card-actions">
+                <div class="card-actions" style="gap: 10px;">
+                    <button class="btn-paid" onclick="togglePaid(this, 'hotel-seijaku')">💳 標記已付 Paid</button>
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
             </div>
@@ -760,9 +826,10 @@
                     • <strong>餐食計畫 Meals:</strong> 🥣 含早餐 / 🍱 含晚餐<br>
                     • <strong>溫泉設施 Onsen:</strong> ♨️ 有溫泉 (<span class="badge badge-alert" style="margin-top:0; background-color:#B45309;">個室風呂付</span>)<br>
                     • <strong>預約費用 Cost:</strong> ¥29,900 JPY<br>
-                    • <strong>付款狀態 Status:</strong> <span class="badge badge-port">已付款 Paid</span>
+                    • <strong>付款狀態 Status:</strong> <span class="pay-status-badge badge badge-alert">未付款 Unpaid</span>
                 </div>
-                <div class="card-actions">
+                <div class="card-actions" style="gap: 10px;">
+                    <button class="btn-paid" onclick="togglePaid(this, 'hotel-hana')">💳 標記已付 Paid</button>
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
             </div>
@@ -818,12 +885,20 @@
                     <div style="margin-top:14px; font-size:0.82rem; line-height:1.5;">
                         • <strong>房間方案說明:</strong> 雙人客房兩晚合計價格。<br>
                         • <strong>預計費用 Cost:</strong> <span id="sapporoPriceDetail" style="font-weight:700; color:var(--accent-theme);">¥62,000 JPY</span><br>
-                        • <strong>付款狀態 Status:</strong> <span class="badge badge-alert" style="background-color:#9B623B;">現場付款 / 待確認 TBC</span>
+                        • <strong>付款狀態 Status:</strong> <span class="pay-status-badge badge badge-alert">未付款 Unpaid</span>
                     </div>
                 </div>
-                <div class="card-actions">
+                <div class="card-actions" style="gap: 10px;">
+                    <button class="btn-paid" onclick="togglePaid(this, 'hotel-sapporo-choice')">💳 標記已付 Paid</button>
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
+            </div>
+
+            <!-- Back to Top Button -->
+            <div class="back-to-top-container">
+                <button class="back-to-top-btn" onclick="scrollToTop()">
+                    ▲ 回到頂部 Back to Top
+                </button>
             </div>
         </div>
 
@@ -923,6 +998,13 @@
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
             </div>
+
+            <!-- Back to Top Button -->
+            <div class="back-to-top-container">
+                <button class="back-to-top-btn" onclick="scrollToTop()">
+                    ▲ 回到頂部 Back to Top
+                </button>
+            </div>
         </div>
 
         <!-- ==================== DAY 1 ==================== -->
@@ -985,6 +1067,13 @@
                 <div class="card-actions">
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
+            </div>
+
+            <!-- Back to Top Button -->
+            <div class="back-to-top-container">
+                <button class="back-to-top-btn" onclick="scrollToTop()">
+                    ▲ 回到頂部 Back to Top
+                </button>
             </div>
         </div>
 
@@ -1115,6 +1204,13 @@
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
             </div>
+
+            <!-- Back to Top Button -->
+            <div class="back-to-top-container">
+                <button class="back-to-top-btn" onclick="scrollToTop()">
+                    ▲ 回到頂部 Back to Top
+                </button>
+            </div>
         </div>
 
         <!-- ==================== DAY 3 ==================== -->
@@ -1235,6 +1331,13 @@
                 <div class="card-actions">
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
+            </div>
+
+            <!-- Back to Top Button -->
+            <div class="back-to-top-container">
+                <button class="back-to-top-btn" onclick="scrollToTop()">
+                    ▲ 回到頂部 Back to Top
+                </button>
             </div>
         </div>
 
@@ -1357,13 +1460,13 @@
                     <div>⏱️ 15 min | 🛣️ 12 km</div>
                     <div><span class="drive-target">前往 ぽん・ぽんゆ</span></div>
                 </div>
-                <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=コッタロ濕原展望台&destination=かя沼温泉+ぽん・ぽんゆ" target="_blank">🗺️ 導航</a>
+                <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=コッタロ濕原展望台&destination=かや沼温泉+ぽん・ぽんゆ" target="_blank">🗺️ 導航</a>
             </div>
 
             <div class="card" data-id="d4-7">
                 <div class="time-badge">15:15</div>
                 <div class="card-main">
-                    <div class="spot-name">🏨 ぽん・ぽんゆ (釧路湿原かя沼温泉)</div>
+                    <div class="spot-name">🏨 ぽん・ぽんゆ (釧路湿原かや沼温泉)</div>
                     <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end;">
                         <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=かや沼温泉+ぽん・ぽんゆ" target="_blank">🗺️ 地圖</a>
                         <a class="map-link" href="https://kkaa.co.jp/img/2024/12/6540c7608e72b5615038c96520690604.jpg" target="_blank" style="background-color: #F6E2BC; color: #8F4C1B; box-shadow: var(--shadow-flat-sm);">📸 建築設計照</a>
@@ -1374,6 +1477,13 @@
                 <div class="card-actions">
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
+            </div>
+
+            <!-- Back to Top Button -->
+            <div class="back-to-top-container">
+                <button class="back-to-top-btn" onclick="scrollToTop()">
+                    ▲ 回到頂部 Back to Top
+                </button>
             </div>
         </div>
 
@@ -1397,7 +1507,7 @@
                     <div>⏱️ 45 min | 🛣️ 39 km</div>
                     <div><span class="drive-target">前往 溫根內高架木棧道</span></div>
                 </div>
-                <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=かя沼温泉&destination=温根内高架木棧道" target="_blank">🗺️ 導航</a>
+                <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=かや沼温泉&destination=温根内高架木棧道" target="_blank">🗺️ 導航</a>
             </div>
 
             <div class="card" data-id="d5-2">
@@ -1443,6 +1553,13 @@
                 <div class="card-actions">
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
+            </div>
+
+            <!-- Back to Top Button -->
+            <div class="back-to-top-container">
+                <button class="back-to-top-btn" onclick="scrollToTop()">
+                    ▲ 回到頂部 Back to Top
+                </button>
             </div>
         </div>
 
@@ -1542,6 +1659,13 @@
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
             </div>
+
+            <!-- Back to Top Button -->
+            <div class="back-to-top-container">
+                <button class="back-to-top-btn" onclick="scrollToTop()">
+                    ▲ 回到頂部 Back to Top
+                </button>
+            </div>
         </div>
 
         <!-- ==================== DAY 7 ==================== -->
@@ -1634,6 +1758,13 @@
                 <div class="card-actions">
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
+            </div>
+
+            <!-- Back to Top Button -->
+            <div class="back-to-top-container">
+                <button class="back-to-top-btn" onclick="scrollToTop()">
+                    ▲ 回到頂部 Back to Top
+                </button>
             </div>
         </div>
 
@@ -1746,6 +1877,13 @@
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
             </div>
+
+            <!-- Back to Top Button -->
+            <div class="back-to-top-container">
+                <button class="back-to-top-btn" onclick="scrollToTop()">
+                    ▲ 回到頂部 Back to Top
+                </button>
+            </div>
         </div>
 
         <!-- ==================== DAY 9 ==================== -->
@@ -1844,6 +1982,13 @@
                 <div class="card-actions">
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
+            </div>
+
+            <!-- Back to Top Button -->
+            <div class="back-to-top-container">
+                <button class="back-to-top-btn" onclick="scrollToTop()">
+                    ▲ 回到頂部 Back to Top
+                </button>
             </div>
         </div>
 
@@ -1982,11 +2127,18 @@
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
             </div>
+
+            <!-- Back to Top Button -->
+            <div class="back-to-top-container">
+                <button class="back-to-top-btn" onclick="scrollToTop()">
+                    ▲ 回到頂部 Back to Top
+                </button>
+            </div>
         </div>
 
         <!-- ==================== 今日記事備忘錄 ==================== -->
         <div class="notes-area">
-            <div class="notes-title">✏️ <span id="notesTitleDay">Day 1</span> 專屬旅行備忘</div>
+            <div class="notes-title">✏️ <span id="notesTitleDay">Hotels</span> 專屬旅行備忘</div>
             <textarea class="notes-textarea" id="dayNotes" placeholder="可以記錄今天的預算開銷、預約時間、行車注意要點..." oninput="saveNotes()"></textarea>
         </div>
 
@@ -1999,12 +2151,13 @@
         currentDay: 'hotels',    // 預設打開最左側的住宿預算總覽
         completedItems: {},      // 儲存各個 card 的完成狀態 { "d1-1": true }
         dayNotes: {},            // 儲存每天的備忘錄 { 1: "今日筆記..." }
-        sapporoOption: 'A'       // 預設選擇方案 A (Dormy Inn Premium)
+        sapporoOption: 'A',      // 預設選擇方案 A (Dormy Inn Premium)
+        paidItems: {}            // 儲存已付款項目 (預設全部為未付款)
     };
 
     // 初始化讀取（如果之前有儲存過）
     window.onload = function() {
-        const savedState = localStorage.getItem('hokkaido_trip_state_neumorphic_v4');
+        const savedState = localStorage.getItem('hokkaido_trip_state_neumorphic_v5');
         if (savedState) {
             Object.assign(state, JSON.parse(savedState));
         }
@@ -2028,6 +2181,26 @@
                 }
             }
         });
+
+        // 套用付款狀態
+        document.querySelectorAll('[data-id]').forEach(card => {
+            const id = card.getAttribute('data-id');
+            const paidBtn = card.querySelector('.btn-paid');
+            const statusBadge = card.querySelector('.pay-status-badge');
+            if (id && paidBtn && statusBadge) {
+                if (state.paidItems[id]) {
+                    paidBtn.classList.add('paid');
+                    paidBtn.innerHTML = '✓ 已付款 Paid';
+                    statusBadge.className = 'pay-status-badge badge badge-port';
+                    statusBadge.innerText = '已付款 Paid';
+                } else {
+                    paidBtn.classList.remove('paid');
+                    paidBtn.innerHTML = '💳 標記已付 Paid';
+                    statusBadge.className = 'pay-status-badge badge badge-alert';
+                    statusBadge.innerText = '未付款 Unpaid';
+                }
+            }
+        });
     }
 
     // 選擇札幌飯店方案，即時計算預算總金額
@@ -2045,31 +2218,93 @@
         btnB.classList.remove('selected');
         btnC.classList.remove('selected');
         
-        let sapporoCost = 62000;
-        
         if (opt === 'A') {
             btnA.classList.add('selected');
             priceDetail.innerHTML = '¥62,000 JPY';
-            sapporoCost = 62000;
         } else if (opt === 'B') {
             btnB.classList.add('selected');
             priceDetail.innerHTML = '¥118,000 JPY';
-            sapporoCost = 118000;
         } else if (opt === 'C') {
             btnC.classList.add('selected');
             priceDetail.innerHTML = '¥86,000 JPY';
-            sapporoCost = 86000;
         }
 
-        // 基本固定住宿費用合計 (Remm + Abashiri + KIKI + PonPonYu + Hinonoza + Seijakubow + Hanakagura)
+        recalculateBudgets();
+        saveState();
+    }
+
+    // 動態計算付款與未付款金額
+    function recalculateBudgets() {
+        let sapporoCost = 62000;
+        if (state.sapporoOption === 'B') sapporoCost = 118000;
+        else if (state.sapporoOption === 'C') sapporoCost = 86000;
+
+        // 基礎住宿費用 (Remm + Abashiri + KIKI + PonPonYu + Hinonoza + Seijakubow + Hanakagura)
         // 31047 + 24300 + 74120 + 40000 + 97186 + 77616 + 29900 = 374,169 JPY
         const baseCost = 374169;
         const totalCost = baseCost + sapporoCost;
 
-        // 格式化輸出千分位日圓
+        // 計算未付款加總
+        const hotels = [
+            { id: 'hotel-remm', cost: 31047 },
+            { id: 'hotel-dormy', cost: 24300 },
+            { id: 'hotel-kiki', cost: 74120 },
+            { id: 'hotel-pon', cost: 40000 },
+            { id: 'hotel-hino', cost: 97186 },
+            { id: 'hotel-seijaku', cost: 77616 },
+            { id: 'hotel-hana', cost: 29900 },
+            { id: 'hotel-sapporo-choice', cost: sapporoCost }
+        ];
+
+        let unpaidSum = 0;
+        hotels.forEach(hotel => {
+            if (!state.paidItems[hotel.id]) {
+                unpaidSum += hotel.cost;
+            }
+        });
+
+        // 格式化輸出日圓
         document.getElementById('hotelTotalDisplay').innerText = '¥' + totalCost.toLocaleString() + ' JPY';
+        document.getElementById('hotelUnpaidDisplay').innerText = '¥' + unpaidSum.toLocaleString() + ' JPY';
+    }
+
+    // 標記付款狀態切換
+    function togglePaid(button, hotelId) {
+        const card = button.closest('.card');
+        const statusBadge = card.querySelector('.pay-status-badge');
         
+        if (state.paidItems[hotelId]) {
+            // 從已付切換到未付
+            delete state.paidItems[hotelId];
+            button.classList.remove('paid');
+            button.innerHTML = '💳 標記已付 Paid';
+            if (statusBadge) {
+                statusBadge.className = 'pay-status-badge badge badge-alert';
+                statusBadge.innerText = '未付款 Unpaid';
+            }
+        } else {
+            // 從未付切換到已付
+            state.paidItems[hotelId] = true;
+            button.classList.add('paid');
+            button.innerHTML = '✓ 已付款 Paid';
+            if (statusBadge) {
+                statusBadge.className = 'pay-status-badge badge badge-port';
+                statusBadge.innerText = '已付款 Paid';
+            }
+        }
+
+        recalculateBudgets();
         saveState();
+    }
+
+    // 回到頂部功能
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        
+        const container = document.querySelector('.phone-container');
+        if (container) {
+            container.scrollTo({ top: 0, behavior: 'smooth' });
+        }
     }
 
     // 切換天數分頁
@@ -2099,7 +2334,7 @@
         } else if (dayId === 'hotels') {
             currentBtn = document.getElementById('tabHotels');
         } else {
-            // 在 tab 列表中，第 0 個是 Transport，第 1 個是 Hotels，所以 Day N 的按鈕索引就是 N + 1
+            // 索引修正：0 為 Transport，1 為 Hotels，Day N 就是 N + 1
             currentBtn = buttons[dayId + 1];
         }
         if (currentBtn) currentBtn.classList.add('active');
@@ -2170,9 +2405,9 @@
         saveState();
     }
 
-    // 保存全局狀態至 LocalStorage
+    // 保存全局狀態至 LocalStorage (變更版本號確保快取刷新)
     function saveState() {
-        localStorage.setItem('hokkaido_trip_state_neumorphic_v4', JSON.stringify(state));
+        localStorage.setItem('hokkaido_trip_state_neumorphic_v5', JSON.stringify(state));
     }
 
     // 搜尋功能
