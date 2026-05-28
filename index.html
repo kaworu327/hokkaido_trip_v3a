@@ -857,28 +857,28 @@
                             <span class="opt-price">¥58,000 JPY</span>
                         </button>
 
-                        <!-- Option B: Dormy Inn Premium 暖雪 札幌 (No Breakfast) -->
+                        <!-- Option B: Hotel JAL City Sapporo Nakajima Park -->
                         <button class="option-card-btn" id="optBtnB" onclick="selectSapporoOption('B')">
                             <div class="opt-content">
                                 <span class="opt-dot"></span>
                                 <div>
-                                    <span class="opt-title">方案 B：Dormy Inn Premium 暖雪 札幌</span>
-                                    <span style="font-size:0.75rem; color:var(--text-muted); display:block; margin-top:2px;">❌ 不含早餐 | ♨️ 大浴場</span>
+                                    <span class="opt-title">方案 B：Hotel JAL City Sapporo Nakajima Park</span>
+                                    <span style="font-size:0.75rem; color:var(--text-muted); display:block; margin-top:2px;">🥣 含早餐 | ♨️ 大浴場</span>
                                 </div>
                             </div>
-                            <span class="opt-price">¥47,800 JPY</span>
+                            <span class="opt-price">¥48,000 JPY</span>
                         </button>
 
-                        <!-- Option C: Dormy Inn Premium 暖雪 札幌 (With Breakfast TBC) -->
+                        <!-- Option C: 暖雪 札幌 -->
                         <button class="option-card-btn" id="optBtnC" onclick="selectSapporoOption('C')">
                             <div class="opt-content">
                                 <span class="opt-dot"></span>
                                 <div>
-                                    <span class="opt-title">方案 C：Dormy Inn Premium 暖雪 札幌</span>
-                                    <span style="font-size:0.75rem; color:var(--text-muted); display:block; margin-top:2px;">🥣 含早餐 (待確認 TBC) | ♨️ 大浴場</span>
+                                    <span class="opt-title">方案 C：暖雪 札幌</span>
+                                    <span style="font-size:0.75rem; color:var(--text-muted); display:block; margin-top:2px;">🥣 含早餐 | ♨️ 大浴場</span>
                                 </div>
                             </div>
-                            <span class="opt-price">¥50,000 JPY</span>
+                            <span class="opt-price">¥58,380 JPY</span>
                         </button>
                     </div>
 
@@ -2223,10 +2223,10 @@
             priceDetail.innerHTML = '¥58,000 JPY';
         } else if (opt === 'B') {
             btnB.classList.add('selected');
-            priceDetail.innerHTML = '¥47,800 JPY';
+            priceDetail.innerHTML = '¥48,000 JPY';
         } else if (opt === 'C') {
             btnC.classList.add('selected');
-            priceDetail.innerHTML = '¥50,000 JPY';
+            priceDetail.innerHTML = '¥58,380 JPY';
         }
 
         recalculateBudgets();
@@ -2236,8 +2236,8 @@
     // 動態計算付款與未付款金額
     function recalculateBudgets() {
         let sapporoCost = 58000;
-        if (state.sapporoOption === 'B') sapporoCost = 47800;
-        else if (state.sapporoOption === 'C') sapporoCost = 50000;
+        if (state.sapporoOption === 'B') sapporoCost = 48000;
+        else if (state.sapporoOption === 'C') sapporoCost = 58380;
 
         // 基礎住宿費用 (Remm + Abashiri + KIKI + PonPonYu + Hinonoza + Seijakubow + Hanakagura)
         // 31047 + 24300 + 74120 + 40000 + 97186 + 77616 + 29900 = 374,169 JPY
