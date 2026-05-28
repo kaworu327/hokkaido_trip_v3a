@@ -11,7 +11,6 @@
     
     <style>
         :root {
-            /* 燕麥暖奶與極致立體陰影調色盤 */
             --bg-color: #F2ECE0;       /* 燕麥暖乳酪沙色 */
             --text-main: #2F261E;      /* 深焙可可褐 */
             --text-muted: #7E7265;     /* 橡木中褐灰 */
@@ -35,13 +34,13 @@
             --day9: #5C453C;  /* 樹皮褐 */
             --day10: #A3576C; /* 晚霞紅 */
             --transport: #2B4C6F; /* 質感海軍深藍 (代表交通與飛行) */
+            --hotels: #78350F;    /* 焦糖暖木褐 (代表高奢旅宿) */
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            /* 套用兼具現代感與高級易讀性的 Plus Jakarta Sans */
             font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
@@ -93,7 +92,7 @@
         }
 
         header h1 {
-            font-size: 1.6rem; /* 從 1.45rem 適度放大提升醒目度 */
+            font-size: 1.6rem;
             color: var(--text-main);
             margin-bottom: 8px;
             font-weight: 800;
@@ -101,7 +100,7 @@
         }
 
         header p {
-            font-size: 0.85rem; /* 從 0.78rem 放大提升易讀性 */
+            font-size: 0.85rem;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.08em;
@@ -125,10 +124,10 @@
         /* 搜尋欄 - 凹入效果 (Inset Slot) */
         .search-input {
             width: 100%;
-            padding: 14px 16px 14px 46px; /* 增加内襯，字型放大 */
+            padding: 14px 16px 14px 46px;
             border-radius: 14px;
             border: none;
-            font-size: 0.92rem; /* 從 0.85rem 放大 */
+            font-size: 0.92rem;
             outline: none;
             background: var(--bg-color);
             color: var(--text-main);
@@ -160,7 +159,7 @@
         }
 
         .progress-title {
-            font-size: 0.78rem; /* 稍微放大提升易讀性 */
+            font-size: 0.78rem;
             font-weight: 700;
             color: var(--text-muted);
             text-transform: uppercase;
@@ -170,7 +169,7 @@
         /* 進度凹槽軌道 */
         .progress-track {
             flex: 1;
-            height: 10px; /* 稍微加寬，視覺比例更豐滿 */
+            height: 10px;
             background-color: var(--bg-color);
             border-radius: 5px;
             overflow: hidden;
@@ -187,14 +186,14 @@
         }
 
         .progress-text {
-            font-size: 0.8rem; /* 從 0.75rem 提升 */
+            font-size: 0.8rem;
             font-weight: 700;
             color: var(--text-main);
             min-width: 36px;
             text-align: right;
         }
 
-        /* 頂部頁籤列 */
+        /* 頂部頁籤列 (Transport 與 Hotels 安排在最左側) */
         .tab-bar {
             display: flex;
             overflow-x: auto;
@@ -210,12 +209,12 @@
         /* 擬物頁籤按鈕 */
         .tab-btn {
             flex: 0 0 auto;
-            padding: 12px 16px; /* 加大觸點，符合無障礙操作 */
+            padding: 12px 16px;
             background: var(--bg-color);
             border: none;
             border-radius: 14px;
             font-weight: 700;
-            font-size: 0.9rem; /* 從 0.85rem 提升 */
+            font-size: 0.9rem;
             color: var(--text-muted);
             cursor: pointer;
             box-shadow: var(--shadow-flat-sm);
@@ -225,7 +224,7 @@
 
         .tab-btn span {
             display: block;
-            font-size: 0.68rem; /* 從 0.62rem 提升 */
+            font-size: 0.68rem;
             font-weight: 600;
             opacity: 0.85;
             margin-top: 4px;
@@ -270,13 +269,13 @@
         }
 
         .day-title {
-            font-size: 1.15rem; /* 從 1rem 顯著放大 */
+            font-size: 1.15rem;
             font-weight: 800;
             color: var(--accent-theme);
         }
 
         .weather-box {
-            font-size: 0.78rem; /* 從 0.7rem 提升 */
+            font-size: 0.78rem;
             color: var(--text-muted);
             text-align: right;
             line-height: 1.4;
@@ -286,8 +285,8 @@
         /* 擬物凸起卡片 (Raised Neumorphic Card) */
         .card {
             background: var(--bg-color);
-            border-radius: 24px; /* 更圓潤，更符合新擬物風 */
-            padding: 22px;       /* 增加內部留白，版面更大器 */
+            border-radius: 24px;
+            padding: 22px;
             margin-bottom: 24px;
             box-shadow: var(--shadow-flat);
             position: relative;
@@ -314,7 +313,7 @@
 
         /* 時程氣泡 */
         .time-badge {
-            font-size: 0.8rem; /* 從 0.72rem 提升 */
+            font-size: 0.8rem;
             font-weight: 800;
             background-color: var(--bg-color);
             padding: 5px 12px;
@@ -326,7 +325,7 @@
         }
 
         .spot-name {
-            font-size: 1.2rem; /* 從 1.05rem 大幅提升易讀性 */
+            font-size: 1.2rem;
             font-weight: 800;
             color: var(--text-main);
             line-height: 1.4;
@@ -340,9 +339,9 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             text-decoration: none;
-            padding: 8px 14px; /* 加大點按區域 */
+            padding: 8px 14px;
             border-radius: 10px;
-            font-size: 0.78rem; /* 從 0.72rem 提升 */
+            font-size: 0.78rem;
             font-weight: 700;
             white-space: nowrap;
             box-shadow: var(--shadow-flat-sm);
@@ -356,7 +355,7 @@
 
         .card-desc {
             margin-top: 14px;
-            font-size: 0.88rem; /* 從 0.8rem 提升至黃金閱讀比例 */
+            font-size: 0.88rem;
             color: var(--text-muted);
             line-height: 1.65;
             border-top: 1px dashed rgba(42, 34, 26, 0.12);
@@ -375,8 +374,9 @@
         .theme-day9  { --accent-theme: var(--day9);  --tag-alert: #AC3727; --tag-port: #21633B; }
         .theme-day10 { --accent-theme: var(--day10); --tag-alert: #A83636; --tag-port: #1E668A; }
         .theme-transport { --accent-theme: var(--transport); --tag-alert: #B45309; --tag-port: #1E4D7A; }
+        .theme-hotels { --accent-theme: var(--hotels); --tag-alert: #374151; --tag-port: #047857; }
 
-        /* 左邊裝飾線：改用微幅內投影和高飽和色線 */
+        /* 左邊裝飾線 */
         .day-panel.active .card {
             border-left: 5px solid var(--accent-theme);
         }
@@ -393,9 +393,9 @@
             background: var(--bg-color);
             border: none;
             color: var(--text-muted);
-            padding: 8px 16px; /* 加大點按體積 */
+            padding: 8px 16px;
             border-radius: 12px;
-            font-size: 0.8rem; /* 從 0.72rem 提升 */
+            font-size: 0.8rem;
             cursor: pointer;
             font-weight: 700;
             box-shadow: var(--shadow-flat-sm);
@@ -422,7 +422,7 @@
         }
 
         .drive-info {
-            font-size: 0.85rem; /* 稍微提升 */
+            font-size: 0.85rem;
             color: var(--text-muted);
             font-weight: 600;
         }
@@ -439,7 +439,7 @@
             display: inline-block;
             padding: 4px 10px;
             border-radius: 6px;
-            font-size: 0.68rem; /* 從 0.62rem 提升 */
+            font-size: 0.68rem;
             font-weight: 800;
             color: #ffffff;
             margin-top: 8px;
@@ -455,6 +455,87 @@
             box-shadow: 1px 2px 4px rgba(7, 89, 133, 0.15);
         }
 
+        /* 住宿預算總覽資訊塊 */
+        .hotel-total-banner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            border-radius: 18px;
+            background: var(--bg-color);
+            box-shadow: var(--shadow-pressed);
+            margin-bottom: 24px;
+        }
+        .hotel-total-label {
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: var(--text-muted);
+        }
+        .hotel-total-value {
+            font-size: 1.25rem;
+            font-weight: 900;
+            color: var(--accent-theme);
+        }
+
+        /* 互動式單選按鈕容器 (Sapporo Option Select) */
+        .option-selector {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 16px 0;
+        }
+        .option-card-btn {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 16px;
+            background: var(--bg-color);
+            box-shadow: var(--shadow-flat-sm);
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .option-card-btn.selected {
+            box-shadow: var(--shadow-pressed-sm);
+            background: rgba(120, 53, 15, 0.05);
+            transform: scale(0.98);
+        }
+        .option-card-btn.selected .opt-dot {
+            background-color: var(--accent-theme);
+            box-shadow: inset 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        .opt-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .opt-title {
+            font-size: 0.92rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-main);
+        }
+        .opt-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: var(--bg-color);
+            box-shadow: var(--shadow-pressed-sm);
+            display: inline-block;
+            flex-shrink: 0;
+        }
+        .opt-price {
+            font-size: 0.92rem;
+            color: var(--accent-theme);
+            font-weight: 800;
+            text-align: right;
+        }
+
         /* 記事備忘錄區 */
         .notes-area {
             border-top: 1px dashed rgba(42, 34, 26, 0.12);
@@ -463,7 +544,7 @@
         }
 
         .notes-title {
-            font-size: 0.92rem; /* 稍微提升 */
+            font-size: 0.92rem;
             font-weight: 800;
             margin-bottom: 12px;
             color: var(--text-main);
@@ -475,12 +556,12 @@
         /* 內凹式記事本 (Inset Note Slot) */
         .notes-textarea {
             width: 100%;
-            height: 110px; /* 稍微拉高 */
+            height: 110px;
             border: none;
             background: var(--bg-color);
             border-radius: 16px;
             padding: 16px;
-            font-size: 0.88rem; /* 從 0.82rem 提升 */
+            font-size: 0.88rem;
             color: var(--text-main);
             resize: none;
             outline: none;
@@ -525,12 +606,14 @@
         </div>
     </div>
 
-    <!-- 頂部頁籤列 (Transport 搬移到最左側) -->
+    <!-- 頂部頁籤列 (Transport 與 Hotels 安排在最左側) -->
     <div class="tab-bar" id="tabBar">
-        <!-- 交通總覽分頁 (最左側) -->
+        <!-- 交通總覽分頁 -->
         <button class="tab-btn theme-transport" id="tabTransport" onclick="switchDay('transport')">🚗<span>Transport</span></button>
+        <!-- 住宿總覽分頁 -->
+        <button class="tab-btn active theme-hotels" id="tabHotels" onclick="switchDay('hotels')">🏨<span>Hotels</span></button>
         <!-- 每日行程分頁 -->
-        <button class="tab-btn active theme-day1" onclick="switchDay(1)">D1<span>Sep 25</span></button>
+        <button class="tab-btn theme-day1" onclick="switchDay(1)">D1<span>Sep 25</span></button>
         <button class="tab-btn theme-day2" onclick="switchDay(2)">D2<span>Sep 26</span></button>
         <button class="tab-btn theme-day3" onclick="switchDay(3)">D3<span>Sep 27</span></button>
         <button class="tab-btn theme-day4" onclick="switchDay(4)">D4<span>Sep 28</span></button>
@@ -544,6 +627,205 @@
 
     <!-- 行程面板容器 -->
     <div class="content-container" id="contentContainer">
+
+        <!-- ==================== HOTELS PANEL ==================== -->
+        <div id="dayhotels" class="day-panel active theme-hotels" data-day="hotels">
+            <div class="day-header">
+                <div class="day-title">🏨 Hotels 住宿預算總覽</div>
+                <div class="weather-box">旅宿與泡湯<br>規格清單</div>
+            </div>
+
+            <!-- 住宿總預算 Banner (右上角加總) -->
+            <div class="hotel-total-banner">
+                <span class="hotel-total-label">總住宿預算 (Total Cost)</span>
+                <span class="hotel-total-value" id="hotelTotalDisplay">¥0 JPY</span>
+            </div>
+
+            <!-- Hotel 1: Tokyo -->
+            <div class="card" data-id="hotel-remm">
+                <div class="time-badge">Sep 23 - Sep 25 (2晚)</div>
+                <div class="card-main">
+                    <div class="spot-name">Hotel Remm Hibiya, Tokyo</div>
+                    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Remm+Hibiya" target="_blank">🗺️ 地圖</a>
+                </div>
+                <div class="card-desc">
+                    • <strong>餐食計畫 Meals:</strong> ❌ 不含早餐 / ❌ 不含晚餐<br>
+                    • <strong>溫泉設施 Onsen:</strong> ❌ 無溫泉設施<br>
+                    • <strong>預約費用 Cost:</strong> ¥31,047 JPY<br>
+                    • <strong>付款狀態 Status:</strong> <span class="badge badge-port">已付款 Paid</span>
+                </div>
+                <div class="card-actions">
+                    <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
+                </div>
+            </div>
+
+            <!-- Hotel 2: Abashiri -->
+            <div class="card" data-id="hotel-dormy">
+                <div class="time-badge">Sep 25 - Sep 26 (1晚)</div>
+                <div class="card-main">
+                    <div class="spot-name">天都の湯 ドーミーイン網走</div>
+                    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Dormy+Inn+Abashiri" target="_blank">🗺️ 地圖</a>
+                </div>
+                <div class="card-desc">
+                    • <strong>餐食計畫 Meals:</strong> 🥣 含早餐 / ❌ 不含晚餐<br>
+                    • <strong>溫泉設施 Onsen:</strong> ♨️ 有溫泉 (<span class="badge badge-port" style="margin-top:0;">大浴場</span>)<br>
+                    • <strong>預約費用 Cost:</strong> ¥24,300 JPY<br>
+                    • <strong>付款狀態 Status:</strong> <span class="badge badge-port">已付款 Paid</span>
+                </div>
+                <div class="card-actions">
+                    <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
+                </div>
+            </div>
+
+            <!-- Hotel 3: Shiretoko KIKI -->
+            <div class="card" data-id="hotel-kiki">
+                <div class="time-badge">Sep 26 - Sep 28 (2晚)</div>
+                <div class="card-main">
+                    <div class="spot-name">KIKI知床 ナチュラルリゾート</div>
+                    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=KIKI知床+ナチュラルリゾート" target="_blank">🗺️ 地圖</a>
+                </div>
+                <div class="card-desc">
+                    • <strong>餐食計畫 Meals:</strong> 🥣 含早餐 / 🍱 含晚餐<br>
+                    • <strong>溫泉設施 Onsen:</strong> ♨️ 有溫泉 (<span class="badge badge-port" style="margin-top:0;">大浴場</span>)<br>
+                    • <strong>預約費用 Cost:</strong> ¥74,120 JPY<br>
+                    • <strong>付款狀態 Status:</strong> <span class="badge badge-port">已付款 Paid</span>
+                </div>
+                <div class="card-actions">
+                    <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
+                </div>
+            </div>
+
+            <!-- Hotel 4: Pon Pon Yu -->
+            <div class="card" data-id="hotel-pon">
+                <div class="time-badge">Sep 28 - Sep 29 (1晚)</div>
+                <div class="card-main">
+                    <div class="spot-name">釧路湿原かや沼温泉 ぽん・ぽんゆ</div>
+                    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=かや沼温泉+ぽん・ぽんゆ" target="_blank">🗺️ 地圖</a>
+                </div>
+                <div class="card-desc">
+                    • <strong>餐食計畫 Meals:</strong> 🥣 含早餐 / 🍱 含晚餐<br>
+                    • <strong>溫泉設施 Onsen:</strong> ♨️ 有溫泉 (<span class="badge badge-alert" style="margin-top:0; background-color:#B45309;">個室風呂付</span>)<br>
+                    • <strong>預約費用 Cost:</strong> ¥40,000 JPY<br>
+                    • <strong>付款狀態 Status:</strong> <span class="badge badge-port">已付款 Paid</span>
+                </div>
+                <div class="card-actions">
+                    <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
+                </div>
+            </div>
+
+            <!-- Hotel 5: Hinonoza -->
+            <div class="card" data-id="hotel-hino">
+                <div class="time-badge">Sep 29 - Sep 30 (1晚)</div>
+                <div class="card-main">
+                    <div class="spot-name">あかん鶴雅別荘 鄙の座</div>
+                    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=阿寒湖+鶴雅別莊+鄙之座" target="_blank">🗺️ 地圖</a>
+                </div>
+                <div class="card-desc">
+                    • <strong>餐食計畫 Meals:</strong> 🥣 含早餐 / 🍱 含晚餐<br>
+                    • <strong>溫泉設施 Onsen:</strong> ♨️ 有溫泉 (<span class="badge badge-alert" style="margin-top:0; background-color:#B45309;">個室風呂付</span>)<br>
+                    • <strong>預約費用 Cost:</strong> ¥97,186 JPY<br>
+                    • <strong>付款狀態 Status:</strong> <span class="badge badge-port">已付款 Paid</span>
+                </div>
+                <div class="card-actions">
+                    <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
+                </div>
+            </div>
+
+            <!-- Hotel 6: Seijakubow -->
+            <div class="card" data-id="hotel-seijaku">
+                <div class="time-badge">Sep 30 - Oct 01 (1晚)</div>
+                <div class="card-main">
+                    <div class="spot-name">十勝川モール温泉 清寂房</div>
+                    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=十勝川モール温泉+清寂房" target="_blank">🗺️ 地圖</a>
+                </div>
+                <div class="card-desc">
+                    • <strong>餐食計畫 Meals:</strong> 🥣 含早餐 / 🍱 含晚餐<br>
+                    • <strong>溫泉設施 Onsen:</strong> ♨️ 有溫泉 (<span class="badge badge-alert" style="margin-top:0; background-color:#B45309;">個室風呂付</span>)<br>
+                    • <strong>預約費用 Cost:</strong> ¥77,616 JPY<br>
+                    • <strong>付款狀態 Status:</strong> <span class="badge badge-port">已付款 Paid</span>
+                </div>
+                <div class="card-actions">
+                    <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
+                </div>
+            </div>
+
+            <!-- Hotel 7: Hanakagura -->
+            <div class="card" data-id="hotel-hana">
+                <div class="time-badge">Oct 01 - Oct 02 (1晚)</div>
+                <div class="card-main">
+                    <div class="spot-name">森のゆホテル花神楽</div>
+                    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=森のゆ+花神楽" target="_blank">🗺️ 地圖</a>
+                </div>
+                <div class="card-desc">
+                    • <strong>餐食計畫 Meals:</strong> 🥣 含早餐 / 🍱 含晚餐<br>
+                    • <strong>溫泉設施 Onsen:</strong> ♨️ 有溫泉 (<span class="badge badge-alert" style="margin-top:0; background-color:#B45309;">個室風呂付</span>)<br>
+                    • <strong>預約費用 Cost:</strong> ¥29,900 JPY<br>
+                    • <strong>付款狀態 Status:</strong> <span class="badge badge-port">已付款 Paid</span>
+                </div>
+                <div class="card-actions">
+                    <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
+                </div>
+            </div>
+
+            <!-- Hotel 8 & 9: Sapporo Choice (With upgraded three hotel options) -->
+            <div class="card" data-id="hotel-sapporo-choice">
+                <div class="time-badge">Oct 02 - Oct 04 (2晚) - 待確認 TBC</div>
+                <div class="card-main">
+                    <div class="spot-name">札幌市區精品溫泉宿 (方案三選一)</div>
+                </div>
+                <div class="card-desc">
+                    <p style="margin-bottom:10px; font-weight:700; color:var(--text-main);">👉 請選擇預計入住方案 (點擊即時重新計算預算)：</p>
+                    
+                    <!-- 三選一方案按鈕 -->
+                    <div class="option-selector">
+                        <!-- Option A: Dormy Inn Premium -->
+                        <button class="option-card-btn selected" id="optBtnA" onclick="selectSapporoOption('A')">
+                            <div class="opt-content">
+                                <span class="opt-dot"></span>
+                                <div>
+                                    <span class="opt-title">方案 A：Dormy Inn Premium 札幌</span>
+                                    <span style="font-size:0.75rem; color:var(--text-muted); display:block; margin-top:2px;">🥣 含早餐 | ♨️ 天然溫泉大浴場 (石狩の湯)</span>
+                                </div>
+                            </div>
+                            <span class="opt-price">¥62,000 JPY</span>
+                        </button>
+
+                        <!-- Option B: JR Tower Nikko -->
+                        <button class="option-card-btn" id="optBtnB" onclick="selectSapporoOption('B')">
+                            <div class="opt-content">
+                                <span class="opt-dot"></span>
+                                <div>
+                                    <span class="opt-title">方案 B：JR Tower Hotel Nikko 札幌</span>
+                                    <span style="font-size:0.75rem; color:var(--text-muted); display:block; margin-top:2px;">🥣 含早餐 | ♨️ 高空景觀溫泉 SPA (Sky Resort)</span>
+                                </div>
+                            </div>
+                            <span class="opt-price">¥118,000 JPY</span>
+                        </button>
+
+                        <!-- Option C: YUEN ONSEN -->
+                        <button class="option-card-btn" id="optBtnC" onclick="selectSapporoOption('C')">
+                            <div class="opt-content">
+                                <span class="opt-dot"></span>
+                                <div>
+                                    <span class="opt-title">方案 C：札幌 由緣 (YUEN ONSEN)</span>
+                                    <span style="font-size:0.75rem; color:var(--text-muted); display:block; margin-top:2px;">🥣 含早餐 | ♨️ 極簡日系美學露天溫泉 (登別源泉)</span>
+                                </div>
+                            </div>
+                            <span class="opt-price">¥86,000 JPY</span>
+                        </button>
+                    </div>
+
+                    <div style="margin-top:14px; font-size:0.82rem; line-height:1.5;">
+                        • <strong>房間方案說明:</strong> 雙人客房兩晚合計價格。<br>
+                        • <strong>預計費用 Cost:</strong> <span id="sapporoPriceDetail" style="font-weight:700; color:var(--accent-theme);">¥62,000 JPY</span><br>
+                        • <strong>付款狀態 Status:</strong> <span class="badge badge-alert" style="background-color:#9B623B;">現場付款 / 待確認 TBC</span>
+                    </div>
+                </div>
+                <div class="card-actions">
+                    <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
+                </div>
+            </div>
+        </div>
 
         <!-- ==================== TRANSPORT PANEL ==================== -->
         <div id="daytransport" class="day-panel theme-transport" data-day="transport">
@@ -1029,7 +1311,7 @@
                     <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end;">
                         <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=摩周湖第一展望台" target="_blank">🗺️ 地圖</a>
                         <a class="map-link" href="https://uu-beihaidao.tw/image/autumn/teshikaga/teshikaga_masyu3.jpg" target="_blank" style="background-color: #F6E2BC; color: #8F4C1B; box-shadow: var(--shadow-flat-sm);">📸 實景照</a>
-                        <a class="map-link" href="https://www.jeepe.jp/zh_TW/articles/mashu-lake-view-guide-1521" target="_blank" style="background-color: #E2ECF7; color: #2B4C6F; box-shadow: var(--shadow-flat-sm);">🌐 觀光指南</a>
+                        <a class="map-link" href="https://www.jeepe.jp/zh_TW/articles/mashu-lake-view-guide-1521" target="_blank" style="background-color: #E2E8F0; color: #1E3A8A; box-shadow: var(--shadow-flat-sm);">🌐 觀光指南</a>
                     </div>
                 </div>
                 <div class="card-desc">神祕摩周藍與深秋紅葉，無休。</div>
@@ -1075,13 +1357,13 @@
                     <div>⏱️ 15 min | 🛣️ 12 km</div>
                     <div><span class="drive-target">前往 ぽん・ぽんゆ</span></div>
                 </div>
-                <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=コッタロ濕原展望台&destination=かや沼温泉+ぽん・ぽんゆ" target="_blank">🗺️ 導航</a>
+                <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=コッタロ濕原展望台&destination=かя沼温泉+ぽん・ぽんゆ" target="_blank">🗺️ 導航</a>
             </div>
 
             <div class="card" data-id="d4-7">
                 <div class="time-badge">15:15</div>
                 <div class="card-main">
-                    <div class="spot-name">🏨 ぽん・ぽんゆ (釧路湿原かや沼温泉)</div>
+                    <div class="spot-name">🏨 ぽん・ぽんゆ (釧路湿原かя沼温泉)</div>
                     <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end;">
                         <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=かや沼温泉+ぽん・ぽんゆ" target="_blank">🗺️ 地圖</a>
                         <a class="map-link" href="https://kkaa.co.jp/img/2024/12/6540c7608e72b5615038c96520690604.jpg" target="_blank" style="background-color: #F6E2BC; color: #8F4C1B; box-shadow: var(--shadow-flat-sm);">📸 建築設計照</a>
@@ -1714,20 +1996,22 @@
 <script>
     // 保存進度與記事本內容
     const state = {
-        currentDay: 'transport', // 預設打開最左側的交通總覽
+        currentDay: 'hotels',    // 預設打開最左側的住宿預算總覽
         completedItems: {},      // 儲存各個 card 的完成狀態 { "d1-1": true }
-        dayNotes: {}             // 儲存每天的備忘錄 { 1: "今日筆記..." }
+        dayNotes: {},            // 儲存每天的備忘錄 { 1: "今日筆記..." }
+        sapporoOption: 'A'       // 預設選擇方案 A (Dormy Inn Premium)
     };
 
     // 初始化讀取（如果之前有儲存過）
     window.onload = function() {
-        const savedState = localStorage.getItem('hokkaido_trip_state_neumorphic_v3');
+        const savedState = localStorage.getItem('hokkaido_trip_state_neumorphic_v4');
         if (savedState) {
             Object.assign(state, JSON.parse(savedState));
         }
         
         // 渲染已儲存狀態
         applySavedState();
+        selectSapporoOption(state.sapporoOption); // 初始化加總與方案按鈕狀態
         switchDay(state.currentDay);
     };
 
@@ -1746,6 +2030,48 @@
         });
     }
 
+    // 選擇札幌飯店方案，即時計算預算總金額
+    function selectSapporoOption(opt) {
+        state.sapporoOption = opt;
+        
+        // 按鈕視覺效果凹陷切換
+        const btnA = document.getElementById('optBtnA');
+        const btnB = document.getElementById('optBtnB');
+        const btnC = document.getElementById('optBtnC');
+        const priceDetail = document.getElementById('sapporoPriceDetail');
+        
+        // 移除所有按鈕的 selected 樣式
+        btnA.classList.remove('selected');
+        btnB.classList.remove('selected');
+        btnC.classList.remove('selected');
+        
+        let sapporoCost = 62000;
+        
+        if (opt === 'A') {
+            btnA.classList.add('selected');
+            priceDetail.innerHTML = '¥62,000 JPY';
+            sapporoCost = 62000;
+        } else if (opt === 'B') {
+            btnB.classList.add('selected');
+            priceDetail.innerHTML = '¥118,000 JPY';
+            sapporoCost = 118000;
+        } else if (opt === 'C') {
+            btnC.classList.add('selected');
+            priceDetail.innerHTML = '¥86,000 JPY';
+            sapporoCost = 86000;
+        }
+
+        // 基本固定住宿費用合計 (Remm + Abashiri + KIKI + PonPonYu + Hinonoza + Seijakubow + Hanakagura)
+        // 31047 + 24300 + 74120 + 40000 + 97186 + 77616 + 29900 = 374,169 JPY
+        const baseCost = 374169;
+        const totalCost = baseCost + sapporoCost;
+
+        // 格式化輸出千分位日圓
+        document.getElementById('hotelTotalDisplay').innerText = '¥' + totalCost.toLocaleString() + ' JPY';
+        
+        saveState();
+    }
+
     // 切換天數分頁
     function switchDay(dayId) {
         state.currentDay = dayId;
@@ -1759,16 +2085,22 @@
         buttons.forEach(btn => btn.classList.remove('active'));
 
         // 顯示當天面板與激活按鈕
-        const panelId = (dayId === 'transport') ? 'daytransport' : 'day' + dayId;
+        let panelId;
+        if (dayId === 'transport') panelId = 'daytransport';
+        else if (dayId === 'hotels') panelId = 'dayhotels';
+        else panelId = 'day' + dayId;
+
         const currentPanel = document.getElementById(panelId);
         if (currentPanel) currentPanel.classList.add('active');
 
         let currentBtn;
         if (dayId === 'transport') {
             currentBtn = document.getElementById('tabTransport');
+        } else if (dayId === 'hotels') {
+            currentBtn = document.getElementById('tabHotels');
         } else {
-            // 在 tab 列表中，第 0 個是 Transport，所以 Day N 的按鈕索引就是 N
-            currentBtn = buttons[dayId];
+            // 在 tab 列表中，第 0 個是 Transport，第 1 個是 Hotels，所以 Day N 的按鈕索引就是 N + 1
+            currentBtn = buttons[dayId + 1];
         }
         if (currentBtn) currentBtn.classList.add('active');
 
@@ -1780,7 +2112,11 @@
         }
 
         // 切換備忘錄顯示
-        document.getElementById('notesTitleDay').innerText = (dayId === 'transport') ? 'Transport' : 'Day ' + dayId;
+        let noteLabel = 'Day ' + dayId;
+        if (dayId === 'transport') noteLabel = 'Transport';
+        else if (dayId === 'hotels') noteLabel = 'Hotels';
+        
+        document.getElementById('notesTitleDay').innerText = noteLabel;
         document.getElementById('dayNotes').value = state.dayNotes[dayId] || '';
 
         // 更新進度條
@@ -1836,7 +2172,7 @@
 
     // 保存全局狀態至 LocalStorage
     function saveState() {
-        localStorage.setItem('hokkaido_trip_state_neumorphic_v3', JSON.stringify(state));
+        localStorage.setItem('hokkaido_trip_state_neumorphic_v4', JSON.stringify(state));
     }
 
     // 搜尋功能
