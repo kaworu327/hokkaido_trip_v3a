@@ -845,46 +845,46 @@
                     
                     <!-- 三選一方案按鈕 -->
                     <div class="option-selector">
-                        <!-- Option A: Dormy Inn Premium -->
+                        <!-- Option A: Dormy Inn Premium 札幌 (石狩の湯) -->
                         <button class="option-card-btn selected" id="optBtnA" onclick="selectSapporoOption('A')">
                             <div class="opt-content">
                                 <span class="opt-dot"></span>
                                 <div>
-                                    <span class="opt-title">方案 A：Dormy Inn Premium 札幌</span>
-                                    <span style="font-size:0.75rem; color:var(--text-muted); display:block; margin-top:2px;">🥣 含早餐 | ♨️ 天然溫泉大浴場 (石狩の湯)</span>
+                                    <span class="opt-title">方案 A：Dormy Inn Premium 札幌 (石狩の湯)</span>
+                                    <span style="font-size:0.75rem; color:var(--text-muted); display:block; margin-top:2px;">🥣 含早餐 | ♨️ 大浴場 (石狩の湯)</span>
                                 </div>
                             </div>
-                            <span class="opt-price">¥62,000 JPY</span>
+                            <span class="opt-price">¥58,000 JPY</span>
                         </button>
 
-                        <!-- Option B: JR Tower Nikko -->
+                        <!-- Option B: Dormy Inn Premium 暖雪 札幌 (No Breakfast) -->
                         <button class="option-card-btn" id="optBtnB" onclick="selectSapporoOption('B')">
                             <div class="opt-content">
                                 <span class="opt-dot"></span>
                                 <div>
-                                    <span class="opt-title">方案 B：JR Tower Hotel Nikko 札幌</span>
-                                    <span style="font-size:0.75rem; color:var(--text-muted); display:block; margin-top:2px;">🥣 含早餐 | ♨️ 高空景觀溫泉 SPA (Sky Resort)</span>
+                                    <span class="opt-title">方案 B：Dormy Inn Premium 暖雪 札幌</span>
+                                    <span style="font-size:0.75rem; color:var(--text-muted); display:block; margin-top:2px;">❌ 不含早餐 | ♨️ 大浴場</span>
                                 </div>
                             </div>
-                            <span class="opt-price">¥118,000 JPY</span>
+                            <span class="opt-price">¥47,800 JPY</span>
                         </button>
 
-                        <!-- Option C: YUEN ONSEN -->
+                        <!-- Option C: Dormy Inn Premium 暖雪 札幌 (With Breakfast TBC) -->
                         <button class="option-card-btn" id="optBtnC" onclick="selectSapporoOption('C')">
                             <div class="opt-content">
                                 <span class="opt-dot"></span>
                                 <div>
-                                    <span class="opt-title">方案 C：札幌 由緣 (YUEN ONSEN)</span>
-                                    <span style="font-size:0.75rem; color:var(--text-muted); display:block; margin-top:2px;">🥣 含早餐 | ♨️ 極簡日系美學露天溫泉 (登別源泉)</span>
+                                    <span class="opt-title">方案 C：Dormy Inn Premium 暖雪 札幌</span>
+                                    <span style="font-size:0.75rem; color:var(--text-muted); display:block; margin-top:2px;">🥣 含早餐 (待確認 TBC) | ♨️ 大浴場</span>
                                 </div>
                             </div>
-                            <span class="opt-price">¥86,000 JPY</span>
+                            <span class="opt-price">¥50,000 JPY</span>
                         </button>
                     </div>
 
                     <div style="margin-top:14px; font-size:0.82rem; line-height:1.5;">
                         • <strong>房間方案說明:</strong> 雙人客房兩晚合計價格。<br>
-                        • <strong>預計費用 Cost:</strong> <span id="sapporoPriceDetail" style="font-weight:700; color:var(--accent-theme);">¥62,000 JPY</span><br>
+                        • <strong>預計費用 Cost:</strong> <span id="sapporoPriceDetail" style="font-weight:700; color:var(--accent-theme);">¥58,000 JPY</span><br>
                         • <strong>付款狀態 Status:</strong> <span class="pay-status-badge badge badge-alert">未付款 Unpaid</span>
                     </div>
                 </div>
@@ -2220,13 +2220,13 @@
         
         if (opt === 'A') {
             btnA.classList.add('selected');
-            priceDetail.innerHTML = '¥62,000 JPY';
+            priceDetail.innerHTML = '¥58,000 JPY';
         } else if (opt === 'B') {
             btnB.classList.add('selected');
-            priceDetail.innerHTML = '¥118,000 JPY';
+            priceDetail.innerHTML = '¥47,800 JPY';
         } else if (opt === 'C') {
             btnC.classList.add('selected');
-            priceDetail.innerHTML = '¥86,000 JPY';
+            priceDetail.innerHTML = '¥50,000 JPY';
         }
 
         recalculateBudgets();
@@ -2235,9 +2235,9 @@
 
     // 動態計算付款與未付款金額
     function recalculateBudgets() {
-        let sapporoCost = 62000;
-        if (state.sapporoOption === 'B') sapporoCost = 118000;
-        else if (state.sapporoOption === 'C') sapporoCost = 86000;
+        let sapporoCost = 58000;
+        if (state.sapporoOption === 'B') sapporoCost = 47800;
+        else if (state.sapporoOption === 'C') sapporoCost = 50000;
 
         // 基礎住宿費用 (Remm + Abashiri + KIKI + PonPonYu + Hinonoza + Seijakubow + Hanakagura)
         // 31047 + 24300 + 74120 + 40000 + 97186 + 77616 + 29900 = 374,169 JPY
