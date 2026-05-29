@@ -64,7 +64,7 @@
             background: var(--bg-color);
             min-height: calc(100vh - 80px);
             display: flex;
-            flex-direction: column; /* 已修正原本拼錯的 flex-flex-direction */
+            flex-direction: column;
             box-shadow: 18px 18px 36px #d5cdbf, -18px -18px 36px #ffffff;
             border-radius: 36px;
             overflow: hidden;
@@ -261,7 +261,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin: 16px 0 20px 0;
+            margin: 16px 0 12px 0;
             padding: 14px 18px;
             border-radius: 14px;
             box-shadow: var(--shadow-pressed-sm);
@@ -280,6 +280,25 @@
             text-align: right;
             line-height: 1.4;
             font-weight: 600;
+        }
+
+        /* 今日亮點摘要卡片 */
+        .day-summary-box {
+            background: rgba(179, 61, 24, 0.05);
+            border-left: 4px solid var(--accent-theme);
+            padding: 14px 16px;
+            border-radius: 14px;
+            font-size: 0.86rem;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-pressed-sm);
+            transition: all 0.3s ease;
+        }
+
+        .day-summary-box strong {
+            color: var(--accent-theme);
+            font-weight: 800;
         }
 
         /* 擬物凸起卡片 (Raised Neumorphic Card) */
@@ -309,7 +328,7 @@
             justify-content: space-between;
             align-items: flex-start;
             gap: 12px;
-            flex-wrap: wrap; /* 已修復：允許按鈕在小螢幕上安全換行，防止擠壓變形 */
+            flex-wrap: wrap; /* 允許按鈕在小螢幕上安全換行，防止擠壓變形 */
         }
 
         .card-main-buttons {
@@ -340,7 +359,7 @@
             color: var(--text-main);
             line-height: 1.4;
             flex: 1;
-            min-width: 140px; /* 已修復：確保文字有最低寬度保障，不會把按鈕擠開 */
+            min-width: 140px; /* 確保文字有最低寬度保障，不會把按鈕擠開 */
             word-break: break-word;
         }
 
@@ -401,7 +420,7 @@
             justify-content: flex-end;
             margin-top: 14px;
             gap: 8px;
-            flex-wrap: wrap; /* 已修復：防止已付與完成按鈕在小螢幕下橫向溢出 */
+            flex-wrap: wrap; /* 防止已付與完成按鈕在小螢幕下橫向溢出 */
         }
 
         /* 標記完成擬物按鈕 */
@@ -570,7 +589,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap; /* 已修復：允許選項與價格在超窄手機上自適應換行 */
+            flex-wrap: wrap; /* 允許選項與價格在超窄手機上自適應換行 */
             gap: 8px;
         }
         .option-card-btn.selected {
@@ -587,7 +606,7 @@
             align-items: center;
             gap: 10px;
             flex: 1;
-            min-width: 180px; /* 已修復：保護文字不被截斷 */
+            min-width: 180px; /* 保護文字不被截斷 */
         }
         .opt-title {
             font-size: 0.92rem;
@@ -1038,6 +1057,11 @@
                 <div class="day-title">✈️ Day 1 (Sep 25): 抵達網走、直奔必比登</div>
                 <div class="weather-box">網走 ☁️<br>18°C / 12°C</div>
             </div>
+
+            <!-- 今日亮點摘要 -->
+            <div class="day-summary-box">
+                📌 <strong>今日亮點：</strong>飛抵女滿別機場，落機即衝米其林必比登「喜八」歎鄂霍次克海鮮，直入網走溫泉酒店。
+            </div>
             
             <div class="card" data-id="d1-1">
                 <div class="time-badge">18:30</div>
@@ -1064,6 +1088,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 30 min | 🛣️ 20 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般國道)</div>
                     <div><span class="drive-target">前往 網走市區</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=女滿別機場&destination=網走市區" target="_blank">🗺️ 導航</a>
@@ -1090,7 +1115,7 @@
                     <div class="spot-name">🏨 網走 Dormy Inn</div>
                     <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=網走+Dormy+Inn+天都之湯" target="_blank">🗺️ 地圖</a>
                 </div>
-                <div><span class="badge badge-alert">🚨 登登記入住提示</span></div>
+                <div><span class="badge badge-alert">🚨 登登登登記提示</span></div>
                 <div class="card-desc">天都之湯 ドーミーイン網走。好好泡湯休息。</div>
                 <div class="card-actions">
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
@@ -1112,6 +1137,11 @@
                 <div class="weather-box">知床 ☀️<br>17°C / 10°C</div>
             </div>
 
+            <!-- 今日亮點摘要 -->
+            <div class="day-summary-box">
+                📌 <strong>今日亮點：</strong>睇能取湖紅色珊瑚草、網走監獄同流冰館，下晝沿住超靚海岸線自駕，打卡雙美瀑布，夜宿知床。
+            </div>
+
             <div class="card" data-id="d2-1">
                 <div class="time-badge">08:30</div>
                 <div class="spot-name">🚗 網走 Dormy Inn 出發</div>
@@ -1123,6 +1153,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 15 min | 🛣️ 7.2 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
                     <div><span class="drive-target">前往 能取湖珊瑚草群落地</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=網走+Dormy+Inn&destination=能取湖珊瑚草群落地" target="_blank">🗺️ 導航</a>
@@ -1147,6 +1178,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 20 min | 🛣️ 13.5 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
                     <div><span class="drive-target">前往 博物館網走監獄</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=能取湖珊瑚草群落地&destination=博物館網走監獄" target="_blank">🗺️ 導航</a>
@@ -1167,6 +1199,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 5 min | 🛣️ 1.5 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
                     <div><span class="drive-target">前往 鄂霍次克流冰館</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=博物館網走監獄&destination=鄂霍次克流冰館" target="_blank">🗺️ 導航</a>
@@ -1199,6 +1232,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 1 hr 15 min | 🛣️ 69.9 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般國道)</div>
                     <div><span class="drive-target">前往 雙美瀑布</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=鄂霍次克流冰館&destination=雙美瀑布" target="_blank">🗺️ 導航</a>
@@ -1219,6 +1253,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 15 min | 🛣️ 8.5 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
                     <div><span class="drive-target">前往 宇登呂 KIKI知床</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=雙美瀑布&destination=KIKI知床+ナチュラルリゾート" target="_blank">🗺️ 導航</a>
@@ -1252,6 +1287,11 @@
                 <div class="weather-box">宇登呂 🌦️<br>15°C / 9°C</div>
             </div>
 
+            <!-- 今日亮點摘要 -->
+            <div class="day-summary-box">
+                📌 <strong>今日亮點：</strong>朝早行知床五湖原始林，下晝坐極光號睇海蝕斷崖，黃昏上知床峠睇超震撼日落絕景。
+            </div>
+
             <div class="card" data-id="d3-1">
                 <div class="time-badge">09:30</div>
                 <div class="spot-name">🚗 KIKI知床 悠閒出發</div>
@@ -1263,6 +1303,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 30 min | 🛣️ 14 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
                     <div><span class="drive-target">前往 知床五湖</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=KIKI知床&destination=知床五湖" target="_blank">🗺️ 導航</a>
@@ -1278,7 +1319,7 @@
                         <a class="map-link" href="https://lantoko.com/shiretoko/" target="_blank" style="background-color: #E2E8F0; color: #1E3A8A; box-shadow: var(--shadow-flat-sm);">🌐 觀光攻略</a>
                     </div>
                 </div>
-                <div class="card-desc">深入森林捕捉紅葉與連山倒影，秋季無休.</div>
+                <div class="card-desc">深入森林捕捉紅葉與連山倒影，秋季無休。</div>
                 <div class="card-actions">
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
@@ -1287,6 +1328,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 30 min | 🛣️ 14 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
                     <div><span class="drive-target">前往 宇登呂港</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=知床五湖&destination=宇登呂港" target="_blank">🗺️ 導航</a>
@@ -1333,6 +1375,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 30 min | 🛣️ 15 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
                     <div><span class="drive-target">前往 知床峠展望台</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=宇登呂港&destination=知床峠" target="_blank">🗺️ 導航</a>
@@ -1357,6 +1400,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 25 min | 🛣️ 15 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
                     <div><span class="drive-target">前往 KIKI知床</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=知床峠&destination=KIKI知床" target="_blank">🗺️ 導航</a>
@@ -1385,6 +1429,11 @@
                 <div class="weather-box">弟子屈 ☀️<br>16°C / 8°C</div>
             </div>
 
+            <!-- 今日亮點摘要 -->
+            <div class="day-summary-box">
+                📌 <strong>今日亮點：</strong>打卡「天堂之路」同美幌峠俯瞰屈斜路湖，去摩周湖睇神秘摩周藍，黃昏入住濕原秘境設計宿【ぽん・ぽんゆ】。
+            </div>
+
             <div class="card" data-id="d4bp-1">
                 <div class="time-badge">08:45</div>
                 <div class="spot-name">🚗 【出發】從 KIKI知床 悠閒退房出發</div>
@@ -1397,6 +1446,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 40 min | 🛣️ 35 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
                     <div><span class="drive-target">前往 通往天堂的道路</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=KIKI知床&destination=天に続く道" target="_blank">🗺️ 導航</a>
@@ -1420,6 +1470,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 1 hr | 🛣️ 62.5 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
                     <div><span class="drive-target">前往 摩周湖第一展望台</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=天に続く道&destination=摩周湖第一展望台" target="_blank">🗺️ 導航</a>
@@ -1444,6 +1495,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 5 min | 🛣️ 3.8 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
                     <div><span class="drive-target">前往 摩周湖第三展望台</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=摩周湖第一展望台&destination=摩周湖第三展望台" target="_blank">🗺️ 導航</a>
@@ -1467,6 +1519,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 45 min | 🛣️ 42 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
                     <div><span class="drive-target">前往 美幌峠展望台</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=摩周湖第三展望台&destination=美幌峠展望台" target="_blank">🗺️ 導航</a>
@@ -1495,6 +1548,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 1 hr 10 min | 🛣️ 71 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
                     <div><span class="drive-target">前往 コッタロ濕原展望台</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=美幌峠&destination=コッタロ湿原展望台" target="_blank">🗺️ 導航</a>
@@ -1515,15 +1569,16 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 15 min | 🛣️ 12 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
                     <div><span class="drive-target">前往 ぽん・ぽんゆ</span></div>
                 </div>
-                <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=コッタロ湿原展望台&destination=かя沼温泉+ぽん・ぽんゆ" target="_blank">🗺️ 導航</a>
+                <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=コッタロ湿原展望台&destination=かや沼温泉+ぽん・ぽんゆ" target="_blank">🗺️ 導航</a>
             </div>
 
             <div class="card" data-id="d4bp-7">
                 <div class="time-badge">16:20</div>
                 <div class="card-main">
-                    <div class="spot-name">🏨 ぽん・ぽんゆ (釧路濕原かや沼温泉)</div>
+                    <div class="spot-name">🏨 ぽん・ぽんゆ (釧路濕原かya沼温泉)</div>
                     <a class="map-link" href="https://kkaa.co.jp/img/2024/12/6540c7608e72b5615038c96520690604.jpg" target="_blank" style="background-color: #F6E2BC; color: #8F4C1B; box-shadow: var(--shadow-flat-sm);">📸 建築設計照</a>
                 </div>
                 <div><span class="badge badge-alert">🚨 從容入住提示</span></div>
@@ -1548,6 +1603,11 @@
                 <div class="weather-box">弟子屈 ☀️<br>16°C / 8°C</div>
             </div>
 
+            <!-- 今日亮點摘要 -->
+            <div class="day-summary-box">
+                📌 <strong>今日亮點：</strong>打卡「天堂之路」同硫磺山地熱，去摩周湖睇神秘摩周藍，黃昏入住濕原秘境設計宿【ぽん・ぽんゆ】。
+            </div>
+
             <div class="card" data-id="d4lhs-1">
                 <div class="time-badge">09:00</div>
                 <div class="spot-name">🚗 【知床出發】從 KIKI知床 悠閒退房出發</div>
@@ -1559,6 +1619,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 40 min | 🛣️ 35 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
                     <div><span class="drive-target">前往 通往天堂的道路</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=KIKI知床&destination=天に続く道" target="_blank">🗺️ 導航</a>
@@ -1582,6 +1643,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 50 min | 🛣️ 45 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
                     <div><span class="drive-target">前往 硫磺山</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=天に続く道&destination=硫黄山" target="_blank">🗺️ 導航</a>
@@ -1606,6 +1668,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 20 min | 🛣️ 15 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
                     <div><span class="drive-target">前往 摩周湖第一展望台</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=硫黄山&destination=摩周湖第一展望台" target="_blank">🗺️ 導航</a>
@@ -1629,6 +1692,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 5 min | 🛣️ 3.8 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
                     <div><span class="drive-target">前往 摩周湖 third 展望台</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=摩周湖第一展望台&destination=摩周湖第三展望台" target="_blank">🗺️ 導航</a>
@@ -1652,6 +1716,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 30 min | 🛣️ 25 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
                     <div><span class="drive-target">前往 弟子屈市區</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=摩周湖第三展望台&destination=弟子屈ラーメン+弟子屈本店" target="_blank">🗺️ 導航</a>
@@ -1672,6 +1737,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 45 min</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
                     <div><span class="drive-target">前往 コッタロ濕原展望台</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=弟子屈ラーメン&destination=コッタロ湿原展望台" target="_blank">🗺️ 導航</a>
@@ -1692,15 +1758,16 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 15 min | 🛣️ 12 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
                     <div><span class="drive-target">前往 ぽん・ぽんゆ</span></div>
                 </div>
-                <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=コッタロ湿原展望台&destination=かyа沼温泉+ぽん・ぽんゆ" target="_blank">🗺️ 導航</a>
+                <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=コッタロ湿原展望台&destination=かや沼温泉+ぽん・ぽんゆ" target="_blank">🗺️ 導航</a>
             </div>
 
             <div class="card" data-id="d4lhs-8">
                 <div class="time-badge">16:25</div>
                 <div class="card-main">
-                    <div class="spot-name">🏨 ぽん・ぽんゆ (釧路濕原かyа沼温泉)</div>
+                    <div class="spot-name">🏨 ぽん・ぽんゆ (釧路濕原かya沼温泉)</div>
                     <a class="map-link" href="https://kkaa.co.jp/img/2024/12/6540c7608e72b5615038c96520690604.jpg" target="_blank" style="background-color: #F6E2BC; color: #8F4C1B; box-shadow: var(--shadow-flat-sm);">📸 建築設計照</a>
                 </div>
                 <div class="card-desc">【抵達酒店 / 入住】下午四點半前早早入住秘境設計宿。在冷冽秋夜與滿天繁星下，享受極致滑膩的私人源泉溫泉。</div>
@@ -1720,13 +1787,23 @@
         <!-- ==================== DAY 5 ==================== -->
         <div id="day5" class="day-panel theme-day5" data-day="5">
             <div class="day-header">
-                <div class="day-title">🍁 Day 5 (Sep 29): 金色濕原 ➔ 鄙之座奢華控制</div>
+                <div class="day-title">🍁 Day 5 (Sep 29): 純粹的阿寒湖靈性度假日 (09:45 出發極致從容版)</div>
                 <div class="weather-box">阿寒湖 ☁️<br>15°C / 7°C</div>
             </div>
+            
+            <!-- 今日亮點摘要 -->
+            <div class="day-summary-box">
+                📌 <strong>今日亮點：</strong>09:45 出發，中午行愛努村食飯，下晝坐 13:00 遊船睇綠球藻，14:30 精準 Check-in 頂級【鄙之座】。
+            </div>
+
+            <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.5; margin-bottom:16px; padding: 12px; background: rgba(179, 61, 24, 0.05); border-radius: 12px; border-left: 4px solid var(--accent-theme);">
+                ✨ 這一天，我們用 15 分鐘的精算緩衝，換取全日無壓力的頂級度假感。
+            </p>
 
             <div class="card" data-id="d5-1">
-                <div class="time-badge">09:30</div>
-                <div class="spot-name">🚗 ぽん・ぽんゆ 出發</div>
+                <div class="time-badge">09:45</div>
+                <div class="spot-name">🚗 【酒店出發】優雅離開釧路濕原（ぽん・ぽんゆ）</div>
+                <div class="card-desc">帶著最放鬆的心情展開自駕，享受無壓力的晨間時光。</div>
                 <div class="card-actions">
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
@@ -1734,52 +1811,83 @@
 
             <div class="drive-card">
                 <div class="drive-info">
-                    <div>⏱️ 45 min | 🛣️ 39 km</div>
-                    <div><span class="drive-target">前往 溫根內高架木棧道</span></div>
+                    <div>⏱️ 1 hr 15 min | 🛣️ 65 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (沿國道241號森林景觀路段)</div>
+                    <div><span class="drive-target">沿國道 241 號開往阿寒湖</span></div>
                 </div>
-                <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=かyа沼温泉&destination=温根内高架木棧道" target="_blank">🗺️ 導航</a>
+                <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=かや沼温泉+ぽん・ぽんゆ&destination=阿寒湖+鄙之座" target="_blank">🗺️ 導航</a>
             </div>
 
             <div class="card" data-id="d5-2">
-                <div class="time-badge">10:15 - 11:45</div>
+                <div class="time-badge">11:00 - 11:15</div>
                 <div class="card-main">
-                    <div class="spot-name">📍 溫根內高架木棧道</div>
-                    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=温根内高架木棧道" target="_blank">🗺️ 地圖</a>
+                    <div class="spot-name">🚗 【精準安頓】抵達阿寒湖 ＆ 輕裝步出</div>
+                    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=阿寒湖+鶴雅別莊+鄙之座" target="_blank">🗺️ 地圖</a>
                 </div>
-                <div class="card-desc">漫步在金色麥浪般的濕原中央，步道全天開放。</div>
+                <div class="card-desc">直接將車停在「鄙之座」門口，由行李員接手行李與代客停車，輕裝開啟步行慢遊。</div>
                 <div class="card-actions">
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
             </div>
 
-            <div class="drive-card">
-                <div class="drive-info">
-                    <div>⏱️ 1 hr | 🛣️ 59 km</div>
-                    <div><span class="drive-target">前往 阿寒湖</span></div>
-                </div>
-                <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=温根内高架木棧道&destination=阿寒湖" target="_blank">🗺️ 導航</a>
-            </div>
-
             <div class="card" data-id="d5-3">
-                <div class="time-badge">12:45 - 14:00</div>
+                <div class="time-badge">11:15 - 12:45</div>
                 <div class="card-main">
-                    <div class="spot-name">🍱 愛努村散策與午餐</div>
-                    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=阿寒湖アイヌコタン" target="_blank">🗺️ 地圖</a>
+                    <div class="spot-name">🍱 【從容午餐 & 愛努村散策】</div>
+                    <div class="card-main-buttons">
+                        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=阿寒湖アイヌコタン" target="_blank">🗺️ 地圖</a>
+                    </div>
                 </div>
-                <div class="card-desc">漫步充滿歷史與木雕工藝建築美學的 Ainu Kotan。</div>
+                <div class="card-desc">
+                    <strong>Stay: 1 hr 30 min | 體驗：極致寬裕的 90 分鐘</strong><br>
+                    您可以先逛逛溫泉街上的頂級木雕工藝店，再挑選一家心儀的在地料理或景觀餐廳享用午餐，節奏慢活且優雅。
+                </div>
                 <div class="card-actions">
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
             </div>
 
             <div class="card" data-id="d5-4">
-                <div class="time-badge">14:00</div>
+                <div class="time-badge">12:45 - 13:00</div>
+                <div class="spot-name">🚶 散步至遊覽船碼頭</div>
+                <div class="card-desc">預留 15 分鐘輕鬆步行前往碼頭準備登船。</div>
+                <div class="card-actions">
+                    <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
+                </div>
+            </div>
+
+            <div class="card" data-id="d5-5">
+                <div class="time-badge">13:00 - 14:25</div>
                 <div class="card-main">
-                    <div class="spot-name">🏨 阿寒湖 鶴雅別莊 鄙之座</div>
+                    <div class="spot-name">🛥️ 【核心體驗：阿寒湖遊船（13:00 航班）】</div>
+                    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=阿寒湖遊覽船" target="_blank">🗺️ 地圖</a>
+                </div>
+                <div class="card-desc">
+                    <strong>體驗：乘坐 13:00 正式航班（全程 85 分鐘）</strong><br>
+                    包含前往 Churui 島參觀世界唯一的「綠球藻展示觀察中心」，從湖心 360 度飽覽雄阿寒岳的壯麗山水。
+                </div>
+                <div class="card-actions">
+                    <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
+                </div>
+            </div>
+
+            <div class="card" data-id="d5-6">
+                <div class="time-badge">14:25 - 14:30</div>
+                <div class="spot-name">🚶 【無縫轉場】步行回飯店</div>
+                <div class="card-desc">下船後，步行 3 分鐘直接走回飯店大廳。</div>
+                <div class="card-actions">
+                    <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
+                </div>
+            </div>
+
+            <div class="card" data-id="d5-7">
+                <div class="time-badge">14:30</div>
+                <div class="card-main">
+                    <div class="spot-name">🏨 【準時 Check-in】精準入住：鄙之座 (Hinanoza)</div>
                     <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=阿寒湖+鶴雅別莊+鄙之座" target="_blank">🗺️ 地圖</a>
                 </div>
-                <div><span class="badge badge-alert">🚨 精準 Check-in 重點提示</span></div>
-                <div class="card-desc">下午兩點整準時走入旅館，開啟頂級奢華溫泉度假模式。</div>
+                <div><span class="badge badge-alert">🚨 高奢享受提示</span></div>
+                <div class="card-desc">完美的下船時間銜接辦理入住。換上舒適的服裝，全力享受鄙之座專屬的客房私湯與頂級高奢款待，今晚不再出門。</div>
                 <div class="card-actions">
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
@@ -1796,14 +1904,24 @@
         <!-- ==================== DAY 6 ==================== -->
         <div id="day6" class="day-panel theme-day6" data-day="6">
             <div class="day-header">
-                <div class="day-title">🏛️ Day 6 (Sep 30): 古堡酒莊 ➔ 清寂房精準入住</div>
+                <div class="day-title">🏛️ Day 6 (Sep 30): 絕景閃拍 ➔ 古堡酒莊 ➔ 帶廣豚丼 ➔ 提早激享清寂房</div>
                 <div class="weather-box">十勝 ☀️<br>17°C / 9°C</div>
             </div>
 
+            <!-- 今日亮點摘要 -->
+            <div class="day-summary-box">
+                📌 <strong>今日亮點：</strong>10:00 出發閃拍瀧見橋紅葉，之後行古堡酒莊、避開人潮爽食帶廣豚丼，15:00 提早入宿十勝川【清寂房】。
+            </div>
+
+            <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.5; margin-bottom:16px; padding: 12px; background: rgba(179, 61, 24, 0.05); border-radius: 12px; border-left: 4px solid var(--accent-theme);">
+                ✨ 這一天，我們縮短瀧見橋停留，全力為下一間清水模名宿爭取前半小時的奢華時光。
+            </p>
+
             <div class="card" data-id="d6-1">
-                <div class="time-badge">10:30</div>
-                <div class="spot-name">🚗 離開：鄙之座</div>
-                <div><span class="badge badge-alert">🚨 精準 Check-out 提示</span></div>
+                <div class="time-badge">10:00</div>
+                <div class="spot-name">🚗 【酒店出發 / 完美 Check-out】離開：鄙之座</div>
+                <div><span class="badge badge-alert">🚨 晨間節奏提示</span></div>
+                <div class="card-desc">07:30 享用早餐，吃完還有整整兩個小時可以泡晨湯、在房間看湖景，待到最後一刻才優雅離開。</div>
                 <div class="card-actions">
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
@@ -1811,19 +1929,41 @@
 
             <div class="drive-card">
                 <div class="drive-info">
-                    <div>⏱️ 2 hr | 🛣️ 95 km</div>
-                    <div><span class="drive-target">前往 池田葡萄酒城</span></div>
+                    <div>⏱️ 10 min | 🛣️ 5 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (山區一般林道)</div>
+                    <div><span class="drive-target">前往 瀧見橋</span></div>
                 </div>
-                <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=阿寒湖+鄙之座&destination=池田ワイン城" target="_blank">🗺️ 導航</a>
+                <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=阿寒湖+鄙之座&destination=瀧見橋" target="_blank">🗺️ 導航</a>
             </div>
 
             <div class="card" data-id="d6-2">
-                <div class="time-badge">12:30 - 13:30</div>
+                <div class="time-badge">10:10 - 10:25</div>
                 <div class="card-main">
-                    <div class="spot-name">📍 池田葡萄酒城</div>
+                    <div class="spot-name">📍 【⚡ 瀧見橋極致閃拍】</div>
+                    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=阿寒湖+滝見橋" target="_blank">🗺️ 地圖</a>
+                </div>
+                <div class="card-desc"><strong>Stay: 15 min | 高效美學</strong><br>下車直奔橋頭，快速捕捉溪流、紅葉與古橋的經典同框大片，隨即收工上車。</div>
+                <div class="card-actions">
+                    <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
+                </div>
+            </div>
+
+            <div class="drive-card">
+                <div class="drive-info">
+                    <div>⏱️ 1 hr 25 min | 🛣️ 84 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🛣️ 💴 630円 (行經道東自動車道 足寄IC ➔ 池田IC) / 🆓 免費 (若走一般國道)</div>
+                    <div><span class="drive-target">前往 池田葡萄酒城 (池田ワイン城)</span></div>
+                </div>
+                <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=瀧見橋&destination=池田ワイン城" target="_blank">🗺️ 導航</a>
+            </div>
+
+            <div class="card" data-id="d6-3">
+                <div class="time-badge">11:50 - 12:50</div>
+                <div class="card-main">
+                    <div class="spot-name">📍 池田葡萄酒城 (Stay: 1 hr)</div>
                     <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=池田ワイン城" target="_blank">🗺️ 地圖</a>
                 </div>
-                <div class="card-desc">中世紀歐式古堡建築與熟成酒窖巡禮，年中無休.</div>
+                <div class="card-desc">提早於 11:50 抵達！有一個小時可以非常從容地穿梭在中世紀古堡與地下熟成酒窖，感受充滿空間幾何感的建築線條。</div>
                 <div class="card-actions">
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
@@ -1832,18 +1972,19 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 30 min | 🛣️ 25 km</div>
-                    <div><span class="drive-target">前往 帶廣市區</span></div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
+                    <div><span class="drive-target">開往帶廣市區</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=池田ワイン城&destination=元祖ぱんちょう" target="_blank">🗺️ 導航</a>
             </div>
 
-            <div class="card" data-id="d6-3">
-                <div class="time-badge">14:00 - 14:30</div>
+            <div class="card" data-id="d6-4">
+                <div class="time-badge">13:20 - 14:00</div>
                 <div class="card-main">
-                    <div class="spot-name">🍱 元祖ぱんちょう</div>
+                    <div class="spot-name">🍱 帶廣名物：【元祖ぱんちょう】豚丼 (Stay: 40 min)</div>
                     <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=元祖ぱんちょう" target="_blank">🗺️ 地圖</a>
                 </div>
-                <div class="card-desc">豚丼名店：避開尖峰，速吃帶廣名物。</div>
+                <div class="card-desc">13:20 完美避開正中午排隊潮！進店直接入座，大口享用現烤、醬汁濃郁爆汁的炭烤豚丼，40 分鐘吃得非常滿足且優雅。</div>
                 <div class="card-actions">
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
@@ -1852,18 +1993,19 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 30 min | 🛣️ 12 km</div>
-                    <div><span class="drive-target">前往 十勝卡丘展望台</span></div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
+                    <div><span class="drive-target">開往 十勝が丘展望台</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=元祖ぱんちょう&destination=十勝が丘展望台" target="_blank">🗺️ 導航</a>
             </div>
 
-            <div class="card" data-id="d6-4">
-                <div class="time-badge">15:00 - 15:20</div>
+            <div class="card" data-id="d6-5">
+                <div class="time-badge">14:30 - 14:50</div>
                 <div class="card-main">
-                    <div class="spot-name">📍 十勝が丘展望台</div>
+                    <div class="spot-name">📍 十勝が丘展望台 (Stay: 20 min)</div>
                     <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=十勝が丘展望台" target="_blank">🗺️ 地圖</a>
                 </div>
-                <div class="card-desc">180度俯瞰十勝川白鳥大橋與平原秋色，無休。</div>
+                <div class="card-desc">在進飯店前最後的視覺儀式。180 度遠眺白鳥大橋與染上深秋金黃的十勝大平原，平復一下吃飽喝足的心情。</div>
                 <div class="card-actions">
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
@@ -1872,19 +2014,20 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 10 min | 🛣️ 4 km</div>
-                    <div><span class="drive-target">前往 清寂房</span></div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
+                    <div><span class="drive-target">直衝 清寂房</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=十勝が丘展望台&destination=十勝川モール温泉+清寂房" target="_blank">🗺️ 導航</a>
             </div>
 
-            <div class="card" data-id="d6-5">
-                <div class="time-badge">15:30</div>
+            <div class="card" data-id="d6-6">
+                <div class="time-badge">15:00</div>
                 <div class="card-main">
-                    <div class="spot-name">🏨 十勝川モール温泉 清寂房</div>
+                    <div class="spot-name">🏨 【✨提早半小時精準入住！】入住：十勝川モール温泉 清寂房</div>
                     <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=十勝川モール温泉+清寂房" target="_blank">🗺️ 地圖</a>
                 </div>
-                <div><span class="badge badge-alert">🚨 精準 Check-in 重點提示</span></div>
-                <div class="card-desc">享受私人摩爾植物溫泉與清水模極極簡空間。</div>
+                <div><span class="badge badge-alert">🚨 極致享受提示</span></div>
+                <div class="card-desc">下午 15:00 整準時抵達！多賺到半個小時的黃金時間，可以提早躺在極簡清水模的設計客房裡，泡入珍貴的植物摩爾溫泉，享受最頂級的北國深秋午後。</div>
                 <div class="card-actions">
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
@@ -1905,6 +2048,11 @@
                 <div class="weather-box">層雲峽 🍂<br>13°C / 5°C</div>
             </div>
 
+            <!-- 今日亮點摘要 -->
+            <div class="day-summary-box">
+                📌 <strong>今日亮點：</strong>北上睇三國峠紅葉樹海大橋，下晝去層雲峽睇雙瀑兼坐黑岳纜車，夜晚住旭川市郊溫泉酒店。
+            </div>
+
             <div class="card" data-id="d7-1">
                 <div class="time-badge">10:30</div>
                 <div class="spot-name">🚗 離開：十勝川清寂房</div>
@@ -1917,6 +2065,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 1 hr 45 min | 🛣️ 95 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般國道)</div>
                     <div><span class="drive-target">前往 三國峠 カフェ展望台</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=十勝川温泉+清寂房&destination=三国峠+カフェ" target="_blank">🗺️ 導航</a>
@@ -1937,6 +2086,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 30 min | 🛣️ 31 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般國道)</div>
                     <div><span class="drive-target">前往 流星之瀑・銀河之瀑</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=三国峠&destination=流星の滝" target="_blank">🗺️ 導航</a>
@@ -1957,6 +2107,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 5 min | 🛣️ 3 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
                     <div><span class="drive-target">前往 層雲峽・黑岳索道纜車</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=流星の滝&destination=黑岳ロープウェイ" target="_blank">🗺️ 導航</a>
@@ -1977,6 +2128,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 1 hr 15 min | 🛣️ 74 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般國道)</div>
                     <div><span class="drive-target">前往 森のゆ 花神樂酒店</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=黑岳ロープウェイ&destination=森のゆ+花神楽" target="_blank">🗺️ 導航</a>
@@ -2005,6 +2157,11 @@
                 <div class="weather-box">札幌 ☀️<br>14°C / 6°C</div>
             </div>
 
+            <!-- 今日亮點摘要 -->
+            <div class="day-summary-box">
+                📌 <strong>今日亮點：</strong>美瑛青池同白鬍子瀑布嘅夢幻藍，中午去旭川美術館，下晝去埋野口勇幾何大地公園，之後入札幌。
+            </div>
+
             <div class="card" data-id="d8-1">
                 <div class="time-badge">08:45</div>
                 <div class="spot-name">🚗 花神樂酒店 出發</div>
@@ -2016,6 +2173,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 45 min | 🛣️ 35.6 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
                     <div><span class="drive-target">前往 美瑛山區</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=森のゆ+花神楽&destination=白金青い池" target="_blank">🗺️ 導航</a>
@@ -2039,6 +2197,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 55 min | 🛣️ 41.7 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般國道)</div>
                     <div><span class="drive-target">前往 旭川市中心</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=白金青い池&destination=北海道立旭川美術館" target="_blank">🗺️ 導航</a>
@@ -2071,6 +2230,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 1 hr 50 min | 🛣️ 135 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🛣️ 💴 3,800円 (經道央自動車道 旭川鷹栖IC ➔ 札幌北IC) / 🆓 免費 (若走一般國道)</div>
                     <div><span class="drive-target">前往 莫埃來沼公園</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=旭川&destination=モエレ沼公園" target="_blank">🗺️ 導航</a>
@@ -2091,6 +2251,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 35 min</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
                     <div><span class="drive-target">前往 札幌市區</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=モエレ沼公園&destination=札幌市區" target="_blank">🗺️ 導航</a>
@@ -2123,6 +2284,11 @@
                 <div class="weather-box">札幌 ☁️<br>15°C / 8°C</div>
             </div>
 
+            <!-- 今日亮點摘要 -->
+            <div class="day-summary-box">
+                📌 <strong>今日亮點：</strong>朝早去八劍山酒莊睇峭壁兼同紅葉全景開飯，下晝狂掃札幌 5 大高階買手店，夜晚優雅歎米其林大餐。
+            </div>
+
             <div class="card" data-id="d9-1">
                 <div class="time-badge">09:15</div>
                 <div class="spot-name">🚗 札幌市區 出發</div>
@@ -2135,6 +2301,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 35 min | 🛣️ 18 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
                     <div><span class="drive-target">前往 八劍山</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=札幌市區&destination=八剣山ワイナリー" target="_blank">🗺️ 導航</a>
@@ -2167,6 +2334,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 35 min | 🛣️ 18 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
                     <div><span class="drive-target">前往 狸小路/大通商圈</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=八剣山&destination=狸小路" target="_blank">🗺️ 導航</a>
@@ -2229,6 +2397,11 @@
                 <div class="weather-box">千歲 ☀️<br>14°C / 7°C</div>
             </div>
 
+            <!-- 今日亮點摘要 -->
+            <div class="day-summary-box">
+                📌 <strong>今日亮點：</strong>睇安藤忠雄「頭大佛殿」同藝術之森，下晝睇羊之丘平原兼震撼直擊鮭魚逆流，挨晚去新千歲機場最後大橫掃返羽田。
+            </div>
+
             <div class="card" data-id="d10-1">
                 <div class="time-badge">09:00</div>
                 <div class="spot-name">🚗 酒店退房，直接出發！</div>
@@ -2241,6 +2414,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 45 min | 20 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
                     <div><span class="drive-target">前往 頭大仏殿</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=札幌市區&destination=真駒内滝野霊園+頭大仏" target="_blank">🗺️ 導航</a>
@@ -2261,6 +2435,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 20 min | 13.4 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
                     <div><span class="drive-target">前往 札幌藝術之森</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=頭大仏&destination=札幌芸術の森" target="_blank">🗺️ 導航</a>
@@ -2281,6 +2456,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 25 min</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
                     <div><span class="drive-target">前往 羊ヶ丘展望台</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=札幌芸術の森&destination=羊ヶ丘展望台" target="_blank">🗺️ 導航</a>
@@ -2301,6 +2477,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 40 min</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
                     <div><span class="drive-target">前往 千歲鮭魚故鄉水族館</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=羊ヶ丘展望台&destination=サケのふるさと+千歳水族館" target="_blank">🗺️ 導航</a>
@@ -2321,6 +2498,7 @@
             <div class="drive-card">
                 <div class="drive-info">
                     <div>⏱️ 15 min</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
                     <div><span class="drive-target">前往 新千歲機場還車處</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=千歳水族館&destination=新千歲機場+租車" target="_blank">🗺️ 導航</a>
