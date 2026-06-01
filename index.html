@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>北海道秋季自然及溫泉之旅</title>
-    <!-- 引入極致現代、微圓潤且利於閱讀的 Google 字型 Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -35,6 +34,7 @@
             --day10: #A3576C; /* 晚霞紅 */
             --transport: #2B4C6F; /* 質感海軍深藍 (代表交通與飛行) */
             --hotels: #78350F;    /* 焦糖暖木褐 (代表高奢旅宿) */
+            --bookings: #566A7F;  /* 優雅內斂暮光霧藍 (代表餐廳與美髮預約) */
         }
 
         * {
@@ -193,7 +193,7 @@
             text-align: right;
         }
 
-        /* 頂部頁籤列 (Transport 與 Hotels 安排在最左側) */
+        /* 頂部頁籤列 */
         .tab-bar {
             display: flex;
             overflow-x: auto;
@@ -301,7 +301,7 @@
             font-weight: 800;
         }
 
-        /* 擬物凸起卡片 (Raised Neumorphic Card) */
+        /* 擬物凸起卡片 */
         .card {
             background: var(--bg-color);
             border-radius: 24px;
@@ -313,7 +313,7 @@
             transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* 擬物凹陷卡片 (Pressed / Completed Neumorphic Card) */
+        /* 擬物凹陷卡片 */
         .card.completed {
             box-shadow: var(--shadow-pressed);
             opacity: 0.65;
@@ -328,7 +328,7 @@
             justify-content: space-between;
             align-items: flex-start;
             gap: 12px;
-            flex-wrap: wrap; /* 允許按鈕在小螢幕上安全換行，防止擠壓變形 */
+            flex-wrap: wrap;
         }
 
         .card-main-buttons {
@@ -359,7 +359,7 @@
             color: var(--text-main);
             line-height: 1.4;
             flex: 1;
-            min-width: 140px; /* 確保文字有最低寬度保障，不會把按鈕擠開 */
+            min-width: 140px;
             word-break: break-word;
         }
 
@@ -408,6 +408,7 @@
         .theme-day10 { --accent-theme: var(--day10); --tag-alert: #A83636; --tag-port: #1E668A; }
         .theme-transport { --accent-theme: var(--transport); --tag-alert: #B45309; --tag-port: #1E4D7A; }
         .theme-hotels { --accent-theme: var(--hotels); --tag-alert: #374151; --tag-port: #047857; }
+        .theme-bookings { --accent-theme: var(--bookings); --tag-alert: #6B7A8A; --tag-port: #3D4E5E; }
 
         /* 左邊裝飾線 */
         .day-panel.active .card {
@@ -420,7 +421,7 @@
             justify-content: flex-end;
             margin-top: 14px;
             gap: 8px;
-            flex-wrap: wrap; /* 防止已付與完成按鈕在小螢幕下橫向溢出 */
+            flex-wrap: wrap;
         }
 
         /* 標記完成擬物按鈕 */
@@ -569,7 +570,7 @@
             transform: scale(0.97);
         }
 
-        /* 互動式單選按鈕容器 (Sapporo Option Select) */
+        /* 互動式單選按鈕容器 */
         .option-selector {
             display: flex;
             flex-direction: column;
@@ -589,7 +590,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap; /* 允許選項與價格在超窄手機上自適應換行 */
+            flex-wrap: wrap;
             gap: 8px;
         }
         .option-card-btn.selected {
@@ -606,7 +607,7 @@
             align-items: center;
             gap: 10px;
             flex: 1;
-            min-width: 180px; /* 保護文字不被截斷 */
+            min-width: 180px;
         }
         .opt-title {
             font-size: 0.92rem;
@@ -649,7 +650,7 @@
             gap: 6px;
         }
 
-        /* 內凹式記事本 (Inset Note Slot) */
+        /* 內凹式記事本 */
         .notes-textarea {
             width: 100%;
             height: 110px;
@@ -687,7 +688,6 @@
         <p>10 Days / Autumn Aesthetic Itinerary</p>
     </header>
 
-    <!-- 搜尋與進度追蹤欄 -->
     <div class="search-progress-bar">
         <div class="search-wrapper">
             <span class="search-icon">🔍</span>
@@ -702,20 +702,16 @@
         </div>
     </div>
 
-    <!-- 頂部頁籤列 (Transport 與 Hotels 安排在最左側) -->
     <div class="tab-bar" id="tabBar">
-        <!-- 交通總覽分頁 -->
         <button class="tab-btn theme-transport" id="tabTransport" onclick="switchDay('transport')">🚗<span>Transport</span></button>
-        <!-- 住宿總覽分頁 -->
         <button class="tab-btn active theme-hotels" id="tabHotels" onclick="switchDay('hotels')">🏨<span>Hotels</span></button>
-        <!-- 每日行程分頁 -->
+        <button class="tab-btn theme-bookings" id="tabBookings" onclick="switchDay('bookings')">📅<span>Bookings</span></button>
+        
         <button class="tab-btn theme-day1" id="tabDay1" onclick="switchDay(1)">D1<span>Sep 25</span></button>
         <button class="tab-btn theme-day2" id="tabDay2" onclick="switchDay(2)">D2<span>Sep 26</span></button>
         <button class="tab-btn theme-day3" id="tabDay3" onclick="switchDay(3)">D3<span>Sep 27</span></button>
-        <!-- 拆分後的雙 Day 4 頁籤 -->
         <button class="tab-btn theme-day4-bp" id="tabDay4Bp" onclick="switchDay('4-bp')">D4 (美幌峠)<span>Sep 28</span></button>
         <button class="tab-btn theme-day4-lhs" id="tabDay4Lhs" onclick="switchDay('4-lhs')">D4 (硫磺山)<span>Sep 28</span></button>
-        
         <button class="tab-btn theme-day5" id="tabDay5" onclick="switchDay(5)">D5<span>Sep 29</span></button>
         <button class="tab-btn theme-day6" id="tabDay6" onclick="switchDay(6)">D6<span>Sep 30</span></button>
         <button class="tab-btn theme-day7" id="tabDay7" onclick="switchDay(7)">D7<span>Oct 01</span></button>
@@ -724,17 +720,14 @@
         <button class="tab-btn theme-day10" id="tabDay10" onclick="switchDay(10)">D10<span>Oct 04</span></button>
     </div>
 
-    <!-- 行程面板容器 -->
     <div class="content-container" id="contentContainer">
 
-        <!-- ==================== HOTELS PANEL ==================== -->
         <div id="dayhotels" class="day-panel active theme-hotels" data-day="hotels">
             <div class="day-header">
                 <div class="day-title">🏨 Hotels 住宿預算總覽</div>
                 <div class="weather-box">旅宿與泡湯<br>規格清單</div>
             </div>
 
-            <!-- 住宿總預算 Banner -->
             <div class="hotel-total-banner">
                 <div class="hotel-total-row">
                     <span class="hotel-total-label">總住宿預算 (Total Cost)</span>
@@ -746,7 +739,6 @@
                 </div>
             </div>
 
-            <!-- Hotel 1: Tokyo -->
             <div class="card" data-id="hotel-remm">
                 <div class="time-badge">Sep 23 - Sep 25 (2晚)</div>
                 <div class="card-main">
@@ -765,7 +757,6 @@
                 </div>
             </div>
 
-            <!-- Hotel 2: Abashiri -->
             <div class="card" data-id="hotel-dormy">
                 <div class="time-badge">Sep 25 - Sep 26 (1晚)</div>
                 <div class="card-main">
@@ -775,7 +766,7 @@
                 <div class="card-desc">
                     • <strong>餐食計畫 Meals:</strong> 🥣 含早餐 / ❌ 不含晚餐<br>
                     • <strong>溫泉設施 Onsen:</strong> ♨️ 有溫泉 (<span class="badge badge-port" style="margin-top:0;">大浴場</span>)<br>
-                    • <strong>預約費用 Cost:</strong> ¥24,300 JPY<br>
+                    • <strong>預約費用 Cost:</strong> ¥21,150 JPY<br>
                     • <strong>付款狀態 Status:</strong> <span class="pay-status-badge badge badge-alert">未付款 Unpaid</span>
                 </div>
                 <div class="card-actions">
@@ -784,7 +775,6 @@
                 </div>
             </div>
 
-            <!-- Hotel 3: Shiretoko KIKI -->
             <div class="card" data-id="hotel-kiki">
                 <div class="time-badge">Sep 26 - Sep 28 (2晚)</div>
                 <div class="card-main">
@@ -794,7 +784,7 @@
                 <div class="card-desc">
                     • <strong>餐食計畫 Meals:</strong> 🥣 含早餐 / 🍱 含晚餐<br>
                     • <strong>溫泉設施 Onsen:</strong> ♨️ 有溫泉 (<span class="badge badge-port" style="margin-top:0;">大浴場</span>)<br>
-                    • <strong>預約費用 Cost:</strong> ¥74,120 JPY<br>
+                    • <strong>預約費用 Cost:</strong> ¥70,620 JPY<br>
                     • <strong>付款狀態 Status:</strong> <span class="pay-status-badge badge badge-alert">未付款 Unpaid</span>
                 </div>
                 <div class="card-actions">
@@ -803,7 +793,6 @@
                 </div>
             </div>
 
-            <!-- Hotel 4: Pon Pon Yu -->
             <div class="card" data-id="hotel-pon">
                 <div class="time-badge">Sep 28 - Sep 29 (1晚)</div>
                 <div class="card-main">
@@ -822,7 +811,6 @@
                 </div>
             </div>
 
-            <!-- Hotel 5: Hinonoza -->
             <div class="card" data-id="hotel-hino">
                 <div class="time-badge">Sep 29 - Sep 30 (1晚)</div>
                 <div class="card-main">
@@ -841,7 +829,6 @@
                 </div>
             </div>
 
-            <!-- Hotel 6: Seijakubow -->
             <div class="card" data-id="hotel-seijaku">
                 <div class="time-badge">Sep 30 - Oct 01 (1晚)</div>
                 <div class="card-main">
@@ -852,15 +839,14 @@
                     • <strong>餐食計畫 Meals:</strong> 🥣 含早餐 / 🍱 含晚餐<br>
                     • <strong>溫泉設施 Onsen:</strong> ♨️ 有溫泉 (<span class="badge badge-alert" style="margin-top:0; background-color:#B45309;">個室風呂付</span>)<br>
                     • <strong>預約費用 Cost:</strong> ¥77,616 JPY<br>
-                    • <strong>付款狀態 Status:</strong> <span class="pay-status-badge badge badge-alert">未付款 Unpaid</span>
+                    • <strong>付款狀態 Status:</strong> <span class="pay-status-badge badge badge-port">已付款 Paid</span>
                 </div>
                 <div class="card-actions">
-                    <button class="btn-paid" onclick="togglePaid(this, 'hotel-seijaku')">💳 標記已付 Paid</button>
+                    <button class="btn-paid paid" onclick="togglePaid(this, 'hotel-seijaku')">✓ 已付款 Paid</button>
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
             </div>
 
-            <!-- Hotel 7: Hanakagura -->
             <div class="card" data-id="hotel-hana">
                 <div class="time-badge">Oct 01 - Oct 02 (1晚)</div>
                 <div class="card-main">
@@ -879,66 +865,61 @@
                 </div>
             </div>
 
-            <!-- Hotel 8 & 9: Sapporo Choice -->
             <div class="card" data-id="hotel-sapporo-choice">
                 <div class="time-badge">Oct 02 - Oct 04 (2晚) - 待確認 TBC</div>
                 <div class="card-main">
-                    <div class="spot-name">札幌市區精品溫泉宿 (方案三選一)</div>
+                    <div class="spot-name">札幌市區精品住宿 (方案三選一)</div>
                 </div>
                 <div class="card-desc">
                     <p style="margin-bottom:10px; font-weight:700; color:var(--text-main);">👉 請選擇預計入住方案 (點擊即時重新計算預算)：</p>
                     
                     <div class="option-selector">
-                        <!-- Option A -->
-                        <button class="option-card-btn selected" id="optBtnA" onclick="selectSapporoOption('A')">
+                        <button class="option-card-btn" id="optBtnA" onclick="selectSapporoOption('A')">
                             <div class="opt-content">
                                 <span class="opt-dot"></span>
                                 <div>
-                                    <span class="opt-title">方案 A：Dormy Inn Premium 札幌 (石狩の湯)</span>
-                                    <span style="font-size:0.75rem; color:var(--text-muted); display:block; margin-top:2px;">🥣 含早餐 | ♨️ 大浴場 (石狩の湯)</span>
+                                    <span class="opt-title">方案 A：GRANBELL</span>
+                                    <span style="font-size:0.75rem; color:var(--text-muted); display:block; margin-top:2px;">🥣 含早餐 (BF only)</span>
                                 </div>
                             </div>
-                            <span class="opt-price">¥58,000 JPY</span>
+                            <span class="opt-price">¥67,926 JPY</span>
                         </button>
 
-                        <!-- Option B -->
                         <button class="option-card-btn" id="optBtnB" onclick="selectSapporoOption('B')">
                             <div class="opt-content">
                                 <span class="opt-dot"></span>
                                 <div>
-                                    <span class="opt-title">方案 B：Hotel JAL City Sapporo Nakajima Park</span>
+                                    <span class="opt-title">方案 B：Dormy Inn Annex</span>
                                     <span style="font-size:0.75rem; color:var(--text-muted); display:block; margin-top:2px;">🥣 含早餐 | ♨️ 大浴場</span>
                                 </div>
                             </div>
-                            <span class="opt-price">¥48,000 JPY</span>
+                            <span class="opt-price">¥58,320 JPY</span>
                         </button>
 
-                        <!-- Option C -->
-                        <button class="option-card-btn" id="optBtnC" onclick="selectSapporoOption('C')">
+                        <button class="option-card-btn selected" id="optBtnC" onclick="selectSapporoOption('C')">
                             <div class="opt-content">
                                 <span class="opt-dot"></span>
                                 <div>
-                                    <span class="opt-title">方案 C：暖雪 札幌 (Onyado Nono)</span>
-                                    <span style="font-size:0.75rem; color:var(--text-muted); display:block; margin-top:2px;">🥣 含早餐 | ♨️ 大浴場</span>
+                                    <span class="opt-title">方案 C：Vessel Hotel Campana</span>
+                                    <span style="font-size:0.75rem; color:#16A34A; font-weight:700; display:block; margin-top:2px;">🥣 含早餐 | ⚠️ 已付款 (9/10前免費取消)</span>
                                 </div>
                             </div>
-                            <span class="opt-price">¥58,380 JPY</span>
+                            <span class="opt-price">¥46,186 JPY</span>
                         </button>
                     </div>
 
                     <div style="margin-top:14px; font-size:0.82rem; line-height:1.5;">
                         • <strong>房間方案說明:</strong> 雙人客房兩晚合計價格。<br>
-                        • <strong>預計費用 Cost:</strong> <span id="sapporoPriceDetail" style="font-weight:700; color:var(--accent-theme);">¥58,000 JPY</span><br>
-                        • <strong>付款狀態 Status:</strong> <span class="pay-status-badge badge badge-alert">未付款 Unpaid</span>
+                        • <strong>預計費用 Cost:</strong> <span id="sapporoPriceDetail" style="font-weight:700; color:var(--accent-theme);">¥46,186 JPY</span><br>
+                        • <strong>付款狀態 Status:</strong> <span class="pay-status-badge badge badge-port" id="sapporoStatusBadge">已付款 Paid</span>
                     </div>
                 </div>
                 <div class="card-actions">
-                    <button class="btn-paid" onclick="togglePaid(this, 'hotel-sapporo-choice')">💳 標記已付 Paid</button>
+                    <button class="btn-paid paid" id="sapporoPaidBtn" onclick="togglePaid(this, 'hotel-sapporo-choice')">✓ 已付款 Paid</button>
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
             </div>
 
-            <!-- Back to Top Button -->
             <div class="back-to-top-container">
                 <button class="back-to-top-btn" onclick="scrollToTop()">
                     ▲ 回到頂部 Back to Top
@@ -946,14 +927,91 @@
             </div>
         </div>
 
-        <!-- ==================== TRANSPORT PANEL ==================== -->
+        <div id="daybookings" class="day-panel theme-bookings" data-day="bookings">
+            <div class="day-header">
+                <div class="day-title">📅 預約管理總覽 Bookings</div>
+                <div class="weather-box">極致掌控<br>餐期與理髮</div>
+            </div>
+            <div class="day-summary-box">📌 <strong>旅行核心備忘：</strong>集中管理旅程中所有高階餐廳晚宴與特色理髮行程，掌握預約狀況。</div>
+
+            <div style="font-size: 1.05rem; font-weight: 800; color: var(--accent-theme); margin: 28px 0 14px 4px; display: flex; align-items: center; gap: 6px;">🍱 Restaurants 餐廳預約排程</div>
+
+            <div class="card" data-id="book-res-1">
+                <div class="time-badge">9月23日 (二) 晚餐</div>
+                <div class="card-main"><div class="spot-name">🍽️ 9/23 Dinner 餐期</div></div>
+                <div class="card-desc">• <strong>地點 Location:</strong> 待確認 TBC<br>• <strong>時間 Time:</strong> 待確認 TBC</div>
+                <div class="card-actions"><button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button></div>
+            </div>
+
+            <div class="card" data-id="book-res-2">
+                <div class="time-badge">9月24日 (三) 晚餐</div>
+                <div class="card-main"><div class="spot-name">🍽️ 9/24 Dinner 餐期</div></div>
+                <div class="card-desc">• <strong>地點 Location:</strong> 待確認 TBC<br>• <strong>時間 Time:</strong> 待確認 TBC</div>
+                <div class="card-actions"><button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button></div>
+            </div>
+
+            <div class="card" data-id="book-res-3">
+                <div class="time-badge">10月2日 (四) 晚餐</div>
+                <div class="card-main">
+                    <div class="spot-name">🍱 田久酢 (Takuhisa)</div>
+                    <div class="card-main-buttons"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=田久酢+札幌" target="_blank">🗺️ 地圖</a></div>
+                </div>
+                <div class="card-desc">• <strong>地點 Location:</strong> 札幌市區薄野 (田久酢)<br>• <strong>時間 Time:</strong> 待確認 TBC</div>
+                <div class="card-actions"><button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button></div>
+            </div>
+
+            <div class="card" data-id="book-res-4">
+                <div class="time-badge">10月3日 (五) 午餐</div>
+                <div class="card-main"><div class="spot-name">🍽️ 10/3 Lunch 餐期</div></div>
+                <div class="card-desc">• <strong>地點 Location:</strong> 待確認 TBC<br>• <strong>時間 Time:</strong> 待確認 TBC</div>
+                <div class="card-actions"><button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button></div>
+            </div>
+
+            <div class="card" data-id="book-res-5">
+                <div class="time-badge">10月3日 (五) 晚餐</div>
+                <div class="card-main">
+                    <div class="spot-name">🇫🇷 Restaurant Moliere</div>
+                    <div class="card-main-buttons"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Restaurant+Moliere+札幌" target="_blank">🗺️ 地圖</a></div>
+                </div>
+                <div class="card-desc">• <strong>地點 Location:</strong> 札幌圓山公園 (米其林三星法餐)<br>• <strong>時間 Time:</strong> 待確認 TBC</div>
+                <div class="card-actions"><button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button></div>
+            </div>
+
+            <div class="card" data-id="book-res-6">
+                <div class="time-badge">10月4日 (六) 午餐</div>
+                <div class="card-main"><div class="spot-name">🍽️ 10/4 Lunch 餐期</div></div>
+                <div class="card-desc">• <strong>地點 Location:</strong> 待確認 TBC<br>• <strong>時間 Time:</strong> 待確認 TBC</div>
+                <div class="card-actions"><button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button></div>
+            </div>
+
+            <div style="font-size: 1.05rem; font-weight: 800; color: var(--accent-theme); margin: 28px 0 14px 4px; display: flex; align-items: center; gap: 6px;">💇‍♂️ Hair Cut 理髮預約項目</div>
+
+            <div class="card" data-id="book-hair-1">
+                <div class="time-badge">剪髮預約 A</div>
+                <div class="card-main">
+                    <div class="spot-name">💈 Cow 🐮</div>
+                    <div class="card-main-buttons"><a class="map-link" href="https://maps.app.goo.gl/moTcmA7GJhCWm6X57" target="_blank">🗺️ 查看位置</a></div>
+                </div>
+                <div class="card-desc">• <strong>理髮師 Stylist:</strong> Minami<br>• <strong>時間 Time:</strong> 待確認 TBC</div>
+                <div class="card-actions"><button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button></div>
+            </div>
+
+            <div class="card" data-id="book-hair-2">
+                <div class="time-badge">剪髮預約 B</div>
+                <div class="card-main"><div class="spot-name">💈 Fufu 🐯</div></div>
+                <div class="card-desc">• <strong>地點 Location:</strong> 待確認 TBC<br>• <strong>時間 Time:</strong> 待確認 TBC</div>
+                <div class="card-actions"><button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button></div>
+            </div>
+
+            <div class="back-to-top-container"><button class="back-to-top-btn" onclick="scrollToTop()">▲ 回到頂部 Back to Top</button></div>
+        </div>
+
         <div id="daytransport" class="day-panel theme-transport" data-day="transport">
             <div class="day-header">
                 <div class="day-title">🚗 Transport & Flights</div>
                 <div class="weather-box">自駕 & 飛行<br>交通總覽</div>
             </div>
 
-            <!-- Flight 1: Sep 22 NH814 -->
             <div class="card" data-id="trans-f1">
                 <div class="time-badge">Sep 22 | 23:55</div>
                 <div class="card-main">
@@ -971,7 +1029,6 @@
                 </div>
             </div>
 
-            <!-- Flight 2: Sep 25 ND79 -->
             <div class="card" data-id="trans-f2">
                 <div class="time-badge">Sep 25 | 16:45</div>
                 <div class="card-main">
@@ -989,7 +1046,6 @@
                 </div>
             </div>
 
-            <!-- Flight 3: Oct 04 NH84 -->
             <div class="card" data-id="trans-f3">
                 <div class="time-badge">Oct 04 | 21:20</div>
                 <div class="card-main">
@@ -1007,7 +1063,6 @@
                 </div>
             </div>
 
-            <!-- Flight 4: Oct 05 NH813 -->
             <div class="card" data-id="trans-f4">
                 <div class="time-badge">Oct 05 | 01:35</div>
                 <div class="card-main">
@@ -1025,7 +1080,6 @@
                 </div>
             </div>
 
-            <!-- Car Rental: TBC -->
             <div class="card" data-id="trans-car">
                 <div class="time-badge">🚗 租車手續 Car Rental</div>
                 <div class="card-main">
@@ -1043,7 +1097,6 @@
                 </div>
             </div>
 
-            <!-- Back to Top Button -->
             <div class="back-to-top-container">
                 <button class="back-to-top-btn" onclick="scrollToTop()">
                     ▲ 回到頂部 Back to Top
@@ -1051,14 +1104,12 @@
             </div>
         </div>
 
-        <!-- ==================== DAY 1 ==================== -->
         <div id="day1" class="day-panel theme-day1" data-day="1">
             <div class="day-header">
                 <div class="day-title">✈️ Day 1 (Sep 25): 抵達網走、直奔必比登</div>
                 <div class="weather-box">網走 ☁️<br>18°C / 12°C</div>
             </div>
 
-            <!-- 今日亮點摘要 -->
             <div class="day-summary-box">
                 📌 <strong>今日亮點：</strong>飛抵女滿別機場，落機即衝米其林必比登「喜八」歎鄂霍次克海鮮，直入網走溫泉酒店。
             </div>
@@ -1122,7 +1173,6 @@
                 </div>
             </div>
 
-            <!-- Back to Top Button -->
             <div class="back-to-top-container">
                 <button class="back-to-top-btn" onclick="scrollToTop()">
                     ▲ 回到頂部 Back to Top
@@ -1130,14 +1180,12 @@
             </div>
         </div>
 
-        <!-- ==================== DAY 2 ==================== -->
         <div id="day2" class="day-panel theme-day2" data-day="2">
             <div class="day-header">
                 <div class="day-title">🍁 Day 2 (Sep 26): 網走歷史 ➔ 直奔知床</div>
                 <div class="weather-box">知床 ☀️<br>17°C / 10°C</div>
             </div>
 
-            <!-- 今日亮點摘要 -->
             <div class="day-summary-box">
                 📌 <strong>今日亮點：</strong>睇能取湖紅色珊瑚草、網走監獄同流冰館，下晝沿住超靚海岸線自駕，打卡雙美瀑布，夜宿知床。
             </div>
@@ -1272,7 +1320,6 @@
                 </div>
             </div>
 
-            <!-- Back to Top Button -->
             <div class="back-to-top-container">
                 <button class="back-to-top-btn" onclick="scrollToTop()">
                     ▲ 回到頂部 Back to Top
@@ -1280,14 +1327,12 @@
             </div>
         </div>
 
-        <!-- ==================== DAY 3 ==================== -->
         <div id="day3" class="day-panel theme-day3" data-day="3">
             <div class="day-header">
                 <div class="day-title">🍁 Day 3 (Sep 27): 知床五湖散策 ➔ 極光號觀光船</div>
                 <div class="weather-box">宇登呂 🌦️<br>15°C / 9°C</div>
             </div>
 
-            <!-- 今日亮點摘要 -->
             <div class="day-summary-box">
                 📌 <strong>今日亮點：</strong>朝早行知床五湖原始林，下晝坐極光號睇海蝕斷崖，黃昏上知床峠睇超震撼日落絕景。
             </div>
@@ -1414,7 +1459,6 @@
                 </div>
             </div>
 
-            <!-- Back to Top Button -->
             <div class="back-to-top-container">
                 <button class="back-to-top-btn" onclick="scrollToTop()">
                     ▲ 回到頂部 Back to Top
@@ -1422,14 +1466,12 @@
             </div>
         </div>
 
-        <!-- ==================== DAY 4 (美幌峠) ==================== -->
         <div id="day4-bp" class="day-panel theme-day4-bp" data-day="4-bp">
             <div class="day-header">
                 <div class="day-title">🚙 Day 4 (美幌峠) (Sep 28): 屈斜路湖美幌峠巔峰絕景</div>
                 <div class="weather-box">弟子屈 ☀️<br>16°C / 8°C</div>
             </div>
 
-            <!-- 今日亮點摘要 -->
             <div class="day-summary-box">
                 📌 <strong>今日亮點：</strong>打卡「天堂之路」同美幌峠俯瞰屈斜路湖，去摩周湖睇神秘摩周藍，黃昏入住濕原秘境設計宿【ぽん・ぽんゆ】。
             </div>
@@ -1588,7 +1630,6 @@
                 </div>
             </div>
 
-            <!-- Back to Top Button -->
             <div class="back-to-top-container">
                 <button class="back-to-top-btn" onclick="scrollToTop()">
                     ▲ 回到頂部 Back to Top
@@ -1596,14 +1637,12 @@
             </div>
         </div>
 
-        <!-- ==================== DAY 4 (硫磺山) ==================== -->
         <div id="day4-lhs" class="day-panel theme-day4-lhs" data-day="4-lhs">
             <div class="day-header">
                 <div class="day-title">🚙 Day 4 (硫磺山) (Sep 28): 觸天之路 ➔ 硫磺山活火山</div>
                 <div class="weather-box">弟子屈 ☀️<br>16°C / 8°C</div>
             </div>
 
-            <!-- 今日亮點摘要 -->
             <div class="day-summary-box">
                 📌 <strong>今日亮點：</strong>打卡「天堂之路」同硫磺山地熱，去摩周湖睇神秘摩周藍，黃昏入住濕原秘境設計宿【ぽん・ぽんゆ】。
             </div>
@@ -1776,7 +1815,6 @@
                 </div>
             </div>
 
-            <!-- Back to Top Button -->
             <div class="back-to-top-container">
                 <button class="back-to-top-btn" onclick="scrollToTop()">
                     ▲ 回到頂部 Back to Top
@@ -1784,14 +1822,12 @@
             </div>
         </div>
 
-        <!-- ==================== DAY 5 ==================== -->
         <div id="day5" class="day-panel theme-day5" data-day="5">
             <div class="day-header">
                 <div class="day-title">🍁 Day 5 (Sep 29): 純粹的阿寒湖靈性度假日 (09:45 出發極致從容版)</div>
                 <div class="weather-box">阿寒湖 ☁️<br>15°C / 7°C</div>
             </div>
             
-            <!-- 今日亮點摘要 -->
             <div class="day-summary-box">
                 📌 <strong>今日亮點：</strong>09:45 出發，中午行愛努村食飯，下晝坐 13:00 遊船睇綠球藻，14:30 精準 Check-in 頂級【鄙之座】。
             </div>
@@ -1893,7 +1929,6 @@
                 </div>
             </div>
 
-            <!-- Back to Top Button -->
             <div class="back-to-top-container">
                 <button class="back-to-top-btn" onclick="scrollToTop()">
                     ▲ 回到頂部 Back to Top
@@ -1901,14 +1936,12 @@
             </div>
         </div>
 
-        <!-- ==================== DAY 6 ==================== -->
         <div id="day6" class="day-panel theme-day6" data-day="6">
             <div class="day-header">
                 <div class="day-title">🏛️ Day 6 (Sep 30): 絕景閃拍 ➔ 古堡酒莊 ➔ 帶廣豚丼 ➔ 提早激享清寂房</div>
                 <div class="weather-box">十勝 ☀️<br>17°C / 9°C</div>
             </div>
 
-            <!-- 今日亮點摘要 -->
             <div class="day-summary-box">
                 📌 <strong>今日亮點：</strong>10:00 出發閃拍瀧見橋紅葉，之後行古堡酒莊、避開人潮爽食帶廣豚丼，15:00 提早入宿十勝川【清寂房】。
             </div>
@@ -2033,7 +2066,6 @@
                 </div>
             </div>
 
-            <!-- Back to Top Button -->
             <div class="back-to-top-container">
                 <button class="back-to-top-btn" onclick="scrollToTop()">
                     ▲ 回到頂部 Back to Top
@@ -2041,14 +2073,12 @@
             </div>
         </div>
 
-        <!-- ==================== DAY 7 ==================== -->
         <div id="day7" class="day-panel theme-day7" data-day="7">
             <div class="day-header">
                 <div class="day-title">🍁 Day 7 (Oct 01): 三國峠樹海 ➔ 黑岳纜車</div>
                 <div class="weather-box">層雲峽 🍂<br>13°C / 5°C</div>
             </div>
 
-            <!-- 今日亮點摘要 -->
             <div class="day-summary-box">
                 📌 <strong>今日亮點：</strong>北上睇三國峠紅葉樹海大橋，下晝去層雲峽睇雙瀑兼坐黑岳纜車，夜晚住旭川市郊溫泉酒店。
             </div>
@@ -2142,7 +2172,6 @@
                 </div>
             </div>
 
-            <!-- Back to Top Button -->
             <div class="back-to-top-container">
                 <button class="back-to-top-btn" onclick="scrollToTop()">
                     ▲ 回到頂部 Back to Top
@@ -2150,14 +2179,12 @@
             </div>
         </div>
 
-        <!-- ==================== DAY 8 ==================== -->
         <div id="day8" class="day-panel theme-day8" data-day="8">
             <div class="day-header">
                 <div class="day-title">🏛️ Day 8 (Oct 02): 美瑛青池 ➔ 札幌幾何公園</div>
                 <div class="weather-box">札幌 ☀️<br>14°C / 6°C</div>
             </div>
 
-            <!-- 今日亮點摘要 -->
             <div class="day-summary-box">
                 📌 <strong>今日亮點：</strong>美瑛青池同白鬍子瀑布嘅夢幻藍，中午去旭川美術館，下晝去埋野口勇幾何大地公園，之後入札幌。
             </div>
@@ -2269,7 +2296,6 @@
                 </div>
             </div>
 
-            <!-- Back to Top Button -->
             <div class="back-to-top-container">
                 <button class="back-to-top-btn" onclick="scrollToTop()">
                     ▲ 回到頂部 Back to Top
@@ -2277,14 +2303,12 @@
             </div>
         </div>
 
-        <!-- ==================== DAY 9 ==================== -->
         <div id="day9" class="day-panel theme-day9" data-day="9">
             <div class="day-header">
                 <div class="day-title">🍷 Day 9 (Oct 03): 酒莊序曲 ➔ 買手店地毯式掃貨</div>
                 <div class="weather-box">札幌 ☁️<br>15°C / 8°C</div>
             </div>
 
-            <!-- 今日亮點摘要 -->
             <div class="day-summary-box">
                 📌 <strong>今日亮點：</strong>朝早去八劍山酒莊睇峭壁兼同紅葉全景開飯，下晝狂掃札幌 5 大高階買手店，夜晚優雅歎米其林大餐。
             </div>
@@ -2382,7 +2406,6 @@
                 </div>
             </div>
 
-            <!-- Back to Top Button -->
             <div class="back-to-top-container">
                 <button class="back-to-top-btn" onclick="scrollToTop()">
                     ▲ 回到頂部 Back to Top
@@ -2390,16 +2413,14 @@
             </div>
         </div>
 
-        <!-- ==================== DAY 10 ==================== -->
         <div id="day10" class="day-panel theme-day10" data-day="10">
             <div class="day-header">
                 <div class="day-title">🏛️ Day 10 (Oct 04): 安藤建築 ➔ 鮭魚逆流 ➔ 機場</div>
                 <div class="weather-box">千歲 ☀️<br>14°C / 7°C</div>
             </div>
 
-            <!-- 今日亮點摘要 -->
             <div class="day-summary-box">
-                📌 <strong>今日亮點：</strong>睇安藤忠雄「頭大佛殿」同藝術之森，下晝睇羊之丘平原兼震撼直擊鮭魚逆流，挨晚去新千歲機場最後大橫掃返羽田。
+                📌 <strong>今日亮點：</strong>睇安藤忠雄「頭大佛殿」同藝術之森，下晝睇羊之丘平原兼震撼直擊鮭魚逆流，羊之丘平原、鮭魚故鄉水族館最後大橫掃返羽田。
             </div>
 
             <div class="card" data-id="d10-1">
@@ -2536,7 +2557,6 @@
                 </div>
             </div>
 
-            <!-- Back to Top Button -->
             <div class="back-to-top-container">
                 <button class="back-to-top-btn" onclick="scrollToTop()">
                     ▲ 回到頂部 Back to Top
@@ -2544,7 +2564,6 @@
             </div>
         </div>
 
-        <!-- ==================== 今日記事備忘錄 ==================== -->
         <div class="notes-area">
             <div class="notes-title">✏️ <span id="notesTitleDay">Hotels</span> 專屬旅行備忘</div>
             <textarea class="notes-textarea" id="dayNotes" placeholder="可以記錄今天的預算開銷、預約時間、行車注意要點..." oninput="saveNotes()"></textarea>
@@ -2559,13 +2578,16 @@
         currentDay: 'hotels',    // 預設打開最左側的住宿預算總覽
         completedItems: {},      // 儲存各個 card 的完成狀態
         dayNotes: {},            // 儲存每天的備忘錄
-        sapporoOption: 'A',      // 預設選擇方案 A (Dormy Inn Premium 札幌)
-        paidItems: {}            // 儲存已付款項目 (預設全部為未付款)
+        sapporoOption: 'C',      // 預設選擇方案 C (Vessel Hotel Campana)
+        paidItems: {
+            'hotel-seijaku': true,
+            'hotel-sapporo-choice': true
+        }
     };
 
     // 初始化讀取
     window.onload = function() {
-        const savedState = localStorage.getItem('hokkaido_trip_state_neumorphic_v6');
+        const savedState = localStorage.getItem('hokkaido_trip_state_neumorphic_v12');
         if (savedState) {
             Object.assign(state, JSON.parse(savedState));
         }
@@ -2586,12 +2608,20 @@
                     checkBtn.classList.add('checked');
                     checkBtn.innerHTML = '✓ 已完成';
                 }
+            } else if (id) {
+                card.classList.remove('completed');
+                if (checkBtn) {
+                    checkBtn.classList.remove('checked');
+                    checkBtn.innerHTML = '⬜ 標記完成';
+                }
             }
         });
 
         // 套用付款狀態
         document.querySelectorAll('[data-id]').forEach(card => {
             const id = card.getAttribute('data-id');
+            if (id === 'hotel-sapporo-choice') return; // 由專屬函式控制
+            
             const paidBtn = card.querySelector('.btn-paid');
             const statusBadge = card.querySelector('.pay-status-badge');
             if (id && paidBtn && statusBadge) {
@@ -2599,7 +2629,7 @@
                     paidBtn.classList.add('paid');
                     paidBtn.innerHTML = '✓ 已付款 Paid';
                     statusBadge.className = 'pay-status-badge badge badge-port';
-                    statusBadge.innerText = '已付款 Paid';
+                    statusBadge.innerText = 'Trans-Paid已付';
                 } else {
                     paidBtn.classList.remove('paid');
                     paidBtn.innerHTML = '💳 標記已付 Paid';
@@ -2618,6 +2648,10 @@
         const btnB = document.getElementById('optBtnB');
         const btnC = document.getElementById('optBtnC');
         const priceDetail = document.getElementById('sapporoPriceDetail');
+        const statusBadge = document.getElementById('sapporoStatusBadge');
+        const paidBtn = document.getElementById('sapporoPaidBtn');
+        
+        if (!btnA || !btnB || !btnC) return;
         
         btnA.classList.remove('selected');
         btnB.classList.remove('selected');
@@ -2625,32 +2659,38 @@
         
         if (opt === 'A') {
             btnA.classList.add('selected');
-            priceDetail.innerHTML = '¥58,000 JPY';
+            priceDetail.innerHTML = '¥67,926 JPY';
         } else if (opt === 'B') {
             btnB.classList.add('selected');
-            priceDetail.innerHTML = '¥48,000 JPY';
+            priceDetail.innerHTML = '¥58,320 JPY';
         } else if (opt === 'C') {
             btnC.classList.add('selected');
-            priceDetail.innerHTML = '¥58,380 JPY';
+            priceDetail.innerHTML = '¥46,186 JPY';
+        }
+
+        // 刷新方案選擇卡片的付款聯動狀態
+        if (state.paidItems['hotel-sapporo-choice']) {
+            if (paidBtn) { paidBtn.classList.add('paid'); paidBtn.innerHTML = '✓ 已付款 Paid'; }
+            if (statusBadge) { statusBadge.className = 'pay-status-badge badge badge-port'; statusBadge.innerText = '已付款 Paid'; }
+        } else {
+            if (paidBtn) { paidBtn.classList.remove('paid'); paidBtn.innerHTML = '💳 標記已付 Paid'; }
+            if (statusBadge) { statusBadge.className = 'pay-status-badge badge badge-alert'; statusBadge.innerText = '未付款 Unpaid'; }
         }
 
         recalculateBudgets();
         saveState();
     }
 
-    // 動態計算付款與未付款金額
+    // 精準動態加總付款與未付款金額
     function recalculateBudgets() {
-        let sapporoCost = 58000;
-        if (state.sapporoOption === 'B') sapporoCost = 48000;
-        else if (state.sapporoOption === 'C') sapporoCost = 58380;
-
-        const baseCost = 374169;
-        const totalCost = baseCost + sapporoCost;
+        let sapporoCost = 46186;
+        if (state.sapporoOption === 'A') sapporoCost = 67926;
+        else if (state.sapporoOption === 'B') sapporoCost = 58320;
 
         const hotels = [
             { id: 'hotel-remm', cost: 31047 },
-            { id: 'hotel-dormy', cost: 24300 },
-            { id: 'hotel-kiki', cost: 74120 },
+            { id: 'hotel-dormy', cost: 21150 },
+            { id: 'hotel-kiki', cost: 70620 },
             { id: 'hotel-pon', cost: 40000 },
             { id: 'hotel-hino', cost: 97186 },
             { id: 'hotel-seijaku', cost: 77616 },
@@ -2658,42 +2698,39 @@
             { id: 'hotel-sapporo-choice', cost: sapporoCost }
         ];
 
+        let totalCost = 0;
         let unpaidSum = 0;
+
         hotels.forEach(hotel => {
+            totalCost += hotel.cost;
             if (!state.paidItems[hotel.id]) {
                 unpaidSum += hotel.cost;
             }
         });
 
-        document.getElementById('hotelTotalDisplay').innerText = '¥' + totalCost.toLocaleString() + ' JPY';
-        document.getElementById('hotelUnpaidDisplay').innerText = '¥' + unpaidSum.toLocaleString() + ' JPY';
+        const totalEl = document.getElementById('hotelTotalDisplay');
+        const unpaidEl = document.getElementById('hotelUnpaidDisplay');
+        if (totalEl && unpaidEl) {
+            totalEl.innerText = '¥' + totalCost.toLocaleString() + ' JPY';
+            unpaidEl.innerText = '¥' + unpaidSum.toLocaleString() + ' JPY';
+        }
     }
 
     // 標記付款狀態切換
     function togglePaid(button, hotelId) {
-        const card = button.closest('.card');
-        const statusBadge = card.querySelector('.pay-status-badge');
-        
         if (state.paidItems[hotelId]) {
             delete state.paidItems[hotelId];
-            button.classList.remove('paid');
-            button.innerHTML = '💳 標記已付 Paid';
-            if (statusBadge) {
-                statusBadge.className = 'pay-status-badge badge badge-alert';
-                statusBadge.innerText = '未付款 Unpaid';
-            }
         } else {
             state.paidItems[hotelId] = true;
-            button.classList.add('paid');
-            button.innerHTML = '✓ 已付款 Paid';
-            if (statusBadge) {
-                statusBadge.className = 'pay-status-badge badge badge-port';
-                statusBadge.innerText = '已付款 Paid';
-            }
         }
 
-        recalculateBudgets();
-        saveState();
+        if (hotelId === 'hotel-sapporo-choice') {
+            selectSapporoOption(state.sapporoOption);
+        } else {
+            applySavedState();
+            recalculateBudgets();
+            saveState();
+        }
     }
 
     // 回到頂部功能 (相容整個視窗滾動)
@@ -2719,6 +2756,7 @@
         let panelId;
         if (dayId === 'transport') panelId = 'daytransport';
         else if (dayId === 'hotels') panelId = 'dayhotels';
+        else if (dayId === 'bookings') panelId = 'daybookings';
         else if (dayId === '4-bp') panelId = 'day4-bp';
         else if (dayId === '4-lhs') panelId = 'day4-lhs';
         else panelId = 'day' + dayId;
@@ -2732,6 +2770,8 @@
             currentBtn = document.getElementById('tabTransport');
         } else if (dayId === 'hotels') {
             currentBtn = document.getElementById('tabHotels');
+        } else if (dayId === 'bookings') {
+            currentBtn = document.getElementById('tabBookings');
         } else if (dayId === '4-bp') {
             currentBtn = document.getElementById('tabDay4Bp');
         } else if (dayId === '4-lhs') {
@@ -2752,6 +2792,7 @@
         let noteLabel = 'Day ' + dayId;
         if (dayId === 'transport') noteLabel = 'Transport';
         else if (dayId === 'hotels') noteLabel = 'Hotels';
+        else if (dayId === 'bookings') noteLabel = 'Bookings 預約備忘';
         else if (dayId === '4-bp') noteLabel = 'Day 4 (美幌峠)';
         else if (dayId === '4-lhs') noteLabel = 'Day 4 (硫磺山)';
         
@@ -2809,7 +2850,7 @@
     }
 
     function saveState() {
-        localStorage.setItem('hokkaido_trip_state_neumorphic_v6', JSON.stringify(state));
+        localStorage.setItem('hokkaido_trip_state_neumorphic_v12', JSON.stringify(state));
     }
 
     // 搜尋功能
@@ -2825,6 +2866,15 @@
         if (query === '') {
             tabBar.style.display = 'flex';
             progressBox.style.display = 'flex';
+            
+            panels.forEach(panel => {
+                panel.querySelectorAll('.card, .drive-card').forEach(card => {
+                    card.style.display = ''; 
+                });
+                const dayHeader = panel.querySelector('.day-header');
+                if (dayHeader) dayHeader.style.display = '';
+            });
+
             switchDay(state.currentDay);
             return;
         }
@@ -2835,7 +2885,7 @@
         let hasMatches = false;
 
         panels.forEach(panel => {
-            panel.classList.add('active'); // 全部開啟
+            panel.classList.add('active'); // 全部開啟以供搜尋展示
             const cards = panel.querySelectorAll('.card, .drive-card');
             let panelHasMatch = false;
 
