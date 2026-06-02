@@ -164,6 +164,7 @@
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.05em;
+            white-space: nowrap;
         }
 
         /* 進度凹槽軌道 */
@@ -707,17 +708,17 @@
         <button class="tab-btn active theme-hotels" id="tabHotels" onclick="switchDay('hotels')">🏨<span>Hotels</span></button>
         <button class="tab-btn theme-bookings" id="tabBookings" onclick="switchDay('bookings')">📅<span>Bookings</span></button>
         
-        <button class="tab-btn theme-day1" id="tabDay1" onclick="switchDay(1)">D1<span>Sep 25</span></button>
-        <button class="tab-btn theme-day2" id="tabDay2" onclick="switchDay(2)">D2<span>Sep 26</span></button>
-        <button class="tab-btn theme-day3" id="tabDay3" onclick="switchDay(3)">D3<span>Sep 27</span></button>
-        <button class="tab-btn theme-day4-bp" id="tabDay4Bp" onclick="switchDay('4-bp')">D4 (美幌峠)<span>Sep 28</span></button>
-        <button class="tab-btn theme-day4-lhs" id="tabDay4Lhs" onclick="switchDay('4-lhs')">D4 (硫磺山)<span>Sep 28</span></button>
-        <button class="tab-btn theme-day5" id="tabDay5" onclick="switchDay(5)">D5<span>Sep 29</span></button>
-        <button class="tab-btn theme-day6" id="tabDay6" onclick="switchDay(6)">D6<span>Sep 30</span></button>
-        <button class="tab-btn theme-day7" id="tabDay7" onclick="switchDay(7)">D7<span>Oct 01</span></button>
-        <button class="tab-btn theme-day8" id="tabDay8" onclick="switchDay(8)">D8<span>Oct 02</span></button>
-        <button class="tab-btn theme-day9" id="tabDay9" onclick="switchDay(9)">D9<span>Oct 03</span></button>
-        <button class="tab-btn theme-day10" id="tabDay10" onclick="switchDay(10)">D10<span>Oct 04</span></button>
+        <button class="tab-btn theme-day1" id="tabDay1" onclick="switchDay(1)">D1<span>Sep 25 (Fri)</span></button>
+        <button class="tab-btn theme-day2" id="tabDay2" onclick="switchDay(2)">D2<span>Sep 26 (Sat)</span></button>
+        <button class="tab-btn theme-day3" id="tabDay3" onclick="switchDay(3)">D3<span>Sep 27 (Sun)</span></button>
+        <button class="tab-btn theme-day4-bp" id="tabDay4Bp" onclick="switchDay('4-bp')">D4 (美幌峠)<span>Sep 28 (Mon)</span></button>
+        <button class="tab-btn theme-day4-lhs" id="tabDay4Lhs" onclick="switchDay('4-lhs')">D4 (硫磺山)<span>Sep 28 (Mon)</span></button>
+        <button class="tab-btn theme-day5" id="tabDay5" onclick="switchDay(5)">D5<span>Sep 29 (Tue)</span></button>
+        <button class="tab-btn theme-day6" id="tabDay6" onclick="switchDay(6)">D6<span>Sep 30 (Wed)</span></button>
+        <button class="tab-btn theme-day7" id="tabDay7" onclick="switchDay(7)">D7<span>Oct 01 (Thu)</span></button>
+        <button class="tab-btn theme-day8" id="tabDay8" onclick="switchDay(8)">D8<span>Oct 02 (Fri)</span></button>
+        <button class="tab-btn theme-day9" id="tabDay9" onclick="switchDay(9)">D9<span>Oct 03 (Sat)</span></button>
+        <button class="tab-btn theme-day10" id="tabDay10" onclick="switchDay(10)">D10<span>Oct 04 (Sun)</span></button>
     </div>
 
     <div class="content-container" id="contentContainer">
@@ -934,24 +935,34 @@
             </div>
             <div class="day-summary-box">📌 <strong>核心備忘：</strong>集中管理旅程中所有高階餐廳晚宴與理髮行程，掌握預約狀況。</div>
 
-            <div style="font-size: 1.05rem; font-weight: 800; color: var(--accent-theme); margin: 28px 0 14px 4px; display: flex; align-items: center; gap: 6px;">🍱 Restaurants 餐廳預約排程</div>
+            <div style="font-size: 1.05rem; font-weight: 800; color: var(--accent-theme); margin: 28px 0 14px 4px; display: flex; align-items: center; gap: 6px;">🍱 Restaurants 餐廳與午餐預約排程</div>
 
             <div class="card" data-id="book-res-1">
-                <div class="time-badge">9月23日 (二) 晚餐</div>
+                <div class="time-badge">9月23日 (三) 晚餐</div>
                 <div class="card-main"><div class="spot-name">🍽️ Sep 23 Dinner </div></div>
                 <div class="card-desc">• <strong>地點 Location:</strong> 待確認 TBC<br>• <strong>時間 Time:</strong> 待確認 TBC</div>
                 <div class="card-actions"><button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button></div>
             </div>
 
             <div class="card" data-id="book-res-2">
-                <div class="time-badge">9月24日 (三) 晚餐</div>
+                <div class="time-badge">9月24日 (四) 晚餐</div>
                 <div class="card-main"><div class="spot-name">🍽️ Sep 24 Dinner </div></div>
                 <div class="card-desc">• <strong>地點 Location:</strong> 待確認 TBC<br>• <strong>時間 Time:</strong> 待確認 TBC</div>
                 <div class="card-actions"><button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button></div>
             </div>
 
+            <div class="card" data-id="book-res-triton">
+                <div class="time-badge">10月2日 (五) 中午 13:00</div>
+                <div class="card-main">
+                    <div class="spot-name">🍣 回転寿しトリトン 旭川旭神店</div>
+                    <div class="card-main-buttons"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=回転寿しトリトン+旭川旭神店" target="_blank">🗺️ 地圖</a></div>
+                </div>
+                <div class="card-desc">• <strong>地點 Location:</strong> 旭川市旭神3條5丁目1番5號 (Triton 旭川旭神店)<br>• <strong>時間 Time:</strong> 13:00</div>
+                <div class="card-actions"><button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button></div>
+            </div>
+
             <div class="card" data-id="book-res-3">
-                <div class="time-badge">10月2日 (四) 晚餐</div>
+                <div class="time-badge">10月2日 (五) 晚餐</div>
                 <div class="card-main">
                     <div class="spot-name">🍱 田久酢 (Takuhisa)</div>
                     <div class="card-main-buttons"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=田久酢+札幌" target="_blank">🗺️ 地圖</a></div>
@@ -961,14 +972,14 @@
             </div>
 
             <div class="card" data-id="book-res-4">
-                <div class="time-badge">10月3日 (五) 午餐</div>
+                <div class="time-badge">10月3日 (六) 午餐</div>
                 <div class="card-main"><div class="spot-name">🍽️ Oct 3 Lunch </div></div>
                 <div class="card-desc">• <strong>地點 Location:</strong> 待確認 TBC<br>• <strong>時間 Time:</strong> 待確認 TBC</div>
                 <div class="card-actions"><button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button></div>
             </div>
 
             <div class="card" data-id="book-res-5">
-                <div class="time-badge">10月3日 (五) 晚餐</div>
+                <div class="time-badge">10月3日 (六) 晚餐</div>
                 <div class="card-main">
                     <div class="spot-name">🇫🇷 Restaurant Moliere</div>
                     <div class="card-main-buttons"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Restaurant+Moliere+札幌" target="_blank">🗺️ 地圖</a></div>
@@ -978,7 +989,7 @@
             </div>
 
             <div class="card" data-id="book-res-6">
-                <div class="time-badge">10月4日 (六) 午餐</div>
+                <div class="time-badge">10月4日 (日) 午餐</div>
                 <div class="card-main"><div class="spot-name">🍽️ Oct 4 Lunch </div></div>
                 <div class="card-desc">• <strong>地點 Location:</strong> 待確認 TBC<br>• <strong>時間 Time:</strong> 待確認 TBC</div>
                 <div class="card-actions"><button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button></div>
@@ -1106,7 +1117,7 @@
 
         <div id="day1" class="day-panel theme-day1" data-day="1">
             <div class="day-header">
-                <div class="day-title">✈️ Day 1 (Sep 25): 抵達網走、直奔必比登</div>
+                <div class="day-title">✈️ Day 1 (Sep 25, Fri): 抵達網走、直奔必比登</div>
                 <div class="weather-box">網走 ☁️<br>18°C / 12°C</div>
             </div>
 
@@ -1182,7 +1193,7 @@
 
         <div id="day2" class="day-panel theme-day2" data-day="2">
             <div class="day-header">
-                <div class="day-title">🍁 Day 2 (Sep 26): 網走歷史 ➔ 直奔知床</div>
+                <div class="day-title">🍁 Day 2 (Sep 26, Sat): 網走歷史 ➔ 直奔知床</div>
                 <div class="weather-box">知床 ☀️<br>17°C / 10°C</div>
             </div>
 
@@ -1329,7 +1340,7 @@
 
         <div id="day3" class="day-panel theme-day3" data-day="3">
             <div class="day-header">
-                <div class="day-title">🍁 Day 3 (Sep 27): 知床五湖散策 ➔ 極光號觀光船</div>
+                <div class="day-title">🍁 Day 3 (Sep 27, Sun): 知床五湖散策 ➔ 極光號觀光船</div>
                 <div class="weather-box">宇登呂 🌦️<br>15°C / 9°C</div>
             </div>
 
@@ -1468,7 +1479,7 @@
 
         <div id="day4-bp" class="day-panel theme-day4-bp" data-day="4-bp">
             <div class="day-header">
-                <div class="day-title">🚙 Day 4 (美幌峠) (Sep 28): 屈斜路湖美幌峠巔峰絕景</div>
+                <div class="day-title">🚙 Day 4 (美幌峠) (Sep 28, Mon): 屈斜路湖美幌峠巔峰絕景</div>
                 <div class="weather-box">弟子屈 ☀️<br>16°C / 8°C</div>
             </div>
 
@@ -1546,7 +1557,7 @@
             <div class="card" data-id="d4bp-4">
                 <div class="time-badge">11:45 - 12:15</div>
                 <div class="card-main">
-                    <div class="spot-name">📍 摩周湖第三展望台</div>
+                    <div class="spot-name">📍 摩周湖 third 展望台</div>
                     <div class="card-main-buttons">
                         <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=摩周湖第三展望台" target="_blank">🗺️ 地圖</a>
                         <a class="map-link" href="https://www.visit-hokkaido.jp/lsc/upfile/spot/0001/0483/10483_5_l.jpg" target="_blank" style="background-color: #F6E2BC; color: #8F4C1B; box-shadow: var(--shadow-flat-sm);">📸 展望台實景</a>
@@ -1639,7 +1650,7 @@
 
         <div id="day4-lhs" class="day-panel theme-day4-lhs" data-day="4-lhs">
             <div class="day-header">
-                <div class="day-title">🚙 Day 4 (硫磺山) (Sep 28): 觸天之路 ➔ 硫磺山活火山</div>
+                <div class="day-title">🚙 Day 4 (硫磺山) (Sep 28, Mon): 觸天之路 ➔ 硫磺山活火山</div>
                 <div class="weather-box">弟子屈 ☀️<br>16°C / 8°C</div>
             </div>
 
@@ -1824,7 +1835,7 @@
 
         <div id="day5" class="day-panel theme-day5" data-day="5">
             <div class="day-header">
-                <div class="day-title">🍁 Day 5 (Sep 29): 純粹的阿寒湖靈性度假日 (09:45 出發極致從容版)</div>
+                <div class="day-title">🍁 Day 5 (Sep 29, Tue): 純粹的阿寒湖靈性度假日 (09:45 出發極致從容版)</div>
                 <div class="weather-box">阿寒湖 ☁️<br>15°C / 7°C</div>
             </div>
             
@@ -1851,7 +1862,7 @@
                     <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (沿國道241號森林景觀路段)</div>
                     <div><span class="drive-target">沿國道 241 號開往阿寒湖</span></div>
                 </div>
-                <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=かや沼温泉+ぽん・ぽんゆ&destination=阿寒湖+鄙之座" target="_blank">🗺️ 導航</a>
+                <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=かя沼温泉+ぽん・ぽんゆ&destination=阿寒湖+鄙之座" target="_blank">🗺️ 導航</a>
             </div>
 
             <div class="card" data-id="d5-2">
@@ -1923,7 +1934,7 @@
                     <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=阿寒湖+鶴雅別莊+鄙之座" target="_blank">🗺️ 地圖</a>
                 </div>
                 <div><span class="badge badge-alert">🚨 高奢享受提示</span></div>
-                <div class="card-desc">完美的下船時間銜接辦理入住。換上舒適的服裝，全力享受鄙之座專屬的客房私湯與頂級高奢款待，今晚不再出門。</div>
+                <div class="card-desc">完美的下船時間銜接辦入入住。換上舒適的服裝，全力享受鄙之座專屬的客房私湯與頂級高奢款待，今晚不再出門。</div>
                 <div class="card-actions">
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
@@ -1938,7 +1949,7 @@
 
         <div id="day6" class="day-panel theme-day6" data-day="6">
             <div class="day-header">
-                <div class="day-title">🏛️ Day 6 (Sep 30): 絕景閃拍 ➔ 古堡酒莊 ➔ 帶廣豚丼 ➔ 提早激享清寂房</div>
+                <div class="day-title">🏛️ Day 6 (Sep 30, Wed): 絕景閃拍 ➔ 古堡酒莊 ➔ 帶廣豚丼 ➔ 提早激享清寂房</div>
                 <div class="weather-box">十勝 ☀️<br>17°C / 9°C</div>
             </div>
 
@@ -2075,7 +2086,7 @@
 
         <div id="day7" class="day-panel theme-day7" data-day="7">
             <div class="day-header">
-                <div class="day-title">🍁 Day 7 (Oct 01): 三國峠樹海 ➔ 黑岳纜車</div>
+                <div class="day-title">🍁 Day 7 (Oct 01, Thu): 三國峠樹海 ➔ 黑岳纜車</div>
                 <div class="weather-box">層雲峽 🍂<br>13°C / 5°C</div>
             </div>
 
@@ -2087,6 +2098,7 @@
                 <div class="time-badge">10:30</div>
                 <div class="spot-name">🚗 離開：十勝川清寂房</div>
                 <div><span class="badge badge-alert">🚨 精準 Check-out 提示</span></div>
+                <div class="card-desc">大浴場與晨光溫泉享受至最後一刻，10:30 正式辦理退房出發。</div>
                 <div class="card-actions">
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
@@ -2181,17 +2193,18 @@
 
         <div id="day8" class="day-panel theme-day8" data-day="8">
             <div class="day-header">
-                <div class="day-title">🏛️ Day 8 (Oct 02): 美瑛青池 ➔ 札幌幾何公園</div>
+                <div class="day-title">🏛️ Day 8 (Oct 02, Fri): 美瑛青池藍色幻境 ➔ 旭川美術館 ➔ Triton壽司特攻 ➔ 幾何公園落日</div>
                 <div class="weather-box">札幌 ☀️<br>14°C / 6°C</div>
             </div>
 
             <div class="day-summary-box">
-                📌 <strong>今日亮點：</strong>美瑛青池同白鬍子瀑布嘅夢幻藍，中午去旭川美術館，下晝去埋野口勇幾何大地公園，之後入札幌。
+                📌 <strong>今日亮點：</strong>解鎖美瑛青池與白鬍子瀑布的夢幻晨光，精準特攻超人氣 Triton 迴轉壽司，並於莫埃來沼公園捕捉落日黃金半小時。
             </div>
 
             <div class="card" data-id="d8-1">
                 <div class="time-badge">08:45</div>
-                <div class="spot-name">🚗 花神樂酒店 出發</div>
+                <div class="spot-name">🚗 【酒店出發】花神樂酒店</div>
+                <div class="card-desc">晨間節奏：悠閒享用完花神樂酒店的早餐，收拾好行李，08:45 準時開車出發。直線切入美瑛山區。</div>
                 <div class="card-actions">
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
@@ -2201,13 +2214,13 @@
                 <div class="drive-info">
                     <div>⏱️ 45 min | 🛣️ 35.6 km</div>
                     <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
-                    <div><span class="drive-target">前往 美瑛山區</span></div>
+                    <div><span class="drive-target">前往 美瑛白金青池</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=森のゆ+花神楽&destination=白金青い池" target="_blank">🗺️ 導航</a>
             </div>
 
             <div class="card" data-id="d8-2">
-                <div class="time-badge">09:30 - 11:00</div>
+                <div class="time-badge">09:30 - 10:30</div>
                 <div class="card-main">
                     <div class="spot-name">📍 美瑛白金青池 & 白鬍子瀑布</div>
                     <div class="card-main-buttons">
@@ -2215,7 +2228,7 @@
                         <a class="map-link" href="https://www.visit-hokkaido.jp/lsc/upfile/articleDetail/0000/2211/2211_1_m.jpg" target="_blank" style="background-color: #F6E2BC; color: #8F4C1B; box-shadow: var(--shadow-flat-sm);">📸 實景照</a>
                     </div>
                 </div>
-                <div class="card-desc">秋季枯木與藍色湖水，美不勝收。</div>
+                <div class="card-desc">曠野體驗：朝早十點前抵達，避開所有旅行團大軍。這時的晨光最純淨，可以優雅慢活地行完青池步道，捕捉深秋枯木與夢幻藍色湖水交織的絕美幻境，順路打卡白鬍子瀑布。</div>
                 <div class="card-actions">
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
@@ -2223,32 +2236,52 @@
 
             <div class="drive-card">
                 <div class="drive-info">
-                    <div>⏱️ 55 min | 🛣️ 41.7 km</div>
-                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般國道)</div>
-                    <div><span class="drive-target">前往 旭川市中心</span></div>
+                    <div>⏱️ 45 min | 🛣️ 41.7 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
+                    <div><span class="drive-target">開往 旭川市中心</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=白金青い池&destination=北海道立旭川美術館" target="_blank">🗺️ 導航</a>
             </div>
 
             <div class="card" data-id="d8-3">
-                <div class="time-badge">11:55 - 13:25</div>
+                <div class="time-badge">11:15 - 12:15</div>
                 <div class="card-main">
-                    <div class="spot-name">📍 北海道立旭川美術館 & 常磐公園</div>
+                    <div class="spot-name">📍 北海道立旭川美術館 & 常磐公園散策</div>
                     <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=北海道立旭川美術館" target="_blank">🗺️ 地圖</a>
                 </div>
-                <div class="card-desc">【🚨 週五 Oct 02 正常開放】漫步常磐公園楓紅，欣賞現代紅磚粗獷主義建築。</div>
+                <div class="card-desc">經核對：今日週五正常開放（週一固定定休）<br>• <strong>美學體驗：</strong>精準漫步一小時。漫步在常磐公園的楓紅之下，欣賞現代紅磚粗獷主義建築的線條。剛好配合美術館早晨最清靜的時間，優雅地進行美學薰陶。</div>
                 <div class="card-actions">
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
             </div>
 
-            <div class="card" data-id="d8-4">
-                <div class="time-badge">13:25 - 14:00</div>
-                <div class="card-main">
-                    <div class="spot-name">🍱 梅光軒 或 青葉 本店</div>
-                    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=旭川+拉麵+青葉+本店" target="_blank">🗺️ 地圖</a>
+            <div class="drive-card">
+                <div class="drive-info">
+                    <div>⏱️ 15 min | 🛣️ 6 km</div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費</div>
+                    <div><span class="drive-target">開往 Triton 旭川旭神店</span></div>
                 </div>
-                <div class="card-desc">品嚐最道地的旭川醬油拉麵。</div>
+                <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=北海道立旭川美術館&destination=回転寿しトリトン+旭川旭神店" target="_blank">🗺️ 導航</a>
+            </div>
+
+            <div class="card" data-id="d8-4">
+                <div class="time-badge">12:30 - 13:00</div>
+                <div class="spot-name">⏳ 【關鍵特攻：30 分鐘 Triton 排隊 Buffer】</div>
+                <div class="card-desc">精算策略：12:30 抵達店鋪。由於正值週五午餐後半段，您擁有整整半個鐘的等位寬裕時間。可以非常鬆弛地在店內等候，通常平日非尖峰很快就能順利安排入座，時間完全在掌控之中。</div>
+                <div class="card-actions">
+                    <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
+                </div>
+            </div>
+
+            <div class="card" data-id="d8-5">
+                <div class="time-badge">13:00 - 14:00</div>
+                <div class="card-main">
+                    <div class="spot-name">🍱 【🍣 尊榮平日午餐：爽歎旭川 Triton 迴轉壽司】</div>
+                    <div class="card-main-buttons">
+                        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=回転寿しトリトン+旭川旭神店" target="_blank">🗺️ 地圖</a>
+                    </div>
+                </div>
+                <div class="card-desc">高奢享受：13:00 準時入座！坐在明亮的板前用 iPad 瘋狂點爆現切大牡丹蝦、極厚切三文魚、巨型帆立貝與炙燒鰈魚緣側。享受港口直送、油脂爆棚的北海道第一迴轉壽司震撼！</div>
                 <div class="card-actions">
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
@@ -2260,16 +2293,16 @@
                     <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🛣️ 💴 3,800円 (經道央自動車道 旭川鷹栖IC ➔ 札幌北IC) / 🆓 免費 (若走一般國道)</div>
                     <div><span class="drive-target">前往 莫埃來沼公園</span></div>
                 </div>
-                <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=旭川&destination=モエレ沼公園" target="_blank">🗺️ 導航</a>
+                <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=回転寿しトリトン+旭川旭神店&destination=モエレ沼公園" target="_blank">🗺️ 導航</a>
             </div>
 
-            <div class="card" data-id="d8-5">
-                <div class="time-badge">15:50 - 17:20</div>
+            <div class="card" data-id="d8-6">
+                <div class="time-badge">15:50 - 17:00</div>
                 <div class="card-main">
-                    <div class="spot-name">📍 莫埃來沼公園</div>
+                    <div class="spot-name">📍 莫埃來沼公園 (Moerenuma Park)</div>
                     <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=モエレ沼公園" target="_blank">🗺️ 地圖</a>
                 </div>
-                <div class="card-desc">野口勇大師親自設計，幾何大地雕塑與玻璃金字塔秋景，年中無休。</div>
+                <div class="card-desc">15:50 準時抵達停車場！下車立刻散步走向由大師野口勇親自設計的「幾何玻璃金字塔 (HIDAMARI)」。最金黃的夕陽 Golden Hour（黃金一小時）斜射進金字塔，折射出絕美的光影交織大片！參觀完後，剛好趕上 17:00 金字塔關門。</div>
                 <div class="card-actions">
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
@@ -2277,20 +2310,20 @@
 
             <div class="drive-card">
                 <div class="drive-info">
-                    <div>⏱️ 35 min</div>
+                    <div>⏱️ 35 min | 🛣️ 14 km</div>
                     <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">💰 過路費 Toll: 🆓 免費 (走一般道路)</div>
                     <div><span class="drive-target">前往 札幌市區</span></div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/dir/?api=1&origin=モエレ沼公園&destination=札幌市區" target="_blank">🗺️ 導航</a>
             </div>
 
-            <div class="card" data-id="d8-6">
-                <div class="time-badge">17:55</div>
+            <div class="card" data-id="d8-7">
+                <div class="time-badge">17:35</div>
                 <div class="card-main">
-                    <div class="spot-name">🏨 入住：札幌市區酒店</div>
+                    <div class="spot-name">🏨 【抵達酒店】入住：札幌市區酒店</div>
                     <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=札幌車站+酒店" target="_blank">🗺️ 地圖</a>
                 </div>
-                <div><span class="badge badge-alert">🚨 入住時間重點提示</span></div>
+                <div class="card-desc">安全抵達市區並辦理入住。精算後多出來的寬裕時間能讓你非常從容地安頓行李，準備迎接札幌的精彩夜晚。</div>
                 <div class="card-actions">
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
@@ -2305,7 +2338,7 @@
 
         <div id="day9" class="day-panel theme-day9" data-day="9">
             <div class="day-header">
-                <div class="day-title">🍷 Day 9 (Oct 03): 酒莊序曲 ➔ 買手店地毯式掃貨</div>
+                <div class="day-title">🛍️ Day 9 (Oct 03, Sat): 酒莊序曲 ➔ 買手店地毯式掃貨</div>
                 <div class="weather-box">札幌 ☁️<br>15°C / 8°C</div>
             </div>
 
@@ -2415,7 +2448,7 @@
 
         <div id="day10" class="day-panel theme-day10" data-day="10">
             <div class="day-header">
-                <div class="day-title">🏛️ Day 10 (Oct 04): 安藤建築 ➔ 鮭魚逆流 ➔ 機場</div>
+                <div class="day-title">🏛️ Day 10 (Oct 04, Sun): 安藤建築 ➔ 鮭魚逆流 ➔ 機場</div>
                 <div class="weather-box">千歲 ☀️<br>14°C / 7°C</div>
             </div>
 
@@ -2427,6 +2460,7 @@
                 <div class="time-badge">09:00</div>
                 <div class="spot-name">🚗 酒店退房，直接出發！</div>
                 <div><span class="badge badge-alert">🚨 酒店退房時間提示</span></div>
+                <div class="card-desc">配合今日豐富行程，吃過早餐後 09:00 準時退房上車。</div>
                 <div class="card-actions">
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
@@ -2540,7 +2574,7 @@
 
             <div class="card" data-id="d10-7">
                 <div class="time-badge">17:30 - 20:30</div>
-                <div class="spot-name">🎒 新千歲機場國內線大橫掃</div>
+                <span class="spot-name">🎒 新千歲機場國內線大橫掃</span>
                 <div class="card-desc">整整 3 個小時國內線大採購，乘坐 NH84 航班（CTS 21:20 飛往 HND 23:05）進行日本國內轉機。</div>
                 <div class="card-actions">
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
@@ -2549,7 +2583,7 @@
 
             <div class="card" data-id="d10-8">
                 <div class="time-badge">21:20</div>
-                <div class="spot-name">✈️ 乘坐 NH84 國內轉機起飛</div>
+                <span class="spot-name">✈️ 乘坐 NH84 國內轉機起飛</span>
                 <div><span class="badge badge-port">🚨 機場登機乘坐時間提示</span></div>
                 <div class="card-desc">23:05 降落東京羽田機場第二航廈，圓滿銜接翌日國際返程航班。</div>
                 <div class="card-actions">
@@ -2573,19 +2607,17 @@
 </div>
 
 <script>
-    // 保存進度與記事本內容
     const state = {
-        currentDay: 'hotels',    // 預設打開最左側的住宿預算總覽
-        completedItems: {},      // 儲存各個 card 的完成狀態
-        dayNotes: {},            // 儲存每天的備忘錄
-        sapporoOption: 'C',      // 預設選擇方案 C (Vessel Hotel Campana)
+        currentDay: 'hotels',    
+        completedItems: {},      
+        dayNotes: {},            
+        sapporoOption: 'C',      
         paidItems: {
             'hotel-seijaku': true,
             'hotel-sapporo-choice': true
         }
     };
 
-    // 初始化讀取
     window.onload = function() {
         const savedState = localStorage.getItem('hokkaido_trip_state_neumorphic_v12');
         if (savedState) {
@@ -2593,12 +2625,11 @@
         }
         
         applySavedState();
-        selectSapporoOption(state.sapporoOption); // 初始化加總與方案按鈕狀態
+        selectSapporoOption(state.sapporoOption); 
         switchDay(state.currentDay);
     };
 
     function applySavedState() {
-        // 套用已標記完成的項目
         document.querySelectorAll('.card').forEach(card => {
             const id = card.getAttribute('data-id');
             const checkBtn = card.querySelector('.btn-check');
@@ -2611,16 +2642,14 @@
             } else if (id) {
                 card.classList.remove('completed');
                 if (checkBtn) {
-                    checkBtn.classList.remove('checked');
-                    checkBtn.innerHTML = '⬜ 標記完成';
+                    checkBtn.classList.remove('checked'); checkBtn.innerHTML = '⬜ 標記完成';
                 }
             }
         });
 
-        // 套用付款狀態
         document.querySelectorAll('[data-id]').forEach(card => {
             const id = card.getAttribute('data-id');
-            if (id === 'hotel-sapporo-choice') return; // 由專屬函式控制
+            if (id === 'hotel-sapporo-choice') return; 
             
             const paidBtn = card.querySelector('.btn-paid');
             const statusBadge = card.querySelector('.pay-status-badge');
@@ -2640,7 +2669,6 @@
         });
     }
 
-    // 選擇札幌飯店方案，即時計算預算總金額
     function selectSapporoOption(opt) {
         state.sapporoOption = opt;
         
@@ -2668,7 +2696,6 @@
             priceDetail.innerHTML = '¥46,186 JPY';
         }
 
-        // 刷新方案選擇卡片的付款聯動狀態
         if (state.paidItems['hotel-sapporo-choice']) {
             if (paidBtn) { paidBtn.classList.add('paid'); paidBtn.innerHTML = '✓ 已付款 Paid'; }
             if (statusBadge) { statusBadge.className = 'pay-status-badge badge badge-port'; statusBadge.innerText = '已付款 Paid'; }
@@ -2681,7 +2708,6 @@
         saveState();
     }
 
-    // 精準動態加總付款與未付款金額
     function recalculateBudgets() {
         let sapporoCost = 46186;
         if (state.sapporoOption === 'A') sapporoCost = 67926;
@@ -2716,7 +2742,6 @@
         }
     }
 
-    // 標記付款狀態切換
     function togglePaid(button, hotelId) {
         if (state.paidItems[hotelId]) {
             delete state.paidItems[hotelId];
@@ -2733,7 +2758,6 @@
         }
     }
 
-    // 回到頂部功能 (相容整個視窗滾動)
     function scrollToTop() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
         const container = document.querySelector('.phone-container');
@@ -2742,7 +2766,6 @@
         }
     }
 
-    // 切換天數分頁
     function switchDay(dayId) {
         state.currentDay = dayId;
         
@@ -2752,7 +2775,6 @@
         const buttons = document.querySelectorAll('.tab-btn');
         buttons.forEach(btn => btn.classList.remove('active'));
 
-        // 判定當前顯示面板
         let panelId;
         if (dayId === 'transport') panelId = 'daytransport';
         else if (dayId === 'hotels') panelId = 'dayhotels';
@@ -2764,7 +2786,6 @@
         const currentPanel = document.getElementById(panelId);
         if (currentPanel) currentPanel.classList.add('active');
 
-        // 判定當前啟動按鈕
         let currentBtn;
         if (dayId === 'transport') {
             currentBtn = document.getElementById('tabTransport');
@@ -2781,20 +2802,18 @@
         }
         if (currentBtn) currentBtn.classList.add('active');
 
-        // 自動橫向滾動頁籤列，保持選中的頁籤在可視範圍中央
         const tabBar = document.getElementById('tabBar');
         if (tabBar && currentBtn) {
             const offsetLeft = currentBtn.offsetLeft - (tabBar.offsetWidth / 2) + (currentBtn.offsetWidth / 2);
             tabBar.scrollTo({ left: offsetLeft, behavior: 'smooth' });
         }
 
-        // 切換備忘錄顯示
         let noteLabel = 'Day ' + dayId;
         if (dayId === 'transport') noteLabel = 'Transport';
         else if (dayId === 'hotels') noteLabel = 'Hotels';
         else if (dayId === 'bookings') noteLabel = 'Bookings 預約備忘';
-        else if (dayId === '4-bp') noteLabel = 'Day 4 (美幌峠)';
-        else if (dayId === '4-lhs') noteLabel = 'Day 4 (硫磺山)';
+        else if (dayId === '4-bp') noteLabel = 'Day 4 (美幌峠, Mon)';
+        else if (dayId === '4-lhs') noteLabel = 'Day 4 (硫磺山, Mon)';
         
         document.getElementById('notesTitleDay').innerText = noteLabel;
         document.getElementById('dayNotes').value = state.dayNotes[dayId] || '';
@@ -2803,7 +2822,6 @@
         saveState();
     }
 
-    // 標記項目完成/未完成
     function toggleComplete(button) {
         const card = button.closest('.card');
         const id = card.getAttribute('data-id');
@@ -2823,7 +2841,6 @@
         saveState();
     }
 
-    // 更新當天進度條
     function updateProgress() {
         const activePanel = document.querySelector('.day-panel.active');
         if (!activePanel) return;
@@ -2842,7 +2859,6 @@
         document.getElementById('progressText').innerText = percentage + '%';
     }
 
-    // 儲存備忘錄筆記
     function saveNotes() {
         const noteText = document.getElementById('dayNotes').value;
         state.dayNotes[state.currentDay] = noteText;
@@ -2853,7 +2869,6 @@
         localStorage.setItem('hokkaido_trip_state_neumorphic_v12', JSON.stringify(state));
     }
 
-    // 搜尋功能
     function handleSearch() {
         const query = document.getElementById('searchInput').value.trim().toLowerCase();
         const panels = document.querySelectorAll('.day-panel');
@@ -2885,7 +2900,7 @@
         let hasMatches = false;
 
         panels.forEach(panel => {
-            panel.classList.add('active'); // 全部開啟以供搜尋展示
+            panel.classList.add('active'); 
             const cards = panel.querySelectorAll('.card, .drive-card');
             let panelHasMatch = false;
 
