@@ -723,7 +723,7 @@
 
     <div class="content-container" id="contentContainer">
 
-        <div id="dayhotels" class="day-panel active theme-hotels" data-day="hotels">
+       <div id="dayhotels" class="day-panel active theme-hotels" data-day="hotels">
             <div class="day-header">
                 <div class="day-title">🏨 Hotels 住宿預算總覽</div>
                 <div class="weather-box">旅宿與泡湯<br>規格清單</div>
@@ -740,6 +740,7 @@
                 </div>
             </div>
 
+            <!-- Hotel 1: Remm Hibiya -->
             <div class="card" data-id="hotel-remm">
                 <div class="time-badge">Sep 23 - Sep 25 (2晚)</div>
                 <div class="card-main">
@@ -749,7 +750,7 @@
                 <div class="card-desc">
                     • <strong>餐食計畫 Meals:</strong> ❌ 不含早餐 / ❌ 不含晚餐<br>
                     • <strong>溫泉設施 Onsen:</strong> ❌ 無溫泉設施<br>
-                    • <strong>預約費用 Cost:</strong> ¥31,047 JPY<br>
+                    • <strong>預約費用 Cost:</strong> ¥29,423 JPY<br>
                     • <strong>付款狀態 Status:</strong> <span class="pay-status-badge badge badge-alert">未付款 Unpaid</span>
                 </div>
                 <div class="card-actions">
@@ -758,6 +759,7 @@
                 </div>
             </div>
 
+            <!-- Hotel 2: Dormy Inn Abashiri -->
             <div class="card" data-id="hotel-dormy">
                 <div class="time-badge">Sep 25 - Sep 26 (1晚)</div>
                 <div class="card-main">
@@ -767,7 +769,7 @@
                 <div class="card-desc">
                     • <strong>餐食計畫 Meals:</strong> 🥣 含早餐 / ❌ 不含晚餐<br>
                     • <strong>溫泉設施 Onsen:</strong> ♨️ 有溫泉 (<span class="badge badge-port" style="margin-top:0;">大浴場</span>)<br>
-                    • <strong>預約費用 Cost:</strong> ¥21,150 JPY<br>
+                    • <strong>預約費用 Cost:</strong> ¥20,200 JPY<br>
                     • <strong>付款狀態 Status:</strong> <span class="pay-status-badge badge badge-alert">未付款 Unpaid</span>
                 </div>
                 <div class="card-actions">
@@ -776,24 +778,26 @@
                 </div>
             </div>
 
-            <div class="card" data-id="hotel-kiki">
+            <!-- Hotel 3: Kitakobushi Shiretoko -->
+            <div class="card" data-id="hotel-kitakobushi">
                 <div class="time-badge">Sep 26 - Sep 28 (2晚)</div>
                 <div class="card-main">
-                    <div class="spot-name">KIKI知床 ナチュラルリゾート</div>
-                    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=KIKI知床+ナチュラルリゾート" target="_blank">🗺️ 地圖</a>
+                    <div class="spot-name">北こぶし知床 ホテル＆リゾート</div>
+                    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Kitakobushi+Shiretoko+Hotel+%26+Resort" target="_blank">🗺️ 地圖</a>
                 </div>
                 <div class="card-desc">
                     • <strong>餐食計畫 Meals:</strong> 🥣 含早餐 / 🍱 含晚餐<br>
-                    • <strong>溫泉設施 Onsen:</strong> ♨️ 有溫泉 (<span class="badge badge-port" style="margin-top:0;">大浴場</span>)<br>
-                    • <strong>預約費用 Cost:</strong> ¥70,620 JPY<br>
+                    • <strong>溫泉設施 Onsen:</strong> ♨️ 有溫泉 (<span class="badge badge-alert" style="margin-top:0; background-color:#B45309;">個室風呂付</span>)<br>
+                    • <strong>預約費用 Cost:</strong> ¥128,370 JPY<br>
                     • <strong>付款狀態 Status:</strong> <span class="pay-status-badge badge badge-alert">未付款 Unpaid</span>
                 </div>
                 <div class="card-actions">
-                    <button class="btn-paid" onclick="togglePaid(this, 'hotel-kiki')">💳 標記已付 Paid</button>
+                    <button class="btn-paid" onclick="togglePaid(this, 'hotel-kitakobushi')">💳 標記已付 Paid</button>
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
             </div>
 
+            <!-- Hotel 4: Pon Pon Yu -->
             <div class="card" data-id="hotel-pon">
                 <div class="time-badge">Sep 28 - Sep 29 (1晚)</div>
                 <div class="card-main">
@@ -812,6 +816,7 @@
                 </div>
             </div>
 
+            <!-- Hotel 5: Hina no Za -->
             <div class="card" data-id="hotel-hino">
                 <div class="time-badge">Sep 29 - Sep 30 (1晚)</div>
                 <div class="card-main">
@@ -830,6 +835,7 @@
                 </div>
             </div>
 
+            <!-- Hotel 6: Seijakubou -->
             <div class="card" data-id="hotel-seijaku">
                 <div class="time-badge">Sep 30 - Oct 01 (1晚)</div>
                 <div class="card-main">
@@ -840,14 +846,15 @@
                     • <strong>餐食計畫 Meals:</strong> 🥣 含早餐 / 🍱 含晚餐<br>
                     • <strong>溫泉設施 Onsen:</strong> ♨️ 有溫泉 (<span class="badge badge-alert" style="margin-top:0; background-color:#B45309;">個室風呂付</span>)<br>
                     • <strong>預約費用 Cost:</strong> ¥77,616 JPY<br>
-                    • <strong>付款狀態 Status:</strong> <span class="pay-status-badge badge badge-port">已付款 Paid</span>
+                    • <strong>付款狀態 Status:</strong> <span class="pay-status-badge badge badge-alert">未付款 Unpaid</span>
                 </div>
                 <div class="card-actions">
-                    <button class="btn-paid paid" onclick="togglePaid(this, 'hotel-seijaku')">✓ 已付款 Paid</button>
+                    <button class="btn-paid" onclick="togglePaid(this, 'hotel-seijaku')">💳 標記已付 Paid</button>
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
             </div>
 
+            <!-- Hotel 7: Hanagura -->
             <div class="card" data-id="hotel-hana">
                 <div class="time-badge">Oct 01 - Oct 02 (1晚)</div>
                 <div class="card-main">
@@ -866,57 +873,21 @@
                 </div>
             </div>
 
-            <div class="card" data-id="hotel-sapporo-choice">
-                <div class="time-badge">Oct 02 - Oct 04 (2晚) - 待確認 TBC</div>
+            <!-- Hotel 8: Vessel Hotel Campana Susukino -->
+            <div class="card" data-id="hotel-vessel">
+                <div class="time-badge">Oct 02 - Oct 04 (2晚)</div>
                 <div class="card-main">
-                    <div class="spot-name">札幌市區精品住宿 (方案三選一)</div>
+                    <div class="spot-name">Vessel Hotel Campana Susukino</div>
+                    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=VESSEL+HOTEL+CAMPANA+SUSUKINO" target="_blank">🗺️ 地圖</a>
                 </div>
                 <div class="card-desc">
-                    <p style="margin-bottom:10px; font-weight:700; color:var(--text-main);">👉 請選擇預計入住方案 (點擊即時重新計算預算)：</p>
-                    
-                    <div class="option-selector">
-                        <button class="option-card-btn" id="optBtnA" onclick="selectSapporoOption('A')">
-                            <div class="opt-content">
-                                <span class="opt-dot"></span>
-                                <div>
-                                    <span class="opt-title">方案 A：GRANBELL</span>
-                                    <span style="font-size:0.75rem; color:var(--text-muted); display:block; margin-top:2px;">🥣 含早餐 (BF only)</span>
-                                </div>
-                            </div>
-                            <span class="opt-price">¥67,926 JPY</span>
-                        </button>
-
-                        <button class="option-card-btn" id="optBtnB" onclick="selectSapporoOption('B')">
-                            <div class="opt-content">
-                                <span class="opt-dot"></span>
-                                <div>
-                                    <span class="opt-title">方案 B：Dormy Inn Annex</span>
-                                    <span style="font-size:0.75rem; color:var(--text-muted); display:block; margin-top:2px;">🥣 含早餐 | ♨️ 大浴場</span>
-                                </div>
-                            </div>
-                            <span class="opt-price">¥58,320 JPY</span>
-                        </button>
-
-                        <button class="option-card-btn selected" id="optBtnC" onclick="selectSapporoOption('C')">
-                            <div class="opt-content">
-                                <span class="opt-dot"></span>
-                                <div>
-                                    <span class="opt-title">方案 C：Vessel Hotel Campana</span>
-                                    <span style="font-size:0.75rem; color:#16A34A; font-weight:700; display:block; margin-top:2px;">🥣 含早餐 | ⚠️ 已付款 (9/10前免費取消)</span>
-                                </div>
-                            </div>
-                            <span class="opt-price">¥46,186 JPY</span>
-                        </button>
-                    </div>
-
-                    <div style="margin-top:14px; font-size:0.82rem; line-height:1.5;">
-                        • <strong>房間方案說明:</strong> 雙人客房兩晚合計價格。<br>
-                        • <strong>預計費用 Cost:</strong> <span id="sapporoPriceDetail" style="font-weight:700; color:var(--accent-theme);">¥46,186 JPY</span><br>
-                        • <strong>付款狀態 Status:</strong> <span class="pay-status-badge badge badge-port" id="sapporoStatusBadge">已付款 Paid</span>
-                    </div>
+                    • <strong>餐食計畫 Meals:</strong> 🥣 含早餐 / ❌ 不含晚餐<br>
+                    • <strong>溫泉設施 Onsen:</strong> ♨️ 有溫泉 (<span class="badge badge-port" style="margin-top:0;">大浴場</span>)<br>
+                    • <strong>預約費用 Cost:</strong> ¥45,543 JPY<br>
+                    • <strong>付款狀態 Status:</strong> <span class="pay-status-badge badge badge-alert">未付款 Unpaid</span>
                 </div>
                 <div class="card-actions">
-                    <button class="btn-paid paid" id="sapporoPaidBtn" onclick="togglePaid(this, 'hotel-sapporo-choice')">✓ 已付款 Paid</button>
+                    <button class="btn-paid" onclick="togglePaid(this, 'hotel-vessel')">💳 標記已付 Paid</button>
                     <button class="btn-check" onclick="toggleComplete(this)">⬜ 標記完成</button>
                 </div>
             </div>
@@ -933,7 +904,7 @@
                 <div class="day-title">📅 預約管理總覽 Bookings</div>
                 <div class="weather-box">極致掌控<br>餐廳與理髮</div>
             </div>
-            <div class="day-summary-box">📌 <strong>核心備忘：</strong>集中管理旅程中所有高階餐廳晚宴與理髮行程，掌握預約狀況。</div>
+            <div class="day-summary-box">📌 <strong>核心備忘：</strong>集中管理旅程中所有晚宴與理髮行程，掌握預約狀況。</div>
 
             <div style="font-size: 1.05rem; font-weight: 800; color: var(--accent-theme); margin: 28px 0 14px 4px; display: flex; align-items: center; gap: 6px;">🍱 Restaurants 餐廳與午餐預約排程</div>
 
